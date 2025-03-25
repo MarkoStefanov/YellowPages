@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ user_profile.username }}'s Profile - UCL Yellow Pages{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="text-center">
+                        {{ user_profile.username }}'s Profile
+                        {% if user_profile.first_name or user_profile.last_name %}
+                            <small class="text-muted">({{ user_profile.first_name }} {{ user_profile.last_name }})</small>
+                        {% endif %}
+                    </h2>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <ul class="list-group list-group-flush">
+                                {% if profile.visible_fields.email %}
+                                    <li class="list-group-item">
+                                        <strong>Email:</strong> {{ profile.email }}
+                                    </li>
+                                {% endif %}
+                                
+                                {% if profile.visible_fields.whatsapp and profile.whatsapp %}
+                                    <li class="list-group-item">
+                                        <strong>WhatsApp:</strong> {{ profile.whatsapp }}
+                                    </li>
+                                {% endif %}
+                                
+                                {% if profile.visible_fields.instagram and profile.instagram %}
+                                    <li class="list-group-item">
+                                        <strong>Instagram:</strong> {{ profile.instagram }}
+                                    </li>
+                                {% endif %}
+                                
+                                {% if profile.visible_fields.bio and profile.bio %}
+                                    <li class="list-group-item">
+                                        <strong>Bio:</strong>
+                                        <p class="mt-2">{{ profile.bio }}</p>
+                                    </li>
+                                {% endif %}
+                                
+                                {% if profile.visible_fields.interests and profile.interests %}
+                                    <li class="list-group-item">
+                                        <strong>Interests:</strong>
+                                        <p class="mt-2">{{ profile.interests }}</p>
+                                    </li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    {% if is_own_profile %}
+                    <div class="row mt-4">
+                        <div class="col-md-12 text-center">
+                            <a href="{% url 'edit_profile' %}" class="btn btn-primary">Edit Profile</a>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
