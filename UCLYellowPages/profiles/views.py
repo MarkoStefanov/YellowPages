@@ -13,11 +13,31 @@ from django.contrib.auth import authenticate, login as auth_login
 from django.views.generic import ListView
 from .models import UserData
 from django.http import Http404
+import re
+from django import forms
+
+class CustomUserCreationForm(UserCreationForm):
+    class Meta:
+        model = User
+        fields = UserCreationForm.Meta.fields
+
+    def clean_username(self):
+        username = self.cleaned_data.get('username')
+        
+        # Check if the username is a valid UCL email address
+        if not re.match(r'^[a-zA-Z0-9._%+-]+@ucl\.ac\.uk$', username):
+            raise forms.ValidationError("Username must be a valid UCL email address ending with @ucl.ac.uk")
+        
+        # Check if username already exists
+        if User.objects.filter(username=username).exists():
+            raise forms.ValidationError("This email address is already registered.")
+        
+        return username
 
 def register(request):
     if request.method == 'POST':
         print("POST request received for registration")
-        form = UserCreationForm(request.POST)
+        form = CustomUserCreationForm(request.POST)
         print(f"Form data: {request.POST}")
         print(f"Form is valid: {form.is_valid()}")
         
@@ -55,30 +75,30 @@ def register(request):
             print(f"Form errors: {form.errors}")
     else:
         print("GET request received for registration form")
-        form = UserCreationForm()
+        form = CustomUserCreationForm()
     return render(request, 'register.html', {'form': form})
 
 def custom_logout(request):
     logout(request)
     return redirect('login')    
 
-class RegisterView(CreateView):
-    template_name = 'register.html'
-    form_class = UserCreationForm
-    success_url = reverse_lazy('login')
+# class RegisterView(CreateView):
+#     template_name = 'register.html'
+#     form_class = UserCreationForm
+#     success_url = reverse_lazy('login')
 
-    def form_valid(self, form):
-        # Save the user first
-        response = super().form_valid(form)
-        user = self.object
+#     def form_valid(self, form):
+#         # Save the user first
+#         response = super().form_valid(form)
+#         user = self.object
         
-        # Create the associated models
-        UserData.objects.create(user=user)
-        Settings.objects.create(user=user)
+#         # Create the associated models
+#         UserData.objects.create(user=user)
+#         Settings.objects.create(user=user)
         
-        auth_login(self.request, user)
+#         auth_login(self.request, user)
         
-        return response
+#         return response
 
 class CustomLoginView(LoginView):
     template_name = 'login.html'
