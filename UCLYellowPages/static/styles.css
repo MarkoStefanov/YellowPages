@@ -1,0 +1,151 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+html, body {
+  height: 100%;
+  background: linear-gradient(135deg, #FFF176, #FFD54F, #FFC107, #FFB300);
+  background-attachment: fixed;
+}
+
+.navbar {
+  background: #2c2f33;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.general-container {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  margin-top: 5rem;
+  width: 600px;
+  height: 100vh;
+}
+
+.custom-select, .checkbox-input {
+  background-color: #23272a;
+  color: #ffffff;
+  border: 1px solid #40444b;
+  padding: 0.6rem;
+  border-radius: 5px;
+  width: 100%;
+  font-size: 1rem;
+}
+
+.custom-select:focus {
+  border-color: #FFC107;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  margin-top: 5rem;
+  height: 100vh;
+}
+
+.general-form {
+  background-color: #2c2f33;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+  width: 450px;
+  text-align: center;
+  color: white;
+}
+
+.general-form h2 {
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.general-form label {
+  display: block;
+  text-align: left;
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
+
+.general-form input {
+  background-color: #23272a;
+  color: #ffffff;
+  border: 1px solid #40444b;
+  padding: 0.4rem;
+  border-radius: 5px;
+  width: 100%;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+
+.general-form input:focus {
+  border-color: #FFC107;
+}
+
+.general-form input:focus {
+  border-color: #FFC107;
+}
+
+.general-form input:-webkit-autofill {
+  -webkit-text-fill-color: inherit !important;
+}
+
+.general-form ul {
+  padding: 0;
+  margin-left: 2rem;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.general-form ul li {
+  font-size: 0.9rem;
+  margin-bottom: 0.3rem;
+}
+
+.general-form .helptext {
+  display: block;
+  font-size: 0.85rem;
+  color: white;
+  margin-top: 0.2rem;
+  margin-left: 0.4rem;
+  text-align: left;
+}
+
+.general-link {
+  display: block;
+  font-size: 0.85rem;
+  color: white;
+  margin-top: 0.4rem;
+  margin-left: 0.4rem;
+  text-align: center;
+}
+
+.general-link a{
+  color: #FFC107;
+}
+
+.button {
+  background-color: #FFC107;
+  color: #2c2f33;
+  margin-top: 1rem;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  width: 100%;
+}
+
+.button:hover {
+  background-color: #FFB300;
+}
