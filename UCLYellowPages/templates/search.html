@@ -18,9 +18,7 @@
         {% for profile in profiles %}
             <div class="profile-card">
                 <div class="profile-header">
-                    <h3 class="profile-username">
-                        <a href="{% url 'profile_detail' username=profile.user.username %}">{{ profile.user.username }}</a>
-                    </h3>
+                    <h3><a href="{% url 'profile_detail' username=profile.user.username %}">{{ profile.user.username }}</a></h3>
                     {% if profile.user.first_name or profile.user.last_name %}
                         <p class="profile-name">({{ profile.user.first_name }} {{ profile.user.last_name }})</p>
                     {% endif %}
@@ -39,7 +37,7 @@
                     </ul>
                 </div>
                 <div class="profile-actions">
-                    <a href="{% url 'profile_detail' username=profile.user.username %}" class="secondary-btn">View Full Profile</a>
+                    <a href="{% url 'profile_detail' username=profile.user.username %}" class="ter-button">View Full Profile</a>
                 </div>
             </div>
         {% endfor %}

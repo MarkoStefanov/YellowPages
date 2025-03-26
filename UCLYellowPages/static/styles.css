@@ -20,7 +20,7 @@ html, body {
   justify-content: center;
   align-items: baseline;
   margin-top: 5rem;
-  height: 100vh;
+  height: auto;
 }
 
 .general-card {
@@ -56,9 +56,9 @@ html, body {
 }
 
 .general-title {
-  font-size: 24px;
-  font-weight: bold;
   margin-bottom: 2rem;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 .form-group {
@@ -168,17 +168,24 @@ html, body {
 
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(2, 550px);
+  justify-content: center;
   gap: 20px;
-  margin-top: 20px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+  max-width: 1200px;
 }
 
 .profile-card {
-  background: #23272a;
+  background: #2c2f33;
   color: white;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 2rem;  
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+  width: 550px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .profile-header {
@@ -186,19 +193,20 @@ html, body {
   margin-bottom: 10px;
 }
 
-.profile-username a {
-  font-size: 18px;
+.profile-header h3 a{
+  color: white;
+  font-size: 1.2rem;
   font-weight: bold;
   text-decoration: none;
 }
 
-.profile-username a:hover {
+.profile-header h3 a:hover {
   text-decoration: underline;
 }
 
 .profile-name {
   font-size: 14px;
-  color: #666;
+  color: #72757c;
 }
 
 .profile-info ul {
@@ -215,21 +223,6 @@ html, body {
 .profile-actions {
   text-align: center;
   margin-top: 10px;
-}
-
-.secondary-btn {
-  display: inline-block;
-  padding: 8px 12px;
-  border: 1px solid #0056b3;
-  border-radius: 6px;
-  color: #0056b3;
-  text-decoration: none;
-  font-size: 14px;
-}
-
-.secondary-btn:hover {
-  background-color: #0056b3;
-  color: white;
 }
 
 .pagination-container {
@@ -291,6 +284,21 @@ html, body {
   font-size: 1rem;
   font-weight: bold;
   margin: 0.1rem;
+}
+
+.ter-button {
+  display: inline-block;
+  padding: 8px 12px;
+  border: 1px solid #FFC107;
+  border-radius: 6px;
+  color: #FFC107;
+  text-decoration: none;
+  font-size: 0.85rem;
+}
+
+.ter-button:hover {
+  background-color: #FFC107;
+  color: #23272a;
 }
 
 .button:hover {
