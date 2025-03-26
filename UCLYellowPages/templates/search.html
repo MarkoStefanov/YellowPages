@@ -3,97 +3,62 @@
 {% block title %}Search - UCL Yellow Pages{% endblock %}
 
 {% block content %}
-<div class="row justify-content-center mb-4">
-    <div class="col-md-8">
-        <div class="card">
-            <div class="card-header">
-                <h2 class="text-center">Search Students</h2>
-            </div>
-            <div class="card-body">
-                <form method="GET" class="mb-4">
-                    <div class="input-group">
-                        <input type="text" name="q" class="form-control" placeholder="Search by name, username, email, etc." value="{{ request.GET.q }}">
-                        <button type="submit" class="btn btn-primary">Search</button>
-                    </div>
-                </form>
-            </div>
-        </div>
+<div class="general-container">
+    <div class="general-card">
+        <h2 class="general-title">Search Students</h2>
+        <form method="GET" class="form-group">
+            <input type="text" name="q" placeholder="Search by name, email, etc." value="{{ request.GET.q }}">
+            <button type="submit" class="sec-button">Search</button>
+        </form>
     </div>
 </div>
 
 {% if profiles %}
-    <div class="row">
+    <div class="grid-container">
         {% for profile in profiles %}
-            <div class="col-md-6 mb-4">
-                <div class="card">
-                    <div class="card-header">
-                        <h5 class="card-title mb-0">
-                            <a href="{% url 'profile_detail' username=profile.user.username %}">{{ profile.user.username }}</a>
-                            {% if profile.user.first_name or profile.user.last_name %}
-                                <small class="text-muted">({{ profile.user.first_name }} {{ profile.user.last_name }})</small>
-                            {% endif %}
-                        </h5>
-                    </div>
-                    <div class="card-body">
-                        <ul class="list-group list-group-flush">
-                            {% if profile.visible_fields.email %}
-                                <li class="list-group-item">
-                                    <strong>Email:</strong> {{ profile.email }}
-                                </li>
-                            {% endif %}
-                            {% if profile.visible_fields.whatsapp and profile.whatsapp %}
-                                <li class="list-group-item">
-                                    <strong>WhatsApp:</strong> {{ profile.whatsapp }}
-                                </li>
-                            {% endif %}
-                            {% if profile.visible_fields.instagram and profile.instagram %}
-                                <li class="list-group-item">
-                                    <strong>Instagram:</strong> {{ profile.instagram }}
-                                </li>
-                            {% endif %}
-                            
-                            <li class="list-group-item text-center">
-                                <a href="{% url 'profile_detail' username=profile.user.username %}" class="btn btn-sm btn-outline-primary">View Full Profile</a>
-                            </li>
-                        </ul>
-                    </div>
+            <div class="profile-card">
+                <div class="profile-header">
+                    <h3><a href="{% url 'profile_detail' username=profile.user.username %}">{{ profile.user.username }}</a></h3>
+                    {% if profile.user.first_name or profile.user.last_name %}
+                        <p class="profile-name">({{ profile.user.first_name }} {{ profile.user.last_name }})</p>
+                    {% endif %}
+                </div>
+                <div class="profile-info">
+                    <ul>
+                        {% if profile.visible_fields.email %}
+                            <li><strong>Email:</strong> {{ profile.email }}</li>
+                        {% endif %}
+                        {% if profile.visible_fields.whatsapp and profile.whatsapp %}
+                            <li><strong>WhatsApp:</strong> {{ profile.whatsapp }}</li>
+                        {% endif %}
+                        {% if profile.visible_fields.instagram and profile.instagram %}
+                            <li><strong>Instagram:</strong> {{ profile.instagram }}</li>
+                        {% endif %}
+                    </ul>
+                </div>
+                <div class="profile-actions">
+                    <a href="{% url 'profile_detail' username=profile.user.username %}" class="ter-button">View Full Profile</a>
                 </div>
             </div>
         {% endfor %}
     </div>
-    
+
     {% if is_paginated %}
-    <div class="row justify-content-center mt-4">
-        <div class="col-md-8">
-            <nav aria-label="Page navigation">
-                <ul class="pagination justify-content-center">
-                    {% if page_obj.has_previous %}
-                        <li class="page-item">
-                            <a class="page-link" href="?q={{ request.GET.q }}&page=1">&laquo; First</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="?q={{ request.GET.q }}&page={{ page_obj.previous_page_number }}">Previous</a>
-                        </li>
-                    {% endif %}
-                    
-                    <li class="page-item active">
-                        <span class="page-link">{{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
-                    </li>
-                    
-                    {% if page_obj.has_next %}
-                        <li class="page-item">
-                            <a class="page-link" href="?q={{ request.GET.q }}&page={{ page_obj.next_page_number }}">Next</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="?q={{ request.GET.q }}&page={{ page_obj.paginator.num_pages }}">Last &raquo;</a>
-                        </li>
-                    {% endif %}
-                </ul>
-            </nav>
+        <div class="pagination-container">
+            {% if page_obj.has_previous %}
+                <a class="pagination-btn" href="?q={{ request.GET.q }}&page=1">&laquo; First</a>
+                <a class="pagination-btn" href="?q={{ request.GET.q }}&page={{ page_obj.previous_page_number }}">Previous</a>
+            {% endif %}
+            
+            <span class="pagination-info">{{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+            
+            {% if page_obj.has_next %}
+                <a class="pagination-btn" href="?q={{ request.GET.q }}&page={{ page_obj.next_page_number }}">Next</a>
+                <a class="pagination-btn" href="?q={{ request.GET.q }}&page={{ page_obj.paginator.num_pages }}">Last &raquo;</a>
+            {% endif %}
         </div>
-    </div>
     {% endif %}
-    
+
 {% elif request.GET.q %}
     <div class="alert alert-info">No results found for your search.</div>
 {% endif %}
