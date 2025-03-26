@@ -1,51 +1,53 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="container">
-    <h2>Profile View History</h2>
-{% if error %}
-    <div class="alert alert-danger">
-        {{ error }}
-    </div>
-{% endif %}
+<div class="general-container">
+    <div class="general-card">
+        <h2 class="general-title">Profile View History</h2>
+    {% if error %}
+        <div class="alert alert-danger">
+            {{ error }}
+        </div>
+    {% endif %}
 
-{% if not tracking_enabled %}
-    <div class="alert alert-warning">
-        Profile view tracking is currently disabled.
-    </div>
-{% endif %}
+    {% if not tracking_enabled %}
+        <div class="alert alert-warning">
+            Profile view tracking is currently disabled.
+        </div>
+    {% endif %}
 
-{% if profile_views %}
-    <div class="alert alert-info">
-        Total Profile Views: {{ total_views }}
-    </div>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Viewer</th>
-                <th>Viewed At</th>
-                <th>IP Address</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for view in profile_views %}
+    {% if profile_views %}
+        <div class="alert alert-info">
+            Total Profile Views: {{ total_views }}
+        </div>
+        <table class="table">
+            <thead>
                 <tr>
-                    <td>
-                        {% if view.viewer %}
-                            {{ view.viewer.username }}
-                        {% else %}
-                            Anonymous
-                        {% endif %}
-                    </td>
-                    <td>{{ view.viewed_at }}</td>
-                    <td>{{ view.ip_address|default:"N/A" }}</td>
+                    <th>Viewer</th>
+                    <th>Viewed At</th>
+                    <th>IP Address</th>
                 </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-{% else %}
-    <div class="alert alert-info">
-        No profile views yet.
+            </thead>
+            <tbody>
+                {% for view in profile_views %}
+                    <tr>
+                        <td>
+                            {% if view.viewer %}
+                                {{ view.viewer.username }}
+                            {% else %}
+                                Anonymous
+                            {% endif %}
+                        </td>
+                        <td>{{ view.viewed_at }}</td>
+                        <td>{{ view.ip_address|default:"N/A" }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <div class="alert alert-info">
+            No profile views yet.
+        </div>
+    {% endif %}
     </div>
-{% endif %}
 </div>
 {% endblock %}
