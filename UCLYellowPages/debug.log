@@ -651,3 +651,30 @@ WARNING 2025-03-27 06:04:28,911 log 20948 21824 Method Not Allowed: /settings/
 WARNING 2025-03-27 06:04:28,912 basehttp 20948 21824 "POST /settings/ HTTP/1.1" 405 0
 INFO 2025-03-27 06:05:11,016 basehttp 20948 21824 "GET /settings/ HTTP/1.1" 200 6266
 INFO 2025-03-27 06:05:11,085 basehttp 20948 21824 "GET /static/styles.css HTTP/1.1" 304 0
+INFO 2025-03-27 06:13:03,207 autoreload 19436 18652 Watching for file changes with StatReloader
+INFO 2025-03-27 06:13:07,084 basehttp 19436 25224 "GET /profiles/history/ HTTP/1.1" 302 0
+INFO 2025-03-27 06:13:07,105 basehttp 19436 25224 "GET /accounts/login/?next=/profiles/history/ HTTP/1.1" 200 2353
+INFO 2025-03-27 06:13:07,209 basehttp 19436 25224 "GET /static/styles.css HTTP/1.1" 200 6163
+INFO 2025-03-27 06:13:13,142 basehttp 19436 25224 "POST /accounts/login/?next=/profiles/history/ HTTP/1.1" 302 0
+INFO 2025-03-27 06:13:13,149 basehttp 19436 25224 "GET / HTTP/1.1" 200 2346
+INFO 2025-03-27 06:13:13,266 basehttp 19436 25224 "GET /static/styles.css HTTP/1.1" 304 0
+INFO 2025-03-27 06:13:14,653 basehttp 19436 25224 "GET /profiles/edit_profile/ HTTP/1.1" 200 3911
+INFO 2025-03-27 06:13:15,840 basehttp 19436 25224 "GET /settings/ HTTP/1.1" 200 6266
+WARNING 2025-03-27 06:13:17,809 base 19436 25224 Method Not Allowed (POST): /settings/
+WARNING 2025-03-27 06:13:17,809 log 19436 25224 Method Not Allowed: /settings/
+WARNING 2025-03-27 06:13:17,810 basehttp 19436 25224 "POST /settings/ HTTP/1.1" 405 0
+INFO 2025-03-27 06:17:02,671 basehttp 19436 4644 "GET /settings/ HTTP/1.1" 200 6266
+INFO 2025-03-27 06:17:02,749 basehttp 19436 4644 "GET /static/styles.css HTTP/1.1" 304 0
+INFO 2025-03-27 06:19:08,978 basehttp 19436 4644 "GET /profiles/edit_profile/ HTTP/1.1" 200 3747
+INFO 2025-03-27 06:19:09,007 basehttp 19436 4644 "GET /static/styles.css HTTP/1.1" 304 0
+INFO 2025-03-27 06:19:10,049 basehttp 19436 4644 "GET /profiles/edit_profile/ HTTP/1.1" 200 3747
+INFO 2025-03-27 06:19:52,449 basehttp 19436 4644 "POST /profiles/edit_profile/ HTTP/1.1" 302 0
+INFO 2025-03-27 06:19:52,460 basehttp 19436 4644 "GET /profiles/edit_profile/ HTTP/1.1" 200 3992
+INFO 2025-03-27 06:19:52,536 basehttp 19436 4644 "GET /static/styles.css HTTP/1.1" 304 0
+INFO 2025-03-27 06:19:56,889 basehttp 19436 4644 "GET /search/ HTTP/1.1" 200 2389
+INFO 2025-03-27 06:19:59,615 basehttp 19436 4644 "GET /search/?q=marko HTTP/1.1" 200 3668
+INFO 2025-03-27 06:20:01,315 basehttp 19436 4644 "GET /history/ HTTP/1.1" 200 2268
+INFO 2025-03-27 06:20:03,419 basehttp 19436 4644 "GET /profiles/edit_profile/ HTTP/1.1" 200 3834
+INFO 2025-03-27 06:20:05,976 basehttp 19436 4644 "POST /profiles/edit_profile/ HTTP/1.1" 302 0
+INFO 2025-03-27 06:20:05,988 basehttp 19436 4644 "GET /profiles/edit_profile/ HTTP/1.1" 200 3992
+INFO 2025-03-27 06:20:07,351 basehttp 19436 4644 "GET /history/ HTTP/1.1" 200 2268
