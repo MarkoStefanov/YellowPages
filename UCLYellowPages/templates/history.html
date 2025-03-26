@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}Profile View History - UCL Yellow Pages{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="text-center">Profile View History</h2>
+            </div>
+            <div class="card-body">
+                {% if profile_views %}
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Viewer</th>
+                                    <th>Date & Time</th>
+                                    <th>IP Address</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for view in profile_views %}
+                                    <tr>
+                                        <td>
+                                            {% if view.viewer %}
+                                                {{ view.viewer.username }}
+                                            {% else %}
+                                                Anonymous User
+                                            {% endif %}
+                                        </td>
+                                        <td>{{ view.viewed_at|date:"F j, Y, g:i a" }}</td>
+                                        <td>{{ view.ip_address|default:"Not available" }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% else %}
+                    <div class="alert alert-info">
+                        No one has viewed your profile yet.
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
