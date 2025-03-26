@@ -12,3 +12,5 @@ db.sqlite3
 *.venv
 *.env
 node_modules/
+*.pyc
+*.pyc
