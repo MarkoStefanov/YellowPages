@@ -1,68 +1,47 @@
 {% extends 'base.html' %}
 
-{% block title %}Settings - UCL Yellow Pages{% endblock %}
+{% block title %}Privacy Settings - UCL Yellow Pages{% endblock %}
 
 {% block content %}
-<div class="row justify-content-center">
-    <div class="col-md-8">
-        <div class="card">
-            <div class="card-header bg-primary text-white">
-                <h2 class="text-center mb-0">Privacy Settings</h2>
-            </div>
-            <div class="card-body">
-                {% if messages %}
-                    {% for message in messages %}
-                    <div class="alert alert-{{ message.tags }} alert-dismissible fade show">
-                        {{ message }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+<div class="form-container">
+    <div class="general-form">
+        <h2>Privacy Settings</h2>
+        <form method="post">
+            {% csrf_token %}
+            {% for field in form %}
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                {% if field.field.widget.input_type == 'checkbox' %}
+                    <div class="checkbox-container">
+                        <input type="checkbox" 
+                               name="{{ field.name }}" 
+                                id="{{ field.id_for_label }}"
+                               class="checkbox-input"
+                               {% if field.value %}checked{% endif %}>
                     </div>
-                    {% endfor %}
+                {% else %}
+                    <select name="{{ field.name }}" 
+                            id="{{ field.id_for_label }}" 
+                            class="custom-select">
+                        {% for choice in field.field.choices %}
+                            <option value="{{ choice.0 }}" 
+                                    {% if field.value == choice.0 %}selected{% endif %}>
+                                {{ choice.1 }}
+                            </option>
+                        {% endfor %}
+                    </select>
                 {% endif %}
-
-                <form method="POST" action="{% url 'settings' %}">
-                    {% csrf_token %}
-
-                    <!-- Profile Visibility -->
-                    <div class="mb-4">
-                        <label for="id_profile_visibility" class="form-label fw-bold">
-                            Profile Visibility Level
-                        </label>
-                        <select name="profile_visibility" class="form-select" id="id_profile_visibility" required>
-                            <option value="ALL" {% if form.instance.profile_visibility == 'ALL' %}selected{% endif %}>
-                                Visible to all UCL students
-                            </option>
-                            <option value="FACULTY" {% if form.instance.profile_visibility == 'FACULTY' %}selected{% endif %}>
-                                Visible to faculty members
-                            </option>
-                            <option value="DEPARTMENT" {% if form.instance.profile_visibility == 'DEPARTMENT' %}selected{% endif %}>
-                                Visible to department
-                            </option>
-                            <option value="COURSE" {% if form.instance.profile_visibility == 'COURSE' %}selected{% endif %}>
-                                Visible to course mates
-                            </option>
-                            <option value="PRIVATE" {% if form.instance.profile_visibility == 'PRIVATE' %}selected{% endif %}>
-                                Only visible to me
-                            </option>
-                        </select>
-                    </div>
-
-                    <!-- Track Profile Views -->
-                    <div class="mb-4 form-check form-switch">
-                        <input type="checkbox" name="track_profile_views" class="form-check-input" id="id_track_profile_views"
-                            {% if form.instance.track_profile_views %}checked{% endif %}>
-                        <label class="form-check-label fw-bold" for="id_track_profile_views">
-                            Track profile views
-                        </label>
-                    </div>
-
-                    <div class="d-grid gap-2 mt-4">
-                        <button type="submit" class="btn btn-primary btn-lg">
-                            Save Settings
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
+                    
+                {% if field.errors %}
+                    <div class="error-text">{{ field.errors.0 }}</div>
+                {% endif %}
+                    
+                {% if field.help_text %}
+                    <small class="help-text">{{ field.help_text }}</small>
+                {% endif %}
+            {% endfor %}
+            
+            <button type="submit" class="button">Save Privacy Settings</button>
+        </form>
     </div>
 </div>
 {% endblock %}
