@@ -1,0 +1,986 @@
+INFO 2025-03-26 15:25:29,189 autoreload 12692 12856 Watching for file changes with StatReloader
+INFO 2025-03-26 15:25:36,151 basehttp 12692 13960 "GET /history/ HTTP/1.1" 200 2627
+INFO 2025-03-26 15:27:38,536 basehttp 12692 10244 "GET /history/ HTTP/1.1" 200 2628
+INFO 2025-03-26 15:27:39,191 basehttp 12692 10244 "GET /history/ HTTP/1.1" 200 2628
+INFO 2025-03-26 15:29:30,874 autoreload 12692 12856 C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\profiles\views.py changed, reloading.
+INFO 2025-03-26 15:29:31,796 autoreload 17272 13848 Watching for file changes with StatReloader
+INFO 2025-03-26 15:29:41,877 autoreload 17272 13848 C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\profiles\views.py changed, reloading.
+INFO 2025-03-26 15:29:42,805 autoreload 19032 12100 Watching for file changes with StatReloader
+INFO 2025-03-26 15:31:10,075 autoreload 19032 12100 C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\profiles\views.py changed, reloading.
+INFO 2025-03-26 15:31:11,139 autoreload 1852 2704 Watching for file changes with StatReloader
+INFO 2025-03-26 15:32:44,422 autoreload 19604 7080 Watching for file changes with StatReloader
+INFO 2025-03-26 15:32:53,592 basehttp 19604 3940 "GET /profiles/edit_profile/ HTTP/1.1" 200 4839
+INFO 2025-03-26 15:33:01,818 basehttp 19604 3940 "POST /profiles/edit_profile/ HTTP/1.1" 302 0
+INFO 2025-03-26 15:33:01,834 basehttp 19604 3940 "GET /profiles/edit_profile/ HTTP/1.1" 200 5005
+INFO 2025-03-26 15:33:14,770 basehttp 19604 3940 "GET /history/ HTTP/1.1" 200 2376
+INFO 2025-03-26 15:33:18,804 basehttp 19604 3940 "GET /history/ HTTP/1.1" 200 2376
+INFO 2025-03-26 15:33:19,384 basehttp 19604 3940 "GET /history/ HTTP/1.1" 200 2376
+INFO 2025-03-26 15:33:21,635 basehttp 19604 3940 "GET /settings/ HTTP/1.1" 200 4587
+INFO 2025-03-26 15:33:22,817 basehttp 19604 3940 "GET /profiles/edit_profile/ HTTP/1.1" 200 4847
+INFO 2025-03-26 15:33:24,977 basehttp 19604 3940 "POST /profiles/edit_profile/ HTTP/1.1" 302 0
+INFO 2025-03-26 15:33:24,991 basehttp 19604 3940 "GET /profiles/edit_profile/ HTTP/1.1" 200 4997
+INFO 2025-03-26 15:33:26,285 basehttp 19604 3940 "GET /history/ HTTP/1.1" 200 2376
+INFO 2025-03-26 15:33:38,400 basehttp 19604 3940 "GET /settings/ HTTP/1.1" 200 4587
+INFO 2025-03-26 15:33:39,452 basehttp 19604 3940 "GET /profiles/edit_profile/ HTTP/1.1" 200 4839
+INFO 2025-03-26 15:33:40,980 basehttp 19604 3940 "POST /profiles/edit_profile/ HTTP/1.1" 302 0
+INFO 2025-03-26 15:33:40,995 basehttp 19604 3940 "GET /profiles/edit_profile/ HTTP/1.1" 200 5005
+INFO 2025-03-26 15:33:42,090 basehttp 19604 3940 "GET /history/ HTTP/1.1" 200 2376
+INFO 2025-03-26 15:33:46,526 basehttp 19604 10508 "GET /search/ HTTP/1.1" 200 2810
+INFO 2025-03-26 15:33:48,046 basehttp 19604 10508 "GET /search/?q=admin HTTP/1.1" 200 3782
+INFO 2025-03-26 15:33:49,174 views 19604 10508 Profile view attempted: admin@ucl.ac.uk
+INFO 2025-03-26 15:33:49,174 views 19604 10508 Viewer: markoAdmin@ucl.ac.uk
+INFO 2025-03-26 15:33:49,174 views 19604 10508 Tracking enabled: True
+INFO 2025-03-26 15:33:49,185 views 19604 10508 Profile view recorded: ProfileView object (35)
+ERROR 2025-03-26 15:33:49,238 log 19604 10508 Internal Server Error: /profile/admin@ucl.ac.uk/
+Traceback (most recent call last):
+  File "C:\Python\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
+    self.check_response(response, callback)
+  File "C:\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view profiles.views.profile_view didn't return an HttpResponse object. It returned None instead.
+ERROR 2025-03-26 15:33:49,241 basehttp 19604 10508 "GET /profile/admin@ucl.ac.uk/ HTTP/1.1" 500 67336
+INFO 2025-03-26 15:33:54,800 views 19604 10508 Profile view attempted: admin@ucl.ac.uk
+INFO 2025-03-26 15:33:54,801 views 19604 10508 Viewer: markoAdmin@ucl.ac.uk
+INFO 2025-03-26 15:33:54,801 views 19604 10508 Tracking enabled: True
+INFO 2025-03-26 15:33:54,812 views 19604 10508 Profile view recorded: ProfileView object (36)
+ERROR 2025-03-26 15:33:54,834 log 19604 10508 Internal Server Error: /profile/admin@ucl.ac.uk/
+Traceback (most recent call last):
+  File "C:\Python\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
+    self.check_response(response, callback)
+  File "C:\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view profiles.views.profile_view didn't return an HttpResponse object. It returned None instead.
+ERROR 2025-03-26 15:33:54,837 basehttp 19604 10508 "GET /profile/admin@ucl.ac.uk/ HTTP/1.1" 500 67336
+INFO 2025-03-26 15:33:56,567 views 19604 10508 Profile view attempted: admin@ucl.ac.uk
+INFO 2025-03-26 15:33:56,567 views 19604 10508 Viewer: markoAdmin@ucl.ac.uk
+INFO 2025-03-26 15:33:56,567 views 19604 10508 Tracking enabled: True
+INFO 2025-03-26 15:33:56,578 views 19604 10508 Profile view recorded: ProfileView object (37)
+ERROR 2025-03-26 15:33:56,600 log 19604 10508 Internal Server Error: /profile/admin@ucl.ac.uk/
+Traceback (most recent call last):
+  File "C:\Python\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
+    self.check_response(response, callback)
+  File "C:\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view profiles.views.profile_view didn't return an HttpResponse object. It returned None instead.
+ERROR 2025-03-26 15:33:56,602 basehttp 19604 10508 "GET /profile/admin@ucl.ac.uk/ HTTP/1.1" 500 67336
+INFO 2025-03-26 15:36:22,149 basehttp 19604 3940 "GET /history/ HTTP/1.1" 200 2376
+INFO 2025-03-26 15:36:24,550 basehttp 19604 3940 "GET /search/ HTTP/1.1" 200 2810
+INFO 2025-03-26 15:36:27,218 basehttp 19604 3940 "GET /search/?q=admin HTTP/1.1" 200 3797
+INFO 2025-03-26 15:36:28,253 views 19604 3940 Profile view attempted: markoAdmin@ucl.ac.uk
+INFO 2025-03-26 15:36:28,253 views 19604 3940 Viewer: admin@ucl.ac.uk
+INFO 2025-03-26 15:36:28,254 views 19604 3940 Tracking enabled: False
+ERROR 2025-03-26 15:36:28,276 log 19604 3940 Internal Server Error: /profile/markoAdmin@ucl.ac.uk/
+Traceback (most recent call last):
+  File "C:\Python\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
+    self.check_response(response, callback)
+  File "C:\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view profiles.views.profile_view didn't return an HttpResponse object. It returned None instead.
+ERROR 2025-03-26 15:36:28,277 basehttp 19604 3940 "GET /profile/markoAdmin@ucl.ac.uk/ HTTP/1.1" 500 67381
+INFO 2025-03-26 15:37:25,127 autoreload 19604 7080 C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\profiles\views.py changed, reloading.
+INFO 2025-03-26 15:37:26,188 autoreload 3012 11936 Watching for file changes with StatReloader
+INFO 2025-03-26 15:37:38,497 basehttp 3012 7744 "GET /search/?q=admin HTTP/1.1" 200 3782
+INFO 2025-03-26 15:37:39,457 basehttp 3012 7744 "GET /profile/admin@ucl.ac.uk/ HTTP/1.1" 200 3197
+INFO 2025-03-26 15:37:44,069 basehttp 3012 7744 "GET /history/ HTTP/1.1" 200 2376
+INFO 2025-03-26 15:37:52,248 basehttp 3012 2304 "GET /profile/markoAdmin@ucl.ac.uk/ HTTP/1.1" 200 3207
+INFO 2025-03-26 15:37:59,261 basehttp 3012 7744 "GET /admin/profiles/profileview/ HTTP/1.1" 200 22197
+INFO 2025-03-26 15:37:59,309 basehttp 3012 7744 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-03-26 15:42:35,214 autoreload 11452 16256 Watching for file changes with StatReloader
+INFO 2025-03-26 15:42:47,374 basehttp 11452 13488 "GET /admin/profiles/profileview/ HTTP/1.1" 200 22197
+INFO 2025-03-26 15:42:47,588 basehttp 11452 11192 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-03-26 15:42:47,723 basehttp 11452 2644 "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2804
+INFO 2025-03-26 15:42:47,732 basehttp 11452 13488 "GET /static/admin/css/base.css HTTP/1.1" 200 22092
+INFO 2025-03-26 15:42:47,763 basehttp 11452 13488 "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+INFO 2025-03-26 15:42:47,780 basehttp 11452 11248 "GET /static/admin/js/theme.js HTTP/1.1" 200 1653
+INFO 2025-03-26 15:42:47,793 basehttp 11452 11840 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+INFO 2025-03-26 15:42:47,801 basehttp 11452 8572 "GET /static/admin/css/changelists.css HTTP/1.1" 200 6878
+INFO 2025-03-26 15:42:47,819 basehttp 11452 13488 "GET /static/admin/js/core.js HTTP/1.1" 200 6208
+INFO 2025-03-26 15:42:47,824 basehttp 11452 11192 "GET /static/admin/css/responsive.css HTTP/1.1" 200 17972
+INFO 2025-03-26 15:42:47,846 basehttp 11452 11248 "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 9097
+INFO 2025-03-26 15:42:47,852 basehttp 11452 8572 "GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+INFO 2025-03-26 15:42:47,860 basehttp 11452 11840 "GET /static/admin/js/actions.js HTTP/1.1" 200 8076
+INFO 2025-03-26 15:42:47,860 basehttp 11452 13488 "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+INFO 2025-03-26 15:42:47,897 basehttp 11452 2644 "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 285314
+INFO 2025-03-26 15:42:47,943 basehttp 11452 2644 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+INFO 2025-03-26 15:42:47,974 basehttp 11452 2644 "GET /static/admin/js/filters.js HTTP/1.1" 200 978
+INFO 2025-03-26 15:42:48,069 basehttp 11452 11192 "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 325171
+INFO 2025-03-26 15:42:48,149 basehttp 11452 2644 "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+INFO 2025-03-26 15:42:48,150 basehttp 11452 11192 "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+WARNING 2025-03-26 15:42:48,291 log 11452 11192 Not Found: /favicon.ico
+WARNING 2025-03-26 15:42:48,292 basehttp 11452 11192 "GET /favicon.ico HTTP/1.1" 404 3905
+INFO 2025-03-26 15:42:51,754 basehttp 11452 11192 "GET /history/ HTTP/1.1" 200 2376
+INFO 2025-03-26 15:42:53,595 basehttp 11452 11192 "GET /history/ HTTP/1.1" 200 2376
+INFO 2025-03-26 15:43:01,340 basehttp 11452 11968 "GET / HTTP/1.1" 200 1548
+INFO 2025-03-26 15:43:02,900 basehttp 11452 11968 "GET /accounts/login/ HTTP/1.1" 200 2620
+INFO 2025-03-26 15:43:11,046 basehttp 11452 11968 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-03-26 15:43:11,056 basehttp 11452 11968 "GET / HTTP/1.1" 200 2299
+INFO 2025-03-26 15:43:12,298 basehttp 11452 11968 "GET /settings/ HTTP/1.1" 200 4587
+INFO 2025-03-26 15:43:13,463 basehttp 11452 11968 "GET /search/ HTTP/1.1" 200 2810
+INFO 2025-03-26 15:43:14,463 basehttp 11452 11968 "GET /history/ HTTP/1.1" 200 2376
+INFO 2025-03-26 15:43:16,014 basehttp 11452 11968 "GET /profiles/edit_profile/ HTTP/1.1" 200 4847
+INFO 2025-03-26 15:43:17,118 basehttp 11452 11968 "GET /history/ HTTP/1.1" 200 2376
+INFO 2025-03-26 15:44:05,873 autoreload 11452 16256 C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\profiles\models.py changed, reloading.
+INFO 2025-03-26 15:44:08,397 autoreload 7400 7396 Watching for file changes with StatReloader
+INFO 2025-03-26 15:44:22,558 autoreload 7400 7396 C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\profiles\models.py changed, reloading.
+INFO 2025-03-26 15:44:23,821 autoreload 9840 9964 Watching for file changes with StatReloader
+INFO 2025-03-26 15:44:33,091 basehttp 9840 11636 "GET /admin/profiles/profileview/ HTTP/1.1" 200 22909
+INFO 2025-03-26 15:44:33,148 basehttp 9840 11636 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-03-26 15:44:53,387 autoreload 9840 9964 C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\profiles\models.py changed, reloading.
+INFO 2025-03-26 15:44:54,938 autoreload 9020 12632 Watching for file changes with StatReloader
+INFO 2025-03-26 15:44:56,701 basehttp 9020 11648 "GET /admin/profiles/profileview/ HTTP/1.1" 200 22757
+INFO 2025-03-26 15:44:56,753 basehttp 9020 11648 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-03-26 15:45:22,080 autoreload 9020 12632 C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\profiles\models.py changed, reloading.
+INFO 2025-03-26 15:45:24,442 autoreload 11624 3788 Watching for file changes with StatReloader
+INFO 2025-03-26 15:45:26,045 basehttp 11624 2072 "GET /admin/profiles/profileview/ HTTP/1.1" 200 22833
+INFO 2025-03-26 15:45:26,633 basehttp 11624 2072 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-03-26 15:47:05,351 basehttp 11624 2072 "GET /history/ HTTP/1.1" 200 2376
+INFO 2025-03-26 15:48:14,528 autoreload 12320 816 Watching for file changes with StatReloader
+INFO 2025-03-26 15:48:15,474 views 11624 10776 Current user profile: admin@ucl.ac.uk
+INFO 2025-03-26 15:48:15,474 views 11624 10776 Track profile views: True
+INFO 2025-03-26 15:48:15,476 views 11624 10776 Total profile views found: 8
+INFO 2025-03-26 15:48:15,478 views 11624 10776 Profile view - Viewer: markoAdmin@ucl.ac.uk, Viewed at: 2025-03-26 15:37:39.442085+00:00
+INFO 2025-03-26 15:48:15,480 views 11624 10776 Profile view - Viewer: markoAdmin@ucl.ac.uk, Viewed at: 2025-03-26 15:33:56.568464+00:00
+INFO 2025-03-26 15:48:15,481 views 11624 10776 Profile view - Viewer: markoAdmin@ucl.ac.uk, Viewed at: 2025-03-26 15:33:54.802460+00:00
+INFO 2025-03-26 15:48:15,483 views 11624 10776 Profile view - Viewer: markoAdmin@ucl.ac.uk, Viewed at: 2025-03-26 15:33:49.175638+00:00
+INFO 2025-03-26 15:48:15,485 views 11624 10776 Profile view - Viewer: markoAdmin@ucl.ac.uk, Viewed at: 2025-03-26 15:18:05.039629+00:00
+INFO 2025-03-26 15:48:15,486 views 11624 10776 Profile view - Viewer: admin@ucl.ac.uk, Viewed at: 2025-03-26 15:06:27.420845+00:00
+INFO 2025-03-26 15:48:15,487 views 11624 10776 Profile view - Viewer: markoAdmin@ucl.ac.uk, Viewed at: 2025-03-26 14:48:59.509037+00:00
+INFO 2025-03-26 15:48:15,489 views 11624 10776 Profile view - Viewer: markoAdmin@ucl.ac.uk, Viewed at: 2025-03-26 14:13:28.952325+00:00
+INFO 2025-03-26 15:48:15,492 basehttp 11624 10776 "GET /profiles/history/ HTTP/1.1" 200 5028
+INFO 2025-03-26 15:48:25,621 basehttp 11624 16244 "GET /history/ HTTP/1.1" 200 2376
+INFO 2025-03-26 15:48:26,205 basehttp 11624 16244 "GET /history/ HTTP/1.1" 200 2376
+INFO 2025-03-26 15:48:32,086 basehttp 11624 16244 "GET /history/ HTTP/1.1" 200 2376
+INFO 2025-03-26 15:48:33,000 basehttp 11624 16244 "GET /history/ HTTP/1.1" 200 2376
+INFO 2025-03-26 15:48:34,518 basehttp 11624 16244 "GET /history/ HTTP/1.1" 200 2376
+INFO 2025-03-26 15:48:35,714 basehttp 11624 16244 "GET /history/ HTTP/1.1" 200 2376
+INFO 2025-03-26 15:48:36,140 basehttp 11624 16244 "GET /history/ HTTP/1.1" 200 2376
+INFO 2025-03-26 15:48:36,404 basehttp 11624 16244 "GET /history/ HTTP/1.1" 200 2376
+INFO 2025-03-26 15:48:36,612 basehttp 11624 16244 "GET /history/ HTTP/1.1" 200 2376
+INFO 2025-03-26 15:48:36,810 basehttp 11624 16244 "GET /history/ HTTP/1.1" 200 2376
+INFO 2025-03-26 15:48:37,001 basehttp 11624 16244 "GET /history/ HTTP/1.1" 200 2376
+INFO 2025-03-26 15:51:06,178 basehttp 11624 2072 "GET /history/ HTTP/1.1" 200 2376
+WARNING 2025-03-26 15:51:20,430 log 11624 2072 Not Found: /profiles/history.
+WARNING 2025-03-26 15:51:20,431 basehttp 11624 2072 "GET /profiles/history. HTTP/1.1" 404 4577
+INFO 2025-03-26 15:51:22,821 views 11624 2072 Current user profile: markoAdmin@ucl.ac.uk
+INFO 2025-03-26 15:51:22,821 views 11624 2072 Track profile views: False
+INFO 2025-03-26 15:51:22,822 views 11624 2072 Total profile views found: 0
+INFO 2025-03-26 15:51:22,825 basehttp 11624 2072 "GET /profiles/history/ HTTP/1.1" 200 2376
+INFO 2025-03-26 15:51:23,827 views 11624 2072 Current user profile: markoAdmin@ucl.ac.uk
+INFO 2025-03-26 15:51:23,827 views 11624 2072 Track profile views: False
+INFO 2025-03-26 15:51:23,829 views 11624 2072 Total profile views found: 0
+INFO 2025-03-26 15:51:23,831 basehttp 11624 2072 "GET /profiles/history/ HTTP/1.1" 200 2376
+INFO 2025-03-26 15:51:24,813 views 11624 2072 Current user profile: markoAdmin@ucl.ac.uk
+INFO 2025-03-26 15:51:24,813 views 11624 2072 Track profile views: False
+INFO 2025-03-26 15:51:24,814 views 11624 2072 Total profile views found: 0
+INFO 2025-03-26 15:51:24,817 basehttp 11624 2072 "GET /profiles/history/ HTTP/1.1" 200 2376
+INFO 2025-03-26 15:51:30,278 views 11624 2072 Current user profile: markoAdmin@ucl.ac.uk
+INFO 2025-03-26 15:51:30,278 views 11624 2072 Track profile views: False
+INFO 2025-03-26 15:51:30,279 views 11624 2072 Total profile views found: 0
+INFO 2025-03-26 15:51:30,283 basehttp 11624 2072 "GET /profiles/history/ HTTP/1.1" 200 2376
+INFO 2025-03-26 15:51:38,130 views 11624 16244 Current user profile: admin@ucl.ac.uk
+INFO 2025-03-26 15:51:38,131 views 11624 16244 Track profile views: True
+INFO 2025-03-26 15:51:38,132 views 11624 16244 Total profile views found: 8
+INFO 2025-03-26 15:51:38,135 views 11624 16244 Profile view - Viewer: markoAdmin@ucl.ac.uk, Viewed at: 2025-03-26 15:37:39.442085+00:00
+INFO 2025-03-26 15:51:38,136 views 11624 16244 Profile view - Viewer: markoAdmin@ucl.ac.uk, Viewed at: 2025-03-26 15:33:56.568464+00:00
+INFO 2025-03-26 15:51:38,138 views 11624 16244 Profile view - Viewer: markoAdmin@ucl.ac.uk, Viewed at: 2025-03-26 15:33:54.802460+00:00
+INFO 2025-03-26 15:51:38,140 views 11624 16244 Profile view - Viewer: markoAdmin@ucl.ac.uk, Viewed at: 2025-03-26 15:33:49.175638+00:00
+INFO 2025-03-26 15:51:38,141 views 11624 16244 Profile view - Viewer: markoAdmin@ucl.ac.uk, Viewed at: 2025-03-26 15:18:05.039629+00:00
+INFO 2025-03-26 15:51:38,143 views 11624 16244 Profile view - Viewer: admin@ucl.ac.uk, Viewed at: 2025-03-26 15:06:27.420845+00:00
+INFO 2025-03-26 15:51:38,144 views 11624 16244 Profile view - Viewer: markoAdmin@ucl.ac.uk, Viewed at: 2025-03-26 14:48:59.509037+00:00
+INFO 2025-03-26 15:51:38,146 views 11624 16244 Profile view - Viewer: markoAdmin@ucl.ac.uk, Viewed at: 2025-03-26 14:13:28.952325+00:00
+INFO 2025-03-26 15:51:38,148 basehttp 11624 16244 "GET /profiles/history/ HTTP/1.1" 200 5028
+INFO 2025-03-26 15:52:00,179 basehttp 11624 2072 "GET /settings/ HTTP/1.1" 200 4587
+INFO 2025-03-26 15:52:01,470 basehttp 11624 2072 "GET /profiles/edit_profile/ HTTP/1.1" 200 4760
+INFO 2025-03-26 15:52:03,046 basehttp 11624 2072 "POST /profiles/edit_profile/ HTTP/1.1" 302 0
+INFO 2025-03-26 15:52:03,061 basehttp 11624 2072 "GET /profiles/edit_profile/ HTTP/1.1" 200 4926
+INFO 2025-03-26 15:52:05,073 basehttp 11624 2072 "GET /history/ HTTP/1.1" 200 2376
+INFO 2025-03-26 15:52:06,128 basehttp 11624 2072 "GET /search/ HTTP/1.1" 200 2810
+INFO 2025-03-26 15:52:09,755 basehttp 11624 16244 "GET /search/ HTTP/1.1" 200 2810
+INFO 2025-03-26 15:52:20,335 basehttp 11624 16244 "GET /search/?q=admin HTTP/1.1" 200 3797
+INFO 2025-03-26 15:52:21,688 basehttp 11624 16244 "GET /profile/markoAdmin@ucl.ac.uk/ HTTP/1.1" 200 3207
+INFO 2025-03-26 15:52:25,010 basehttp 11624 2072 "GET /history/ HTTP/1.1" 200 2376
+INFO 2025-03-26 15:52:31,068 views 11624 2072 Current user profile: markoAdmin@ucl.ac.uk
+INFO 2025-03-26 15:52:31,068 views 11624 2072 Track profile views: True
+INFO 2025-03-26 15:52:31,071 views 11624 2072 Total profile views found: 1
+INFO 2025-03-26 15:52:31,074 views 11624 2072 Profile view - Viewer: admin@ucl.ac.uk, Viewed at: 2025-03-26 15:52:21.668898+00:00
+INFO 2025-03-26 15:52:31,077 basehttp 11624 2072 "GET /profiles/history/ HTTP/1.1" 200 2928
+ERROR 2025-03-26 15:54:10,280 log 11624 16244 Internal Server Error: /search/
+Traceback (most recent call last):
+  File "C:\Python\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\template\defaulttags.py", line 327, in render
+    return nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'profiles/history' not found. 'profiles/history' is not a valid view function or pattern name.
+ERROR 2025-03-26 15:54:10,286 basehttp 11624 16244 "GET /search/?q=admin HTTP/1.1" 500 149720
+ERROR 2025-03-26 15:54:13,820 log 11624 16244 Internal Server Error: /search/
+Traceback (most recent call last):
+  File "C:\Python\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\template\defaulttags.py", line 327, in render
+    return nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'profiles/history' not found. 'profiles/history' is not a valid view function or pattern name.
+ERROR 2025-03-26 15:54:13,824 basehttp 11624 16244 "GET /search/ HTTP/1.1" 500 148784
+INFO 2025-03-26 15:54:24,468 basehttp 11624 16244 "GET /search/ HTTP/1.1" 200 2655
+INFO 2025-03-26 15:54:30,986 basehttp 11624 16244 "GET /history/ HTTP/1.1" 200 2221
+INFO 2025-03-26 15:54:49,824 autoreload 11624 3788 C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\profiles\urls.py changed, reloading.
+INFO 2025-03-26 15:54:50,352 autoreload 12320 816 C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\profiles\urls.py changed, reloading.
+INFO 2025-03-26 15:54:51,611 autoreload 2388 11900 Watching for file changes with StatReloader
+INFO 2025-03-26 15:54:51,939 basehttp 2388 7404 "GET /history/ HTTP/1.1" 200 2221
+INFO 2025-03-26 15:54:53,704 basehttp 2388 7404 "GET /history/ HTTP/1.1" 200 2221
+INFO 2025-03-26 15:54:54,456 basehttp 2388 7404 "GET /history/ HTTP/1.1" 200 2221
+INFO 2025-03-26 15:54:55,330 basehttp 2388 7404 "GET /history/ HTTP/1.1" 200 2221
+INFO 2025-03-26 15:54:55,756 basehttp 2388 7404 "GET /search/ HTTP/1.1" 200 2655
+INFO 2025-03-26 15:54:56,223 autoreload 4568 4492 Watching for file changes with StatReloader
+INFO 2025-03-26 15:54:56,384 basehttp 2388 7404 "GET /history/ HTTP/1.1" 200 2221
+INFO 2025-03-26 15:55:03,303 basehttp 2388 7404 "GET /history/ HTTP/1.1" 200 2221
+INFO 2025-03-26 15:55:08,554 autoreload 2388 11900 C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\profiles\urls.py changed, reloading.
+INFO 2025-03-26 15:55:08,698 autoreload 4568 4492 C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\profiles\urls.py changed, reloading.
+INFO 2025-03-26 15:55:10,165 autoreload 10440 15084 Watching for file changes with StatReloader
+INFO 2025-03-26 15:55:11,391 autoreload 1592 10592 Watching for file changes with StatReloader
+INFO 2025-03-26 15:55:11,759 basehttp 10440 15844 "GET /history/ HTTP/1.1" 200 2221
+INFO 2025-03-26 15:55:12,739 basehttp 10440 15844 "GET /history/ HTTP/1.1" 200 2221
+INFO 2025-03-26 15:55:13,375 basehttp 10440 15844 "GET /history/ HTTP/1.1" 200 2221
+INFO 2025-03-26 15:55:27,875 views 10440 15844 Current user profile: admin@ucl.ac.uk
+INFO 2025-03-26 15:55:27,877 views 10440 15844 Track profile views: True
+INFO 2025-03-26 15:55:27,877 views 10440 15844 Total profile views found: 8
+INFO 2025-03-26 15:55:27,882 views 10440 15844 Profile view - Viewer: markoAdmin@ucl.ac.uk, Viewed at: 2025-03-26 15:37:39.442085+00:00
+INFO 2025-03-26 15:55:27,883 views 10440 15844 Profile view - Viewer: markoAdmin@ucl.ac.uk, Viewed at: 2025-03-26 15:33:56.568464+00:00
+INFO 2025-03-26 15:55:27,884 views 10440 15844 Profile view - Viewer: markoAdmin@ucl.ac.uk, Viewed at: 2025-03-26 15:33:54.802460+00:00
+INFO 2025-03-26 15:55:27,885 views 10440 15844 Profile view - Viewer: markoAdmin@ucl.ac.uk, Viewed at: 2025-03-26 15:33:49.175638+00:00
+INFO 2025-03-26 15:55:27,887 views 10440 15844 Profile view - Viewer: markoAdmin@ucl.ac.uk, Viewed at: 2025-03-26 15:18:05.039629+00:00
+INFO 2025-03-26 15:55:27,890 views 10440 15844 Profile view - Viewer: admin@ucl.ac.uk, Viewed at: 2025-03-26 15:06:27.420845+00:00
+INFO 2025-03-26 15:55:27,892 views 10440 15844 Profile view - Viewer: markoAdmin@ucl.ac.uk, Viewed at: 2025-03-26 14:48:59.509037+00:00
+INFO 2025-03-26 15:55:27,894 views 10440 15844 Profile view - Viewer: markoAdmin@ucl.ac.uk, Viewed at: 2025-03-26 14:13:28.952325+00:00
+INFO 2025-03-26 15:55:27,946 basehttp 10440 15844 "GET /profiles/history/ HTTP/1.1" 200 4873
+INFO 2025-03-26 15:56:01,452 autoreload 10440 15084 C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\profiles\views.py changed, reloading.
+INFO 2025-03-26 15:56:02,816 autoreload 1592 10592 C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\profiles\views.py changed, reloading.
+INFO 2025-03-26 15:56:04,555 autoreload 6592 3540 Watching for file changes with StatReloader
+INFO 2025-03-26 15:56:04,844 basehttp 6592 4332 "GET /history/ HTTP/1.1" 200 2221
+INFO 2025-03-26 15:56:05,776 autoreload 6784 2360 Watching for file changes with StatReloader
+WARNING 2025-03-26 15:57:40,199 log 6592 8508 Not Found: /profiles/
+WARNING 2025-03-26 15:57:40,200 basehttp 6592 8508 "GET /profiles/ HTTP/1.1" 404 4553
+INFO 2025-03-26 15:59:16,170 autoreload 6784 2360 C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\profiles\urls.py changed, reloading.
+INFO 2025-03-26 15:59:16,270 autoreload 6592 3540 C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\profiles\urls.py changed, reloading.
+INFO 2025-03-26 15:59:17,412 autoreload 16036 3232 Watching for file changes with StatReloader
+INFO 2025-03-26 15:59:18,312 autoreload 2984 4520 Watching for file changes with StatReloader
+INFO 2025-03-26 15:59:43,996 autoreload 2984 4520 C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\profiles\urls.py changed, reloading.
+INFO 2025-03-26 15:59:44,120 autoreload 16036 3232 C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\profiles\urls.py changed, reloading.
+INFO 2025-03-26 15:59:45,172 autoreload 10364 8356 Watching for file changes with StatReloader
+INFO 2025-03-26 15:59:46,025 autoreload 8500 4872 Watching for file changes with StatReloader
+INFO 2025-03-26 15:59:49,491 views 10364 9832 Current user profile: markoAdmin@ucl.ac.uk
+INFO 2025-03-26 15:59:49,492 views 10364 9832 Track profile views: True
+INFO 2025-03-26 15:59:49,494 views 10364 9832 Total profile views found: 1
+INFO 2025-03-26 15:59:49,497 views 10364 9832 Profile view - Viewer: admin@ucl.ac.uk, Viewed at: 2025-03-26 15:52:21.668898+00:00
+INFO 2025-03-26 15:59:49,536 basehttp 10364 9832 "GET /profiles/history/ HTTP/1.1" 200 2782
+INFO 2025-03-26 15:59:51,220 basehttp 10364 9832 "GET /profiles/edit_profile/ HTTP/1.1" 200 4622
+INFO 2025-03-26 15:59:52,035 views 10364 9832 Current user profile: markoAdmin@ucl.ac.uk
+INFO 2025-03-26 15:59:52,035 views 10364 9832 Track profile views: True
+INFO 2025-03-26 15:59:52,037 views 10364 9832 Total profile views found: 1
+INFO 2025-03-26 15:59:52,040 views 10364 9832 Profile view - Viewer: admin@ucl.ac.uk, Viewed at: 2025-03-26 15:52:21.668898+00:00
+INFO 2025-03-26 15:59:52,042 basehttp 10364 9832 "GET /profiles/history/ HTTP/1.1" 200 2782
+INFO 2025-03-26 16:25:08,247 basehttp 10364 1992 "GET /history/ HTTP/1.1" 200 2230
+INFO 2025-03-26 16:25:09,543 views 10364 1992 Current user profile: admin@ucl.ac.uk
+INFO 2025-03-26 16:25:09,544 views 10364 1992 Track profile views: True
+INFO 2025-03-26 16:25:09,545 views 10364 1992 Total profile views found: 8
+INFO 2025-03-26 16:25:09,549 views 10364 1992 Profile view - Viewer: markoAdmin@ucl.ac.uk, Viewed at: 2025-03-26 15:37:39.442085+00:00
+INFO 2025-03-26 16:25:09,551 views 10364 1992 Profile view - Viewer: markoAdmin@ucl.ac.uk, Viewed at: 2025-03-26 15:33:56.568464+00:00
+INFO 2025-03-26 16:25:09,553 views 10364 1992 Profile view - Viewer: markoAdmin@ucl.ac.uk, Viewed at: 2025-03-26 15:33:54.802460+00:00
+INFO 2025-03-26 16:25:09,554 views 10364 1992 Profile view - Viewer: markoAdmin@ucl.ac.uk, Viewed at: 2025-03-26 15:33:49.175638+00:00
+INFO 2025-03-26 16:25:09,555 views 10364 1992 Profile view - Viewer: markoAdmin@ucl.ac.uk, Viewed at: 2025-03-26 15:18:05.039629+00:00
+INFO 2025-03-26 16:25:09,557 views 10364 1992 Profile view - Viewer: admin@ucl.ac.uk, Viewed at: 2025-03-26 15:06:27.420845+00:00
+INFO 2025-03-26 16:25:09,558 views 10364 1992 Profile view - Viewer: markoAdmin@ucl.ac.uk, Viewed at: 2025-03-26 14:48:59.509037+00:00
+INFO 2025-03-26 16:25:09,560 views 10364 1992 Profile view - Viewer: markoAdmin@ucl.ac.uk, Viewed at: 2025-03-26 14:13:28.952325+00:00
+INFO 2025-03-26 16:25:09,562 basehttp 10364 1992 "GET /profiles/history/ HTTP/1.1" 200 4882
+INFO 2025-03-26 16:26:03,263 autoreload 10364 8356 C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\profiles\views.py changed, reloading.
+INFO 2025-03-26 16:26:03,564 autoreload 8500 4872 C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\profiles\views.py changed, reloading.
+INFO 2025-03-26 16:26:04,474 autoreload 11316 9672 Watching for file changes with StatReloader
+ERROR 2025-03-26 16:26:05,024 log 11316 9768 Internal Server Error: /profiles/history/
+Traceback (most recent call last):
+  File "C:\Python\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\contrib\auth\mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\views\generic\base.py", line 226, in get
+    context = self.get_context_data(**kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\profiles\views.py", line 92, in get_context_data
+    context['tracking_enabled'] = user_profile.tracking_enabled
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'UserData' object has no attribute 'tracking_enabled'
+ERROR 2025-03-26 16:26:05,034 basehttp 11316 9768 "GET /profiles/history/ HTTP/1.1" 500 86845
+INFO 2025-03-26 16:26:05,781 autoreload 16004 11640 Watching for file changes with StatReloader
+INFO 2025-03-26 16:26:52,062 autoreload 16004 11640 C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\profiles\views.py changed, reloading.
+INFO 2025-03-26 16:26:52,331 autoreload 11316 9672 C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\profiles\views.py changed, reloading.
+INFO 2025-03-26 16:26:54,158 autoreload 14976 4792 Watching for file changes with StatReloader
+INFO 2025-03-26 16:26:54,421 basehttp 14976 14424 "GET /profiles/history/ HTTP/1.1" 200 4779
+INFO 2025-03-26 16:26:55,194 autoreload 15888 15788 Watching for file changes with StatReloader
+INFO 2025-03-26 16:26:58,960 basehttp 14976 14424 "GET /profiles/edit_profile/ HTTP/1.1" 200 4701
+INFO 2025-03-26 16:27:00,377 basehttp 14976 14424 "POST /profiles/edit_profile/ HTTP/1.1" 302 0
+INFO 2025-03-26 16:27:00,389 basehttp 14976 14424 "GET /profiles/edit_profile/ HTTP/1.1" 200 4851
+INFO 2025-03-26 16:27:01,398 basehttp 14976 14424 "GET /profiles/history/ HTTP/1.1" 200 4882
+INFO 2025-03-26 16:27:26,266 basehttp 14976 1728 "GET /admin/profiles/profileview/ HTTP/1.1" 200 23175
+INFO 2025-03-26 16:27:26,391 basehttp 14976 1728 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-03-26 16:27:28,019 basehttp 14976 1728 "GET /admin/profiles/profileview/39/change/ HTTP/1.1" 200 15106
+INFO 2025-03-26 16:27:28,070 basehttp 14976 4912 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-03-26 16:27:28,159 basehttp 14976 1728 "GET /static/admin/css/forms.css HTTP/1.1" 200 8710
+INFO 2025-03-26 16:27:28,165 basehttp 14976 1692 "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 586
+INFO 2025-03-26 16:27:28,175 basehttp 14976 1728 "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+INFO 2025-03-26 16:27:28,179 basehttp 14976 4912 "GET /static/admin/css/widgets.css HTTP/1.1" 200 11564
+INFO 2025-03-26 16:27:28,197 basehttp 14976 1728 "GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 200 581
+INFO 2025-03-26 16:27:28,200 basehttp 14976 4912 "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 200 392
+INFO 2025-03-26 16:27:28,217 basehttp 14976 1692 "GET /static/admin/js/change_form.js HTTP/1.1" 200 606
+INFO 2025-03-26 16:27:30,022 basehttp 14976 1692 "GET /admin/profiles/profileview/ HTTP/1.1" 200 23175
+INFO 2025-03-26 18:48:03,237 autoreload 15076 8340 Watching for file changes with StatReloader
+INFO 2025-03-26 18:48:06,964 basehttp 15888 8696 "GET /profiles/edit_profile/ HTTP/1.1" 200 4622
+INFO 2025-03-26 18:48:11,417 basehttp 15888 8696 "GET /search/ HTTP/1.1" 200 2664
+INFO 2025-03-26 18:48:12,474 basehttp 15888 8696 "GET /profiles/edit_profile/ HTTP/1.1" 200 4622
+INFO 2025-03-26 18:48:13,292 basehttp 15888 8696 "GET /search/ HTTP/1.1" 200 2664
+INFO 2025-03-26 18:48:15,204 basehttp 15888 8696 "GET /profiles/history/ HTTP/1.1" 200 2679
+INFO 2025-03-26 18:48:18,275 basehttp 15888 8696 "GET /search/ HTTP/1.1" 200 2664
+INFO 2025-03-26 18:48:20,722 basehttp 15888 8696 "GET /search/?q=admin HTTP/1.1" 200 3636
+INFO 2025-03-26 18:48:22,134 basehttp 15888 8696 "GET /profile/admin@ucl.ac.uk/ HTTP/1.1" 200 3051
+INFO 2025-03-26 18:49:55,863 basehttp 15888 8696 "GET /profile/admin@ucl.ac.uk/ HTTP/1.1" 200 3659
+INFO 2025-03-26 18:50:59,731 autoreload 15076 8340 C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\profiles\models.py changed, reloading.
+INFO 2025-03-26 18:51:00,123 autoreload 15888 15788 C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\profiles\models.py changed, reloading.
+INFO 2025-03-26 18:51:00,772 autoreload 4924 784 Watching for file changes with StatReloader
+ERROR 2025-03-26 18:51:01,238 log 4924 8184 Internal Server Error: /profile/admin@ucl.ac.uk/
+Traceback (most recent call last):
+  File "C:\Python\Python312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\db\backends\sqlite3\base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: profiles_userdata.phone_number
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Python\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\profiles\views.py", line 139, in profile_view
+    profile = UserData.objects.get(user=user)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\db\models\query.py", line 645, in get
+    num = len(clone)
+          ^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\db\models\query.py", line 382, in __len__
+    self._fetch_all()
+  File "C:\Python\Python312\Lib\site-packages\django\db\models\query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\db\models\sql\compiler.py", line 1574, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Python\Python312\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "C:\Python\Python312\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Python\Python312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\db\backends\sqlite3\base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such column: profiles_userdata.phone_number
+ERROR 2025-03-26 18:51:01,252 basehttp 4924 8184 "GET /profile/admin@ucl.ac.uk/ HTTP/1.1" 500 140877
+ERROR 2025-03-26 18:51:01,503 log 4924 8184 Internal Server Error: /profile/admin@ucl.ac.uk/
+Traceback (most recent call last):
+  File "C:\Python\Python312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\db\backends\sqlite3\base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: profiles_userdata.phone_number
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Python\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\profiles\views.py", line 139, in profile_view
+    profile = UserData.objects.get(user=user)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\db\models\query.py", line 645, in get
+    num = len(clone)
+          ^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\db\models\query.py", line 382, in __len__
+    self._fetch_all()
+  File "C:\Python\Python312\Lib\site-packages\django\db\models\query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\db\models\sql\compiler.py", line 1574, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Python\Python312\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "C:\Python\Python312\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Python\Python312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\db\backends\sqlite3\base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such column: profiles_userdata.phone_number
+ERROR 2025-03-26 18:51:01,508 basehttp 4924 8184 "GET /profile/admin@ucl.ac.uk/ HTTP/1.1" 500 140877
+INFO 2025-03-26 18:51:02,465 autoreload 788 13824 Watching for file changes with StatReloader
+ERROR 2025-03-26 18:51:12,107 log 4924 8184 Internal Server Error: /profile/admin@ucl.ac.uk/
+Traceback (most recent call last):
+  File "C:\Python\Python312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\db\backends\sqlite3\base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: profiles_userdata.phone_number
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Python\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\profiles\views.py", line 139, in profile_view
+    profile = UserData.objects.get(user=user)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\db\models\query.py", line 645, in get
+    num = len(clone)
+          ^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\db\models\query.py", line 382, in __len__
+    self._fetch_all()
+  File "C:\Python\Python312\Lib\site-packages\django\db\models\query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\db\models\sql\compiler.py", line 1574, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Python\Python312\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "C:\Python\Python312\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Python\Python312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\db\backends\sqlite3\base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such column: profiles_userdata.phone_number
+ERROR 2025-03-26 18:51:12,113 basehttp 4924 8184 "GET /profile/admin@ucl.ac.uk/ HTTP/1.1" 500 140740
+INFO 2025-03-26 18:51:16,356 autoreload 4924 784 C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\profiles\models.py changed, reloading.
+INFO 2025-03-26 18:51:16,630 autoreload 788 13824 C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\profiles\models.py changed, reloading.
+INFO 2025-03-26 18:51:18,311 autoreload 15648 3380 Watching for file changes with StatReloader
+INFO 2025-03-26 18:51:18,723 basehttp 15648 12016 "GET /profile/admin@ucl.ac.uk/ HTTP/1.1" 200 3659
+INFO 2025-03-26 18:51:19,745 autoreload 1696 7116 Watching for file changes with StatReloader
+INFO 2025-03-26 18:51:56,587 basehttp 15648 12016 "GET /profiles/edit_profile/ HTTP/1.1" 200 4622
+INFO 2025-03-26 19:17:03,769 autoreload 1696 7116 C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\profiles\models.py changed, reloading.
+INFO 2025-03-26 19:17:03,785 autoreload 15648 3380 C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\profiles\models.py changed, reloading.
+INFO 2025-03-26 19:17:04,974 autoreload 15780 11560 Watching for file changes with StatReloader
+INFO 2025-03-26 19:17:05,974 autoreload 7036 9568 Watching for file changes with StatReloader
+INFO 2025-03-26 19:17:29,922 autoreload 15780 11560 C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\profiles\models.py changed, reloading.
+INFO 2025-03-26 19:17:30,184 autoreload 7036 9568 C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\profiles\models.py changed, reloading.
+INFO 2025-03-26 19:17:31,176 autoreload 12284 2536 Watching for file changes with StatReloader
+INFO 2025-03-26 19:17:32,414 autoreload 9472 12340 Watching for file changes with StatReloader
+INFO 2025-03-26 19:17:57,549 autoreload 9472 12340 C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\profiles\models.py changed, reloading.
+INFO 2025-03-26 19:17:58,002 autoreload 12284 2536 C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\profiles\models.py changed, reloading.
+INFO 2025-03-26 19:17:59,057 autoreload 13992 1468 Watching for file changes with StatReloader
+INFO 2025-03-26 19:17:59,656 autoreload 10456 10572 Watching for file changes with StatReloader
+INFO 2025-03-26 19:18:07,731 autoreload 10456 10572 C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\profiles\models.py changed, reloading.
+INFO 2025-03-26 19:18:08,092 autoreload 13992 1468 C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\profiles\models.py changed, reloading.
+INFO 2025-03-26 19:18:09,189 autoreload 8244 11808 Watching for file changes with StatReloader
+INFO 2025-03-26 19:18:10,073 autoreload 10112 11800 Watching for file changes with StatReloader
+INFO 2025-03-26 19:23:58,269 autoreload 10112 11800 C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\profiles\models.py changed, reloading.
+INFO 2025-03-26 19:23:58,495 autoreload 8244 11808 C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\profiles\models.py changed, reloading.
+INFO 2025-03-26 19:23:59,756 autoreload 1856 1480 Watching for file changes with StatReloader
+INFO 2025-03-26 19:24:00,766 autoreload 11640 10628 Watching for file changes with StatReloader
+INFO 2025-03-26 19:27:24,597 autoreload 1856 1480 C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\profiles\models.py changed, reloading.
+INFO 2025-03-26 19:27:25,150 autoreload 11640 10628 C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\profiles\models.py changed, reloading.
+INFO 2025-03-26 19:27:25,965 autoreload 14932 10608 Watching for file changes with StatReloader
+INFO 2025-03-26 19:27:27,300 autoreload 4400 4636 Watching for file changes with StatReloader
+INFO 2025-03-26 19:28:04,613 basehttp 14932 16020 "GET /search/ HTTP/1.1" 200 2664
+INFO 2025-03-26 19:28:09,940 autoreload 4400 4636 C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\profiles\models.py changed, reloading.
+INFO 2025-03-26 19:28:10,031 autoreload 14932 10608 C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\profiles\models.py changed, reloading.
+INFO 2025-03-26 19:28:11,215 autoreload 5576 5296 Watching for file changes with StatReloader
+INFO 2025-03-26 19:28:12,169 autoreload 13192 7860 Watching for file changes with StatReloader
+INFO 2025-03-26 19:29:22,653 basehttp 5576 11992 "GET /search/ HTTP/1.1" 200 2664
+ERROR 2025-03-26 19:29:25,946 log 5576 11992 Internal Server Error: /search/
+Traceback (most recent call last):
+  File "C:\Python\Python312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\db\backends\sqlite3\base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: profiles_userdata.name
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Python\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\contrib\auth\mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\views\generic\list.py", line 154, in get
+    self.object_list = self.get_queryset()
+                       ^^^^^^^^^^^^^^^^^^^
+  File "C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\profiles\views.py", line 111, in get_queryset
+    viewer_data = UserData.objects.get(user=self.request.user)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\db\models\query.py", line 645, in get
+    num = len(clone)
+          ^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\db\models\query.py", line 382, in __len__
+    self._fetch_all()
+  File "C:\Python\Python312\Lib\site-packages\django\db\models\query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\db\models\sql\compiler.py", line 1574, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Python\Python312\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "C:\Python\Python312\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Python\Python312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\db\backends\sqlite3\base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such column: profiles_userdata.name
+ERROR 2025-03-26 19:29:25,955 basehttp 5576 11992 "GET /search/?q=admin HTTP/1.1" 500 159742
+INFO 2025-03-26 19:29:43,159 autoreload 10316 200 Watching for file changes with StatReloader
+INFO 2025-03-26 19:29:45,859 basehttp 10316 9916 "GET /search/?q=admin HTTP/1.1" 200 3636
+INFO 2025-03-26 19:29:47,169 basehttp 10316 9916 "GET /profile/admin@ucl.ac.uk/ HTTP/1.1" 200 3970
+INFO 2025-03-26 19:29:54,113 basehttp 10316 9916 "GET /profiles/edit_profile/ HTTP/1.1" 200 4622
+INFO 2025-03-26 19:30:13,419 basehttp 10316 16164 "GET / HTTP/1.1" 200 1548
+INFO 2025-03-26 19:30:15,515 basehttp 10316 16164 "GET /accounts/login/ HTTP/1.1" 200 2620
+INFO 2025-03-26 19:30:21,349 basehttp 10316 16164 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-03-26 19:30:21,358 basehttp 10316 16164 "GET / HTTP/1.1" 200 2153
+INFO 2025-03-26 19:30:23,152 basehttp 10316 16164 "GET /profiles/edit_profile/ HTTP/1.1" 200 4693
+INFO 2025-03-26 19:31:37,125 autoreload 10316 200 C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\profiles\forms.py changed, reloading.
+INFO 2025-03-26 19:31:37,238 autoreload 13192 7860 C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\profiles\forms.py changed, reloading.
+INFO 2025-03-26 19:31:38,239 autoreload 15968 5904 Watching for file changes with StatReloader
+INFO 2025-03-26 19:31:39,254 autoreload 10608 14932 Watching for file changes with StatReloader
+INFO 2025-03-26 19:31:42,046 basehttp 15968 15048 "GET /profiles/edit_profile/ HTTP/1.1" 200 4622
+INFO 2025-03-26 19:31:43,175 basehttp 15968 15048 "GET /profiles/edit_profile/ HTTP/1.1" 200 4622
+INFO 2025-03-26 19:31:56,639 basehttp 15968 15048 "GET /profiles/edit_profile/ HTTP/1.1" 200 4626
+INFO 2025-03-26 19:32:14,490 basehttp 15968 15048 "GET /profiles/edit_profile/ HTTP/1.1" 200 4637
+INFO 2025-03-26 19:33:02,426 basehttp 15968 15048 "GET /profiles/edit_profile/ HTTP/1.1" 200 4966
+INFO 2025-03-26 19:33:26,615 autoreload 15968 5904 C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\profiles\models.py changed, reloading.
+INFO 2025-03-26 19:33:26,686 autoreload 10608 14932 C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\profiles\models.py changed, reloading.
+INFO 2025-03-26 19:33:28,162 autoreload 10748 5888 Watching for file changes with StatReloader
+INFO 2025-03-26 19:33:29,280 autoreload 11288 10948 Watching for file changes with StatReloader
+INFO 2025-03-26 19:33:35,902 autoreload 10748 5888 C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\profiles\models.py changed, reloading.
+INFO 2025-03-26 19:33:36,384 autoreload 11288 10948 C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\profiles\models.py changed, reloading.
+INFO 2025-03-26 19:33:37,937 autoreload 16020 4224 Watching for file changes with StatReloader
+INFO 2025-03-26 19:33:39,269 autoreload 8184 12320 Watching for file changes with StatReloader
+INFO 2025-03-26 19:34:13,614 autoreload 11820 15620 Watching for file changes with StatReloader
+INFO 2025-03-26 19:34:15,680 basehttp 11820 3440 "GET /profiles/edit_profile/ HTTP/1.1" 200 4966
+INFO 2025-03-26 19:35:35,139 basehttp 11820 3440 "GET /profiles/edit_profile/ HTTP/1.1" 200 5463
+INFO 2025-03-26 19:37:14,840 autoreload 11820 15620 C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\profiles\views.py changed, reloading.
+INFO 2025-03-26 19:37:16,010 autoreload 15480 14172 Watching for file changes with StatReloader
+INFO 2025-03-26 19:38:56,113 basehttp 15480 2748 "POST /profiles/edit_profile/ HTTP/1.1" 200 6327
+INFO 2025-03-26 19:39:36,433 basehttp 15480 2748 "POST /profiles/edit_profile/ HTTP/1.1" 302 0
+INFO 2025-03-26 19:39:36,450 basehttp 15480 2748 "GET /profiles/edit_profile/ HTTP/1.1" 200 5694
+INFO 2025-03-26 19:39:42,326 basehttp 15480 9436 "GET /search/ HTTP/1.1" 200 2664
+INFO 2025-03-26 19:39:44,715 basehttp 15480 9436 "GET /search/?q=marko HTTP/1.1" 200 3651
+INFO 2025-03-26 19:39:46,455 basehttp 15480 9436 "GET /profile/markoAdmin@ucl.ac.uk/ HTTP/1.1" 200 4188
+INFO 2025-03-26 19:40:08,838 basehttp 15480 9436 "GET /profiles/history/ HTTP/1.1" 200 4882
+INFO 2025-03-26 19:40:34,464 basehttp 15480 9436 "GET /profiles/history/ HTTP/1.1" 200 4570
+INFO 2025-03-26 19:40:39,614 basehttp 15480 9436 "GET /profiles/history/ HTTP/1.1" 200 4570
+INFO 2025-03-26 19:40:42,008 basehttp 15480 9436 "GET /profiles/history/ HTTP/1.1" 200 4534
+INFO 2025-03-26 19:43:37,081 basehttp 15480 16008 "GET /profiles/edit_profile/ HTTP/1.1" 200 5534
+INFO 2025-03-26 19:46:22,938 autoreload 15480 14172 C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\profiles\forms.py changed, reloading.
+INFO 2025-03-26 19:46:24,040 autoreload 11800 8148 Watching for file changes with StatReloader
+INFO 2025-03-26 19:46:24,338 basehttp 11800 15692 "GET /profiles/edit_profile/ HTTP/1.1" 200 5576
+INFO 2025-03-26 19:47:12,671 basehttp 11800 15692 "POST /profiles/edit_profile/ HTTP/1.1" 302 0
+INFO 2025-03-26 19:47:12,685 basehttp 11800 15692 "GET /profiles/edit_profile/ HTTP/1.1" 200 5659
+INFO 2025-03-26 19:47:24,370 basehttp 11800 5668 "GET /search/ HTTP/1.1" 200 2664
+INFO 2025-03-26 19:47:26,378 basehttp 11800 5668 "GET /search/?q=admin HTTP/1.1" 200 3636
+INFO 2025-03-26 19:47:27,552 basehttp 11800 5668 "GET /profile/admin@ucl.ac.uk/ HTTP/1.1" 200 3244
+INFO 2025-03-26 19:47:51,965 basehttp 11800 5668 "GET /profiles/edit_profile/ HTTP/1.1" 200 5578
+INFO 2025-03-26 19:48:31,269 basehttp 11800 5668 "GET /profiles/history/ HTTP/1.1" 200 2860
+INFO 2025-03-26 19:51:00,941 basehttp 11800 5668 "GET /search/ HTTP/1.1" 200 2664
+INFO 2025-03-26 19:51:02,605 basehttp 11800 5668 "GET /search/?q=%40 HTTP/1.1" 200 4544
+INFO 2025-03-26 19:51:03,962 basehttp 11800 5668 "GET /profile/numpty@ucl.ac.uk/ HTTP/1.1" 200 3952
+INFO 2025-03-26 19:51:11,784 basehttp 11800 5668 "GET /search/?q=jude HTTP/1.1" 200 2743
+INFO 2025-03-26 19:51:15,800 basehttp 11800 5668 "GET /search/?q= HTTP/1.1" 200 2664
+INFO 2025-03-26 19:51:17,368 basehttp 11800 5668 "GET /search/?q= HTTP/1.1" 200 2664
+INFO 2025-03-26 19:51:21,009 basehttp 11800 5668 "GET /search/?q=. HTTP/1.1" 200 4544
+INFO 2025-03-26 19:51:33,484 basehttp 11800 5668 "GET /profiles/edit_profile/ HTTP/1.1" 200 5578
+INFO 2025-03-26 20:13:08,303 basehttp 11800 16988 "POST /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-03-26 20:13:08,314 basehttp 11800 16988 "GET /accounts/login/ HTTP/1.1" 200 2620
+INFO 2025-03-26 20:13:09,450 basehttp 11800 16988 "GET /accounts/login/ HTTP/1.1" 200 2620
+INFO 2025-03-26 20:13:10,488 basehttp 11800 16988 "GET /accounts/login/ HTTP/1.1" 200 2620
+INFO 2025-03-26 20:13:14,184 basehttp 11800 16988 "GET /accounts/login/ HTTP/1.1" 200 2620
+INFO 2025-03-26 20:13:14,816 basehttp 11800 16988 "GET /accounts/register/ HTTP/1.1" 200 3808
+INFO 2025-03-26 20:22:37,829 autoreload 11800 8148 C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\profiles\forms.py changed, reloading.
+INFO 2025-03-26 20:22:39,361 autoreload 8616 16864 Watching for file changes with StatReloader
+INFO 2025-03-26 20:22:49,700 autoreload 8616 16864 C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\profiles\forms.py changed, reloading.
+INFO 2025-03-26 20:22:51,088 autoreload 13016 16664 Watching for file changes with StatReloader
+INFO 2025-03-26 20:23:01,779 autoreload 13016 16664 C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\profiles\forms.py changed, reloading.
+INFO 2025-03-26 20:23:03,139 autoreload 5888 6120 Watching for file changes with StatReloader
+INFO 2025-03-26 20:24:33,625 autoreload 8184 12320 C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\UCLYellowPages\settings.py changed, reloading.
+INFO 2025-03-26 20:24:34,477 autoreload 5888 6120 C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\UCLYellowPages\settings.py changed, reloading.
+INFO 2025-03-26 20:24:36,490 autoreload 5880 1080 Watching for file changes with StatReloader
+INFO 2025-03-26 20:24:37,859 autoreload 15508 7364 Watching for file changes with StatReloader
+INFO 2025-03-26 20:34:59,919 autoreload 15508 7364 C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\UCLYellowPages\settings.py changed, reloading.
+INFO 2025-03-26 20:35:00,756 autoreload 5880 1080 C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\UCLYellowPages\settings.py changed, reloading.
+INFO 2025-03-26 20:35:01,994 autoreload 7860 7576 Watching for file changes with StatReloader
+INFO 2025-03-26 20:35:02,419 autoreload 7912 6488 Watching for file changes with StatReloader
+INFO 2025-03-26 20:55:05,872 autoreload 16636 1688 Watching for file changes with StatReloader
+INFO 2025-03-26 20:55:09,775 basehttp 16636 16624 "GET /profiles/edit_profile/ HTTP/1.1" 200 5578
+INFO 2025-03-26 20:55:09,776 basehttp 16636 11996 - Broken pipe from ('127.0.0.1', 50117)
+WARNING 2025-03-26 20:55:10,045 log 16636 16624 Not Found: /favicon.ico
+WARNING 2025-03-26 20:55:10,047 basehttp 16636 16624 "GET /favicon.ico HTTP/1.1" 404 3905
+INFO 2025-03-26 20:55:12,652 basehttp 16636 16624 "GET /admin/profiles/profileview/ HTTP/1.1" 200 24203
+INFO 2025-03-26 20:55:12,779 basehttp 16636 12208 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-03-26 20:55:12,913 basehttp 16636 16624 "GET /static/admin/css/base.css HTTP/1.1" 200 22092
+INFO 2025-03-26 20:55:12,943 basehttp 16636 10412 "GET /static/admin/js/theme.js HTTP/1.1" 200 1653
+INFO 2025-03-26 20:55:12,948 basehttp 16636 12524 "GET /static/admin/css/changelists.css HTTP/1.1" 200 6878
+INFO 2025-03-26 20:55:12,964 basehttp 16636 1288 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+INFO 2025-03-26 20:55:12,965 basehttp 16636 16580 "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2804
+INFO 2025-03-26 20:55:12,976 basehttp 16636 10412 "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+INFO 2025-03-26 20:55:13,000 basehttp 16636 12208 "GET /static/admin/css/responsive.css HTTP/1.1" 200 17972
+INFO 2025-03-26 20:55:13,007 basehttp 16636 12524 "GET /static/admin/js/core.js HTTP/1.1" 200 6208
+INFO 2025-03-26 20:55:13,019 basehttp 16636 16580 "GET /static/admin/js/actions.js HTTP/1.1" 200 8076
+INFO 2025-03-26 20:55:13,024 basehttp 16636 10412 "GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+INFO 2025-03-26 20:55:13,025 basehttp 16636 1288 "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 9097
+INFO 2025-03-26 20:55:13,043 basehttp 16636 12208 "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+INFO 2025-03-26 20:55:13,054 basehttp 16636 16624 "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 285314
+INFO 2025-03-26 20:55:13,089 basehttp 16636 16624 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+INFO 2025-03-26 20:55:13,111 basehttp 16636 16624 "GET /static/admin/js/filters.js HTTP/1.1" 200 978
+INFO 2025-03-26 20:55:13,166 basehttp 16636 12524 "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 325171
+INFO 2025-03-26 20:55:13,232 basehttp 16636 16624 "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+INFO 2025-03-26 20:55:13,232 basehttp 16636 12524 "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+INFO 2025-03-26 20:55:26,983 basehttp 16636 1804 "GET / HTTP/1.1" 200 1548
+INFO 2025-03-26 20:55:34,309 basehttp 16636 1804 "GET /accounts/register/ HTTP/1.1" 200 4336
+INFO 2025-03-26 20:58:32,316 basehttp 16636 1804 "POST /accounts/register/ HTTP/1.1" 200 4854
+INFO 2025-03-26 21:03:40,710 autoreload 16636 1688 C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\UCLYellowPages\urls.py changed, reloading.
+INFO 2025-03-26 21:03:41,746 autoreload 5852 9076 Watching for file changes with StatReloader
+INFO 2025-03-26 21:04:02,245 autoreload 5852 9076 C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\UCLYellowPages\settings.py changed, reloading.
+INFO 2025-03-26 21:04:03,354 autoreload 2436 7648 Watching for file changes with StatReloader
+INFO 2025-03-26 21:07:48,916 basehttp 2436 6200 "POST /accounts/register/ HTTP/1.1" 200 5270
+INFO 2025-03-26 21:09:28,731 basehttp 2436 12664 "POST /accounts/register/ HTTP/1.1" 200 4717
+INFO 2025-03-26 21:11:46,182 autoreload 2436 7648 C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\profiles\forms.py changed, reloading.
+INFO 2025-03-26 21:11:47,230 autoreload 2028 9856 Watching for file changes with StatReloader
+INFO 2025-03-26 21:12:24,494 autoreload 2028 9856 C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\profiles\urls.py changed, reloading.
+INFO 2025-03-26 21:12:32,230 autoreload 13288 8876 Watching for file changes with StatReloader
+INFO 2025-03-26 21:12:46,494 autoreload 13288 8876 C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\profiles\views.py changed, reloading.
+INFO 2025-03-26 21:12:48,914 autoreload 8412 15972 Watching for file changes with StatReloader
+INFO 2025-03-26 21:13:29,100 autoreload 8412 15972 C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\profiles\views.py changed, reloading.
+INFO 2025-03-26 21:13:35,791 autoreload 6484 13576 Watching for file changes with StatReloader
+INFO 2025-03-26 21:13:40,001 basehttp 6484 4052 "POST /accounts/register/ HTTP/1.1" 200 6847
+ERROR 2025-03-26 21:13:42,926 log 6484 4052 Internal Server Error: /profiles/send-verification-code/
+ERROR 2025-03-26 21:13:42,927 basehttp 6484 4052 "POST /profiles/send-verification-code/ HTTP/1.1" 500 64
+ERROR 2025-03-26 21:13:49,494 log 6484 4052 Internal Server Error: /profiles/send-verification-code/
+ERROR 2025-03-26 21:13:49,494 basehttp 6484 4052 "POST /profiles/send-verification-code/ HTTP/1.1" 500 64
+INFO 2025-03-26 21:14:51,144 autoreload 6484 13576 C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\UCLYellowPages\wsgi.py changed, reloading.
+INFO 2025-03-26 21:14:53,541 autoreload 14348 16828 Watching for file changes with StatReloader
+INFO 2025-03-26 21:15:08,740 autoreload 14348 16828 C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\UCLYellowPages\wsgi.py changed, reloading.
+INFO 2025-03-26 21:15:09,840 autoreload 9076 8536 Watching for file changes with StatReloader
+INFO 2025-03-26 21:15:50,905 autoreload 9076 8536 C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\UCLYellowPages\__init__.py changed, reloading.
+INFO 2025-03-26 21:15:51,905 autoreload 2344 1896 Watching for file changes with StatReloader
+INFO 2025-03-26 21:16:30,129 basehttp 2344 7892 "POST /accounts/register/ HTTP/1.1" 200 6847
+ERROR 2025-03-26 21:16:41,087 log 2344 7892 Internal Server Error: /profiles/send-verification-code/
+ERROR 2025-03-26 21:16:41,088 basehttp 2344 7892 "POST /profiles/send-verification-code/ HTTP/1.1" 500 64
+INFO 2025-03-26 21:28:13,863 autoreload 1616 2360 Watching for file changes with StatReloader
+INFO 2025-03-26 21:28:18,573 basehttp 1616 12496 "POST /accounts/register/ HTTP/1.1" 200 6873
+INFO 2025-03-26 21:28:22,261 basehttp 1616 12496 "GET /accounts/login/ HTTP/1.1" 200 2620
+INFO 2025-03-26 21:28:22,997 basehttp 1616 12496 "GET /accounts/register/ HTTP/1.1" 200 6847
+INFO 2025-03-26 21:29:10,068 basehttp 1616 12496 "POST /profiles/send-verification-code/ HTTP/1.1" 200 21
+INFO 2025-03-26 21:29:26,094 basehttp 1616 12496 "POST /accounts/register/ HTTP/1.1" 200 6873
+INFO 2025-03-26 21:29:31,668 basehttp 1616 12496 "GET /accounts/login/ HTTP/1.1" 200 2620
+INFO 2025-03-26 21:29:47,254 basehttp 1616 12496 "POST /accounts/login/ HTTP/1.1" 200 2789
+INFO 2025-03-26 21:29:49,792 basehttp 1616 12496 "GET /accounts/register/ HTTP/1.1" 200 6847
+INFO 2025-03-26 21:36:52,122 autoreload 1616 2360 C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\profiles\forms.py changed, reloading.
+INFO 2025-03-26 21:36:53,216 autoreload 11708 15908 Watching for file changes with StatReloader
+INFO 2025-03-26 21:36:56,949 basehttp 11708 12840 "GET /accounts/register/ HTTP/1.1" 200 6847
+INFO 2025-03-26 21:36:57,680 basehttp 11708 12840 "GET /accounts/register/ HTTP/1.1" 200 6847
+INFO 2025-03-26 21:37:18,413 basehttp 11708 12840 "POST /profiles/send-verification-code/ HTTP/1.1" 200 21
+ERROR 2025-03-26 21:37:35,416 log 11708 12840 Internal Server Error: /accounts/register/
+Traceback (most recent call last):
+  File "C:\Python\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\profiles\views.py", line 39, in register
+    if form.is_valid():
+       ^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\forms\forms.py", line 197, in is_valid
+    return self.is_bound and not self.errors
+                                 ^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\forms\forms.py", line 192, in errors
+    self.full_clean()
+  File "C:\Python\Python312\Lib\site-packages\django\forms\forms.py", line 325, in full_clean
+    self._clean_fields()
+  File "C:\Python\Python312\Lib\site-packages\django\forms\forms.py", line 335, in _clean_fields
+    value = getattr(self, "clean_%s" % name)()
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\profiles\forms.py", line 66, in clean_verification_code
+    if not self.request:
+           ^^^^^^^^^^^^
+AttributeError: 'CustomUserCreationForm' object has no attribute 'request'
+ERROR 2025-03-26 21:37:35,421 basehttp 11708 12840 "POST /accounts/register/ HTTP/1.1" 500 87888
+INFO 2025-03-26 21:39:18,607 autoreload 11708 15908 C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\profiles\views.py changed, reloading.
+INFO 2025-03-26 21:39:19,931 autoreload 5036 7580 Watching for file changes with StatReloader
+ERROR 2025-03-26 21:39:20,604 log 5036 14188 Internal Server Error: /accounts/register/
+Traceback (most recent call last):
+  File "C:\Python\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\profiles\views.py", line 37, in register
+    form = CustomUserCreationForm(request.POST, request=request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\profiles\forms.py", line 30, in __init__
+    super().__init__(*args, **kwargs)
+  File "C:\Python\Python312\Lib\site-packages\django\contrib\auth\forms.py", line 238, in __init__
+    super().__init__(*args, **kwargs)
+TypeError: BaseModelForm.__init__() got an unexpected keyword argument 'request'
+ERROR 2025-03-26 21:39:20,609 basehttp 5036 14188 "POST /accounts/register/ HTTP/1.1" 500 77329
+ERROR 2025-03-26 21:39:33,934 log 5036 14188 Internal Server Error: /accounts/register/
+Traceback (most recent call last):
+  File "C:\Python\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\profiles\views.py", line 37, in register
+    form = CustomUserCreationForm(request.POST, request=request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\profiles\forms.py", line 30, in __init__
+    super().__init__(*args, **kwargs)
+  File "C:\Python\Python312\Lib\site-packages\django\contrib\auth\forms.py", line 238, in __init__
+    super().__init__(*args, **kwargs)
+TypeError: BaseModelForm.__init__() got an unexpected keyword argument 'request'
+ERROR 2025-03-26 21:39:33,936 basehttp 5036 14188 "POST /accounts/register/ HTTP/1.1" 500 77329
+INFO 2025-03-26 21:39:54,047 autoreload 5036 7580 C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\profiles\views.py changed, reloading.
+INFO 2025-03-26 21:39:55,260 autoreload 4468 13852 Watching for file changes with StatReloader
+INFO 2025-03-26 21:41:46,973 autoreload 4468 13852 C:\CompSci\ENGF0034\Scenarios2\UCLYellowPages\profiles\forms.py changed, reloading.
+INFO 2025-03-26 21:41:55,117 autoreload 6932 15000 Watching for file changes with StatReloader
+INFO 2025-03-26 21:42:32,111 basehttp 6932 15104 "GET /accounts/register/ HTTP/1.1" 200 6847
+INFO 2025-03-26 21:42:52,877 basehttp 6932 15104 "POST /profiles/send-verification-code/ HTTP/1.1" 200 21
+INFO 2025-03-26 21:43:10,303 basehttp 6932 15104 "POST /accounts/register/ HTTP/1.1" 302 0
+INFO 2025-03-26 21:43:10,315 basehttp 6932 15104 "GET / HTTP/1.1" 200 2153
+INFO 2025-03-26 21:43:16,404 basehttp 6932 15104 "GET /profiles/edit_profile/ HTTP/1.1" 200 5488
+INFO 2025-03-26 21:44:21,019 basehttp 6932 15104 "POST /profiles/edit_profile/ HTTP/1.1" 302 0
+INFO 2025-03-26 21:44:21,035 basehttp 6932 15104 "GET /profiles/edit_profile/ HTTP/1.1" 200 5747
+INFO 2025-03-26 21:44:33,119 basehttp 6932 1384 "GET /search/ HTTP/1.1" 200 2664
+INFO 2025-03-26 21:44:36,484 basehttp 6932 1384 "GET /search/?q=Marko+Stefanov HTTP/1.1" 200 2753
+INFO 2025-03-26 21:44:39,094 basehttp 6932 1384 "GET /search/?q=Marko+Stefanov HTTP/1.1" 200 2753
+INFO 2025-03-26 21:44:40,295 basehttp 6932 1384 "GET /search/?q=Marko+Stefanov HTTP/1.1" 200 2753
+INFO 2025-03-26 21:44:43,319 basehttp 6932 1384 "GET /search/?q=zcabms3 HTTP/1.1" 200 3644
+INFO 2025-03-26 21:44:44,633 basehttp 6932 1384 "GET /profile/zcabms3@ucl.ac.uk/ HTTP/1.1" 200 3978

@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ user_profile.username }}'s Profile - UCL Yellow Pages{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="text-center">
+                            {{ user_profile.username }}'s Profile
+                            {% if user_profile.first_name or user_profile.last_name %}
+                                <small class="text-muted">({{ user_profile.first_name }} {{ user_profile.last_name }})</small>
+                            {% endif %}
+                        </h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <ul class="list-group list-group-flush">
+
+                                    {% if profile.name %}
+                                        <li class="list-group-item">
+                                            <strong>Name: </strong> {{ profile.name }}
+                                        </li>
+                                    {% endif %}
+
+
+                                    {% if profile.email %}
+                                        <li class="list-group-item">
+                                            <strong>Email:</strong> {{ profile.email }}
+                                        </li>
+                                    {% endif %}
+
+                                    {% if profile.whatsapp %}
+                                        <li class="list-group-item">
+                                            <strong>Phone Number:</strong> {{ profile.whatsapp }}
+                                        </li>
+                                    {% endif %}
+
+                                    {% if profile.instagram %}
+                                        <li class="list-group-item">
+                                            <strong>Instagram:</strong> {{ profile.instagram }}
+                                        </li>
+                                    {% endif %}
+
+                                    {% if profile.discord %}
+                                        <li class="list-group-item">
+                                            <strong>Discord:</strong> {{ profile.discord }}
+                                        </li>
+                                    {% endif %}
+
+
+                                </ul>
+                            </div>
+                        </div>
+
+                        {% if is_own_profile %}
+                            <div class="row mt-4">
+                                <div class="col-md-12 text-center">
+                                    <a href="{% url 'edit_profile' %}" class="btn btn-primary">Edit Profile</a>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
