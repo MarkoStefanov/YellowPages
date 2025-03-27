@@ -1099,3 +1099,232 @@ INFO 2025-03-27 08:06:22,625 basehttp 20364 3576 "GET /static/styles.css HTTP/1.
 INFO 2025-03-27 08:06:26,086 basehttp 20364 3576 "GET /search/ HTTP/1.1" 200 2389
 INFO 2025-03-27 08:06:26,145 basehttp 20364 3576 "GET /static/styles.css HTTP/1.1" 304 0
 INFO 2025-03-27 08:06:27,333 basehttp 20364 3576 "GET /history/ HTTP/1.1" 200 2388
+INFO 2025-03-27 08:10:40,942 basehttp 20364 3576 "GET /profiles/edit_profile/ HTTP/1.1" 200 4011
+INFO 2025-03-27 08:10:40,976 basehttp 20364 3576 "GET /static/styles.css HTTP/1.1" 304 0
+INFO 2025-03-27 08:10:41,863 basehttp 20364 3576 "GET /search/ HTTP/1.1" 200 2389
+INFO 2025-03-27 08:10:42,676 basehttp 20364 3576 "GET /history/ HTTP/1.1" 200 2388
+INFO 2025-03-27 08:10:44,805 basehttp 20364 3576 "POST /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-03-27 08:10:44,816 basehttp 20364 3576 "GET /accounts/login/ HTTP/1.1" 200 2353
+INFO 2025-03-27 08:10:46,157 basehttp 20364 3576 "GET /accounts/register/ HTTP/1.1" 200 6208
+INFO 2025-03-27 08:11:03,625 basehttp 20364 3576 "GET /accounts/login/ HTTP/1.1" 200 2353
+INFO 2025-03-27 08:11:10,224 basehttp 20364 3576 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-03-27 08:11:10,232 basehttp 20364 3576 "GET / HTTP/1.1" 200 2191
+INFO 2025-03-27 08:11:10,351 basehttp 20364 3576 "GET /static/styles.css HTTP/1.1" 304 0
+INFO 2025-03-27 08:11:11,558 basehttp 20364 3576 "GET /history/ HTTP/1.1" 200 2388
+INFO 2025-03-27 08:11:12,722 basehttp 20364 3576 "GET /search/ HTTP/1.1" 200 2389
+INFO 2025-03-27 08:11:15,574 basehttp 20364 3576 "GET /search/?q=marko HTTP/1.1" 200 4887
+INFO 2025-03-27 08:11:16,421 basehttp 20364 3576 "GET /profile/markoAdmin@ucl.ac.uk/ HTTP/1.1" 200 3843
+INFO 2025-03-27 08:13:54,926 basehttp 20364 3576 "GET /profiles/edit_profile/ HTTP/1.1" 200 4011
+INFO 2025-03-27 08:13:54,964 basehttp 20364 3576 "GET /static/styles.css HTTP/1.1" 304 0
+INFO 2025-03-27 08:13:56,587 basehttp 20364 3576 "GET /search/ HTTP/1.1" 200 2389
+INFO 2025-03-27 08:26:43,658 basehttp 20364 16536 "GET /search/ HTTP/1.1" 200 2389
+INFO 2025-03-27 08:26:43,710 basehttp 20364 16536 "GET /static/styles.css HTTP/1.1" 200 7941
+WARNING 2025-03-27 08:26:43,737 basehttp 20364 16536 "GET /static/%7B%%20static%20'images/backgrounds/ucl-yellow-bg.png'%20%%7D HTTP/1.1" 404 2011
+INFO 2025-03-27 08:26:44,772 basehttp 20364 16232 "GET /search/ HTTP/1.1" 200 2389
+INFO 2025-03-27 08:26:44,800 basehttp 20364 16232 "GET /static/styles.css HTTP/1.1" 304 0
+INFO 2025-03-27 08:26:46,352 basehttp 20364 16232 "GET /profiles/edit_profile/ HTTP/1.1" 200 4011
+INFO 2025-03-27 08:26:46,411 basehttp 20364 16232 "GET /static/styles.css HTTP/1.1" 304 0
+INFO 2025-03-27 08:26:47,932 basehttp 20364 16232 "GET / HTTP/1.1" 200 2191
+INFO 2025-03-27 08:26:47,990 basehttp 20364 16232 "GET /static/styles.css HTTP/1.1" 304 0
+INFO 2025-03-27 08:27:03,442 basehttp 20364 16232 "GET / HTTP/1.1" 200 2191
+INFO 2025-03-27 08:27:03,473 basehttp 20364 16232 "GET /static/styles.css HTTP/1.1" 200 7938
+WARNING 2025-03-27 08:27:03,512 basehttp 20364 16232 "GET /static/%7B%%20static%20'images/backgrounds/background.jpg'%20%%7D HTTP/1.1" 404 2002
+INFO 2025-03-27 08:27:04,036 basehttp 20364 9880 "GET / HTTP/1.1" 200 2191
+INFO 2025-03-27 08:27:04,081 basehttp 20364 9880 "GET /static/styles.css HTTP/1.1" 304 0
+INFO 2025-03-27 08:36:29,793 autoreload 21212 21944 Watching for file changes with StatReloader
+INFO 2025-03-27 08:37:02,432 autoreload 24288 8284 Watching for file changes with StatReloader
+INFO 2025-03-27 08:37:07,240 basehttp 24288 14968 "GET /profiles/edit_profile/ HTTP/1.1" 200 4011
+INFO 2025-03-27 08:37:07,397 basehttp 24288 14968 "GET /static/styles.css HTTP/1.1" 200 7938
+WARNING 2025-03-27 08:37:07,407 basehttp 24288 14968 "GET /static/%7B%%20static%20'images/backgrounds/background.jpg'%20%%7D HTTP/1.1" 404 2002
+INFO 2025-03-27 08:37:09,012 basehttp 24288 19636 "GET / HTTP/1.1" 200 2191
+INFO 2025-03-27 08:37:09,940 basehttp 24288 19636 "GET / HTTP/1.1" 200 2191
+INFO 2025-03-27 08:38:26,155 basehttp 24288 22812 "GET / HTTP/1.1" 200 2191
+INFO 2025-03-27 08:38:26,204 basehttp 24288 22812 "GET /static/styles.css HTTP/1.1" 200 7938
+WARNING 2025-03-27 08:38:26,228 basehttp 24288 22812 "GET /static/%7B%%20static%20'images/backgrounds/background.jpg'%20%%7D HTTP/1.1" 404 2002
+INFO 2025-03-27 08:38:26,785 basehttp 24288 23300 "GET / HTTP/1.1" 200 2191
+INFO 2025-03-27 08:38:26,815 basehttp 24288 23300 "GET /static/styles.css HTTP/1.1" 304 0
+INFO 2025-03-27 08:39:45,311 autoreload 24324 17480 Watching for file changes with StatReloader
+INFO 2025-03-27 08:39:48,986 basehttp 24324 21320 "GET / HTTP/1.1" 200 2191
+INFO 2025-03-27 08:39:49,002 basehttp 24324 21320 "GET /static/styles.css HTTP/1.1" 304 0
+WARNING 2025-03-27 08:39:49,020 basehttp 24324 21320 "GET /static/%7B%%20static%20'images/backgrounds/background.jpg'%20%%7D HTTP/1.1" 404 2002
+INFO 2025-03-27 08:39:49,464 basehttp 24324 16988 "GET / HTTP/1.1" 200 2191
+INFO 2025-03-27 08:39:49,763 basehttp 24324 16988 "GET / HTTP/1.1" 200 2191
+INFO 2025-03-27 08:43:03,114 autoreload 8520 12792 Watching for file changes with StatReloader
+INFO 2025-03-27 08:43:08,826 basehttp 8520 22768 "GET / HTTP/1.1" 200 2191
+INFO 2025-03-27 08:43:08,953 basehttp 8520 22768 "GET /static/styles.css HTTP/1.1" 200 7937
+WARNING 2025-03-27 08:43:08,964 basehttp 8520 22768 "GET /static/%7B%static%20'images/backgrounds/background.jpg'%20%%7D HTTP/1.1" 404 1997
+INFO 2025-03-27 08:43:09,362 basehttp 8520 17072 "GET / HTTP/1.1" 200 2191
+INFO 2025-03-27 08:43:09,391 basehttp 8520 17072 "GET /static/styles.css HTTP/1.1" 304 0
+INFO 2025-03-27 08:45:58,730 basehttp 8520 1500 "GET / HTTP/1.1" 200 2200
+INFO 2025-03-27 08:45:58,803 basehttp 8520 1500 "GET /static/styles.css HTTP/1.1" 304 0
+WARNING 2025-03-27 08:45:58,817 basehttp 8520 1500 "GET /static/%7B%static%20'images/backgrounds/background.jpg'%20%%7D HTTP/1.1" 404 1997
+INFO 2025-03-27 08:45:59,604 basehttp 8520 5832 "GET /profiles/history/ HTTP/1.1" 200 2278
+WARNING 2025-03-27 08:46:38,396 basehttp 8520 23992 "GET /static/images/backgrounds/ucl-yellow-bg.png HTTP/1.1" 404 1922
+WARNING 2025-03-27 08:46:38,484 log 8520 1808 Not Found: /favicon.ico
+WARNING 2025-03-27 08:46:38,486 basehttp 8520 1808 "GET /favicon.ico HTTP/1.1" 404 3736
+INFO 2025-03-27 08:46:45,191 basehttp 8520 1808 "GET /static/images/backgrounds/background.jpg HTTP/1.1" 200 533135
+INFO 2025-03-27 08:49:47,896 autoreload 8520 12792 C:\Users\alraz\Documents\GitHub\YellowPages\UCLYellowPages\UCLYellowPages\settings.py changed, reloading.
+INFO 2025-03-27 08:49:48,508 autoreload 9428 13748 Watching for file changes with StatReloader
+INFO 2025-03-27 08:49:55,202 basehttp 9428 3504 "GET /profiles/history/ HTTP/1.1" 200 2278
+WARNING 2025-03-27 08:49:55,249 basehttp 9428 3504 "GET /static/styles.css HTTP/1.1" 404 1844
+INFO 2025-03-27 08:50:07,169 autoreload 9428 13748 C:\Users\alraz\Documents\GitHub\YellowPages\UCLYellowPages\UCLYellowPages\settings.py changed, reloading.
+INFO 2025-03-27 08:50:07,747 autoreload 12908 17204 Watching for file changes with StatReloader
+INFO 2025-03-27 08:50:12,103 autoreload 12908 17204 C:\Users\alraz\Documents\GitHub\YellowPages\UCLYellowPages\UCLYellowPages\settings.py changed, reloading.
+INFO 2025-03-27 08:50:12,630 autoreload 21348 9308 Watching for file changes with StatReloader
+INFO 2025-03-27 08:50:15,936 basehttp 21348 7592 "GET /profiles/history/ HTTP/1.1" 200 2278
+INFO 2025-03-27 08:50:16,045 basehttp 21348 7592 "GET /static/styles.css HTTP/1.1" 200 7937
+WARNING 2025-03-27 08:50:16,055 basehttp 21348 7592 "GET /static/%7B%static%20'images/backgrounds/background.jpg'%20%%7D HTTP/1.1" 404 1997
+INFO 2025-03-27 08:50:56,547 autoreload 21348 9308 C:\Users\alraz\Documents\GitHub\YellowPages\UCLYellowPages\UCLYellowPages\settings.py changed, reloading.
+INFO 2025-03-27 08:50:57,115 autoreload 2520 20080 Watching for file changes with StatReloader
+INFO 2025-03-27 08:51:01,604 basehttp 2520 11776 "GET /profiles/history/ HTTP/1.1" 200 2278
+INFO 2025-03-27 08:51:01,628 basehttp 2520 11776 "GET /static/styles.css HTTP/1.1" 304 0
+INFO 2025-03-27 08:51:12,480 basehttp 2520 11776 "GET /profiles/edit_profile/ HTTP/1.1" 200 4020
+INFO 2025-03-27 08:51:13,504 basehttp 2520 11776 "GET /search/ HTTP/1.1" 200 2398
+INFO 2025-03-27 08:51:14,496 basehttp 2520 11776 "GET /profiles/history/ HTTP/1.1" 200 2278
+INFO 2025-03-27 08:51:15,697 basehttp 2520 11776 "GET / HTTP/1.1" 200 2200
+INFO 2025-03-27 08:51:50,155 autoreload 2520 20080 C:\Users\alraz\Documents\GitHub\YellowPages\UCLYellowPages\UCLYellowPages\settings.py changed, reloading.
+INFO 2025-03-27 08:51:50,719 autoreload 8844 24476 Watching for file changes with StatReloader
+INFO 2025-03-27 08:51:53,956 basehttp 8844 9484 "GET / HTTP/1.1" 200 2200
+INFO 2025-03-27 08:51:53,986 basehttp 8844 9484 "GET /static/styles.css HTTP/1.1" 304 0
+INFO 2025-03-27 08:51:54,504 basehttp 8844 9484 "GET / HTTP/1.1" 200 2200
+INFO 2025-03-27 08:51:54,737 basehttp 8844 9484 "GET / HTTP/1.1" 200 2200
+INFO 2025-03-27 08:53:13,039 autoreload 8844 24476 C:\Users\alraz\Documents\GitHub\YellowPages\UCLYellowPages\profiles\urls.py changed, reloading.
+INFO 2025-03-27 08:53:13,580 autoreload 3940 23316 Watching for file changes with StatReloader
+INFO 2025-03-27 08:53:28,027 autoreload 3940 23316 C:\Users\alraz\Documents\GitHub\YellowPages\UCLYellowPages\profiles\urls.py changed, reloading.
+INFO 2025-03-27 08:53:28,575 autoreload 7856 3908 Watching for file changes with StatReloader
+INFO 2025-03-27 08:54:27,438 autoreload 7856 3908 C:\Users\alraz\Documents\GitHub\YellowPages\UCLYellowPages\profiles\urls.py changed, reloading.
+INFO 2025-03-27 08:54:27,972 autoreload 20096 23632 Watching for file changes with StatReloader
+INFO 2025-03-27 08:55:12,704 autoreload 20096 23632 C:\Users\alraz\Documents\GitHub\YellowPages\UCLYellowPages\profiles\urls.py changed, reloading.
+INFO 2025-03-27 08:55:13,239 autoreload 15696 18140 Watching for file changes with StatReloader
+INFO 2025-03-27 08:55:17,675 basehttp 15696 16444 "GET / HTTP/1.1" 200 2200
+INFO 2025-03-27 08:55:17,704 basehttp 15696 16444 "GET /static/styles.css HTTP/1.1" 304 0
+WARNING 2025-03-27 08:55:17,745 basehttp 15696 16444 "GET /static/%7B%static%20'images/backgrounds/background.jpg'%20%%7D HTTP/1.1" 404 1997
+INFO 2025-03-27 08:55:18,342 basehttp 15696 19776 "GET / HTTP/1.1" 200 2200
+INFO 2025-03-27 08:55:56,172 autoreload 15696 18140 C:\Users\alraz\Documents\GitHub\YellowPages\UCLYellowPages\UCLYellowPages\settings.py changed, reloading.
+INFO 2025-03-27 08:55:56,690 autoreload 13472 13984 Watching for file changes with StatReloader
+INFO 2025-03-27 08:56:16,778 autoreload 11452 8324 Watching for file changes with StatReloader
+INFO 2025-03-27 08:56:20,121 basehttp 11452 14292 "GET / HTTP/1.1" 200 2200
+INFO 2025-03-27 08:56:20,666 basehttp 11452 14292 "GET / HTTP/1.1" 200 2200
+INFO 2025-03-27 08:56:29,771 basehttp 11452 14292 "GET / HTTP/1.1" 200 2200
+INFO 2025-03-27 08:56:30,613 basehttp 11452 14292 "GET / HTTP/1.1" 200 2200
+INFO 2025-03-27 08:56:31,047 basehttp 11452 14292 "GET /profiles/edit_profile/ HTTP/1.1" 200 4020
+INFO 2025-03-27 08:56:31,653 basehttp 11452 14292 "GET /search/ HTTP/1.1" 200 2398
+INFO 2025-03-27 08:56:31,709 basehttp 11452 14292 "GET /static/styles.css HTTP/1.1" 304 0
+INFO 2025-03-27 08:58:29,737 autoreload 11452 8324 C:\Users\alraz\Documents\GitHub\YellowPages\UCLYellowPages\UCLYellowPages\settings.py changed, reloading.
+INFO 2025-03-27 08:58:30,344 autoreload 4292 2216 Watching for file changes with StatReloader
+INFO 2025-03-27 08:59:13,448 basehttp 4292 17084 "GET /search/ HTTP/1.1" 200 2398
+INFO 2025-03-27 08:59:13,559 basehttp 4292 17084 "GET /static/styles.css HTTP/1.1" 200 7937
+WARNING 2025-03-27 08:59:13,569 basehttp 4292 17084 "GET /static/%7B%static%20'images/backgrounds/background.jpg'%20%%7D HTTP/1.1" 404 1997
+INFO 2025-03-27 08:59:14,890 basehttp 4292 13204 "GET /profiles/edit_profile/ HTTP/1.1" 200 4020
+INFO 2025-03-27 08:59:22,094 basehttp 4292 13204 "GET / HTTP/1.1" 200 2200
+INFO 2025-03-27 09:01:26,627 basehttp 4292 13204 "GET / HTTP/1.1" 200 2200
+INFO 2025-03-27 09:01:26,647 basehttp 4292 13204 "GET /static/styles.css HTTP/1.1" 200 7931
+INFO 2025-03-27 09:01:26,662 basehttp 4292 13204 "GET /static/images/backgrounds/background.jpg HTTP/1.1" 200 533135
+INFO 2025-03-27 09:01:31,395 basehttp 4292 13204 "GET /search/ HTTP/1.1" 200 2398
+INFO 2025-03-27 09:01:31,467 basehttp 4292 13204 "GET /static/styles.css HTTP/1.1" 304 0
+INFO 2025-03-27 09:01:34,746 basehttp 4292 13204 "GET /profiles/history/ HTTP/1.1" 200 2278
+INFO 2025-03-27 09:01:34,804 basehttp 4292 13204 "GET /static/styles.css HTTP/1.1" 304 0
+INFO 2025-03-27 09:01:36,250 basehttp 4292 13204 "GET /profiles/edit_profile/ HTTP/1.1" 200 4020
+INFO 2025-03-27 09:01:36,305 basehttp 4292 13204 "GET /static/styles.css HTTP/1.1" 304 0
+INFO 2025-03-27 09:01:39,916 basehttp 4292 13204 "POST /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-03-27 09:01:39,928 basehttp 4292 13204 "GET /accounts/login/ HTTP/1.1" 200 2353
+INFO 2025-03-27 09:01:40,032 basehttp 4292 13204 "GET /static/styles.css HTTP/1.1" 304 0
+INFO 2025-03-27 09:02:42,145 basehttp 4292 13204 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-03-27 09:02:42,154 basehttp 4292 13204 "GET / HTTP/1.1" 200 2200
+INFO 2025-03-27 09:02:42,265 basehttp 4292 13204 "GET /static/styles.css HTTP/1.1" 304 0
+INFO 2025-03-27 09:02:44,878 basehttp 4292 13204 "GET /search/ HTTP/1.1" 200 2398
+INFO 2025-03-27 09:02:47,726 basehttp 4292 13204 "GET /search/?q=marko HTTP/1.1" 200 4896
+INFO 2025-03-27 09:02:49,030 basehttp 4292 13204 "GET /profile/king_marko@ucl.ac.uk/ HTTP/1.1" 200 2792
+INFO 2025-03-27 09:02:52,062 basehttp 4292 13204 "GET /profile/marko@ucl.ac.uk/ HTTP/1.1" 200 3648
+INFO 2025-03-27 09:02:52,124 basehttp 4292 13204 "GET /static/styles.css HTTP/1.1" 304 0
+INFO 2025-03-27 09:03:02,038 basehttp 4292 13204 "GET /profiles/history/ HTTP/1.1" 200 2278
+INFO 2025-03-27 09:03:02,092 basehttp 4292 13204 "GET /static/styles.css HTTP/1.1" 304 0
+INFO 2025-03-27 09:03:03,449 basehttp 4292 13204 "POST /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-03-27 09:03:03,456 basehttp 4292 13204 "GET /accounts/login/ HTTP/1.1" 200 2353
+INFO 2025-03-27 09:05:35,922 autoreload 18476 21252 Watching for file changes with StatReloader
+INFO 2025-03-27 09:05:36,087 basehttp 18476 20500 "GET /profiles/history/ HTTP/1.1" 302 0
+INFO 2025-03-27 09:05:36,109 basehttp 18476 20500 "GET /accounts/login/?next=/profiles/history/ HTTP/1.1" 200 2353
+INFO 2025-03-27 09:05:36,238 basehttp 18476 20500 "GET /static/styles.css HTTP/1.1" 304 0
+INFO 2025-03-27 09:05:36,258 basehttp 18476 20500 "GET /static/images/backgrounds/background.jpg HTTP/1.1" 304 0
+INFO 2025-03-27 09:05:53,705 basehttp 18476 20500 "POST /accounts/login/?next=/profiles/history/ HTTP/1.1" 302 0
+INFO 2025-03-27 09:05:53,713 basehttp 18476 20500 "GET / HTTP/1.1" 200 2200
+INFO 2025-03-27 09:05:57,581 basehttp 18476 20500 "GET /search/ HTTP/1.1" 200 2398
+INFO 2025-03-27 09:06:00,025 basehttp 18476 20500 "GET /search/?q=fakhru HTTP/1.1" 200 2479
+INFO 2025-03-27 09:06:03,905 basehttp 18476 20500 "GET /search/?q=fakhrur HTTP/1.1" 200 2480
+INFO 2025-03-27 09:06:03,964 basehttp 18476 20500 "GET /static/styles.css HTTP/1.1" 304 0
+INFO 2025-03-27 09:06:05,414 basehttp 18476 20500 "GET /search/?q=fakhrur HTTP/1.1" 200 2480
+INFO 2025-03-27 09:06:05,610 basehttp 18476 20500 "GET /search/?q=fakhrur HTTP/1.1" 200 2480
+INFO 2025-03-27 09:06:08,256 basehttp 18476 20500 "GET /search/?q=marko HTTP/1.1" 200 2478
+INFO 2025-03-27 09:06:44,967 basehttp 18476 20500 "GET /profiles/edit_profile/ HTTP/1.1" 200 3916
+INFO 2025-03-27 09:06:45,027 basehttp 18476 20500 "GET /static/styles.css HTTP/1.1" 304 0
+INFO 2025-03-27 09:06:53,602 basehttp 18476 20500 "POST /profiles/edit_profile/ HTTP/1.1" 302 0
+INFO 2025-03-27 09:06:53,611 basehttp 18476 20500 "GET /profiles/edit_profile/ HTTP/1.1" 200 4093
+INFO 2025-03-27 09:07:46,005 basehttp 18476 20500 "POST /profiles/edit_profile/ HTTP/1.1" 302 0
+INFO 2025-03-27 09:07:46,021 basehttp 18476 20500 "GET /profiles/edit_profile/ HTTP/1.1" 200 4074
+INFO 2025-03-27 09:07:46,111 basehttp 18476 20500 "GET /static/styles.css HTTP/1.1" 304 0
+INFO 2025-03-27 09:07:48,797 basehttp 18476 20500 "POST /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-03-27 09:07:48,808 basehttp 18476 20500 "GET /accounts/login/ HTTP/1.1" 200 2353
+INFO 2025-03-27 09:07:54,961 basehttp 18476 20500 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-03-27 09:07:54,969 basehttp 18476 20500 "GET / HTTP/1.1" 200 2200
+INFO 2025-03-27 09:07:56,355 basehttp 18476 20500 "GET /profiles/history/ HTTP/1.1" 200 2278
+INFO 2025-03-27 09:08:00,432 basehttp 18476 20500 "GET /search/ HTTP/1.1" 200 2398
+INFO 2025-03-27 09:08:04,163 basehttp 18476 20500 "GET /search/?q=John HTTP/1.1" 200 2477
+INFO 2025-03-27 09:08:05,988 basehttp 18476 20500 "POST /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-03-27 09:08:05,995 basehttp 18476 20500 "GET /accounts/login/ HTTP/1.1" 200 2353
+INFO 2025-03-27 09:08:11,128 basehttp 18476 20500 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-03-27 09:08:11,136 basehttp 18476 20500 "GET / HTTP/1.1" 200 2200
+INFO 2025-03-27 09:08:13,495 basehttp 18476 20500 "GET /profiles/edit_profile/ HTTP/1.1" 200 3916
+INFO 2025-03-27 09:08:17,983 basehttp 18476 20500 "POST /profiles/edit_profile/ HTTP/1.1" 302 0
+INFO 2025-03-27 09:08:17,993 basehttp 18476 20500 "GET /profiles/edit_profile/ HTTP/1.1" 200 4074
+INFO 2025-03-27 09:08:20,017 basehttp 18476 20500 "POST /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-03-27 09:08:20,023 basehttp 18476 20500 "GET /accounts/login/ HTTP/1.1" 200 2353
+INFO 2025-03-27 09:08:25,739 basehttp 18476 20500 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-03-27 09:08:25,747 basehttp 18476 20500 "GET / HTTP/1.1" 200 2200
+INFO 2025-03-27 09:08:25,868 basehttp 18476 20500 "GET /static/styles.css HTTP/1.1" 304 0
+INFO 2025-03-27 09:08:27,126 basehttp 18476 20500 "GET /profiles/history/ HTTP/1.1" 200 2278
+INFO 2025-03-27 09:08:27,734 basehttp 18476 20500 "GET /search/ HTTP/1.1" 200 2398
+INFO 2025-03-27 09:08:30,064 basehttp 18476 20500 "GET /search/?q=John HTTP/1.1" 200 3086
+INFO 2025-03-27 09:08:31,416 basehttp 18476 20500 "GET /profile/john.smith.24@ucl.ac.uk/ HTTP/1.1" 200 2799
+INFO 2025-03-27 09:08:34,071 basehttp 18476 20500 "POST /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-03-27 09:08:34,077 basehttp 18476 20500 "GET /accounts/login/ HTTP/1.1" 200 2353
+INFO 2025-03-27 09:08:38,668 basehttp 18476 20500 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-03-27 09:08:38,676 basehttp 18476 20500 "GET / HTTP/1.1" 200 2200
+INFO 2025-03-27 09:08:40,115 basehttp 18476 20500 "GET /profiles/history/ HTTP/1.1" 200 2930
+INFO 2025-03-27 09:09:28,389 basehttp 18476 20500 "GET /profiles/history/ HTTP/1.1" 200 2930
+INFO 2025-03-27 09:09:28,491 basehttp 18476 20500 "GET /static/styles.css HTTP/1.1" 200 7962
+INFO 2025-03-27 09:09:59,555 basehttp 18476 20500 "GET /profiles/history/ HTTP/1.1" 200 2930
+INFO 2025-03-27 09:09:59,615 basehttp 18476 20500 "GET /static/styles.css HTTP/1.1" 200 7962
+INFO 2025-03-27 09:09:59,630 basehttp 18476 20500 "GET /static/images/backgrounds/background.jpg HTTP/1.1" 200 533135
+WARNING 2025-03-27 09:09:59,656 log 18476 20500 Not Found: /favicon.ico
+WARNING 2025-03-27 09:09:59,656 basehttp 18476 20500 "GET /favicon.ico HTTP/1.1" 404 3736
+INFO 2025-03-27 09:11:42,914 basehttp 18476 20500 "GET /profiles/history/ HTTP/1.1" 200 2930
+INFO 2025-03-27 09:11:42,938 basehttp 18476 20500 "GET /static/styles.css HTTP/1.1" 200 8116
+INFO 2025-03-27 09:12:33,630 basehttp 18476 20500 "GET /profiles/history/ HTTP/1.1" 200 2930
+INFO 2025-03-27 09:12:33,655 basehttp 18476 20500 "GET /static/styles.css HTTP/1.1" 200 8159
+INFO 2025-03-27 09:13:17,230 basehttp 18476 20500 "GET /profiles/history/ HTTP/1.1" 200 2930
+INFO 2025-03-27 09:13:17,257 basehttp 18476 20500 "GET /static/styles.css HTTP/1.1" 200 8203
+INFO 2025-03-27 09:13:29,093 basehttp 18476 20500 "GET /profiles/history/ HTTP/1.1" 200 2930
+INFO 2025-03-27 09:13:29,139 basehttp 18476 20500 "GET /static/styles.css HTTP/1.1" 200 8227
+INFO 2025-03-27 09:13:30,094 basehttp 18476 20500 "GET /profiles/history/ HTTP/1.1" 200 2930
+INFO 2025-03-27 09:13:30,139 basehttp 18476 20500 "GET /static/styles.css HTTP/1.1" 304 0
+INFO 2025-03-27 09:13:45,558 basehttp 18476 20500 "GET /profiles/history/ HTTP/1.1" 200 2930
+INFO 2025-03-27 09:13:45,591 basehttp 18476 20500 "GET /static/styles.css HTTP/1.1" 200 8251
+INFO 2025-03-27 09:13:46,453 basehttp 18476 20500 "GET /profiles/history/ HTTP/1.1" 200 2930
+INFO 2025-03-27 09:13:46,476 basehttp 18476 20500 "GET /static/styles.css HTTP/1.1" 304 0
+INFO 2025-03-27 09:13:56,462 basehttp 18476 20500 "GET /profiles/history/ HTTP/1.1" 200 2930
+INFO 2025-03-27 09:13:56,510 basehttp 18476 20500 "GET /static/styles.css HTTP/1.1" 200 8183
+INFO 2025-03-27 09:14:16,928 basehttp 18476 15320 "GET /profiles/history/ HTTP/1.1" 200 2930
+INFO 2025-03-27 09:14:16,945 basehttp 18476 15320 "GET /static/styles.css HTTP/1.1" 200 8203
+INFO 2025-03-27 09:16:08,932 basehttp 18476 15320 "GET /profiles/history/ HTTP/1.1" 200 2930
+INFO 2025-03-27 09:16:08,959 basehttp 18476 15320 "GET /static/styles.css HTTP/1.1" 200 8913
+INFO 2025-03-27 09:16:08,995 basehttp 18476 15320 "GET /static/images/backgrounds/background.jpg HTTP/1.1" 304 0
+INFO 2025-03-27 09:16:29,156 basehttp 18476 15320 "GET /profiles/history/ HTTP/1.1" 200 2930
+INFO 2025-03-27 09:16:29,188 basehttp 18476 15320 "GET /static/styles.css HTTP/1.1" 200 8203
+INFO 2025-03-27 09:16:56,898 basehttp 18476 15320 "GET /profiles/history/ HTTP/1.1" 200 2930
+INFO 2025-03-27 09:16:56,944 basehttp 18476 15320 "GET /static/styles.css HTTP/1.1" 200 8654
+INFO 2025-03-27 09:17:05,122 basehttp 18476 15320 "GET /profiles/history/ HTTP/1.1" 200 2930
+INFO 2025-03-27 09:17:05,153 basehttp 18476 15320 "GET /static/styles.css HTTP/1.1" 200 8624
+INFO 2025-03-27 09:17:14,938 basehttp 18476 15320 "GET /profiles/history/ HTTP/1.1" 200 2930
+INFO 2025-03-27 09:17:14,988 basehttp 18476 15320 "GET /static/styles.css HTTP/1.1" 200 8603
+INFO 2025-03-27 09:17:30,401 basehttp 18476 15320 "GET /profiles/history/ HTTP/1.1" 200 2930
+INFO 2025-03-27 09:17:30,446 basehttp 18476 15320 "GET /static/styles.css HTTP/1.1" 200 8645

@@ -7,7 +7,7 @@
 
 html, body {
   height: 100%;
-  background: linear-gradient(135deg, #FFF176, #FFD54F, #FFC107, #FFB300);
+  background: url("/static/images/backgrounds/background.jpg") center/cover no-repeat fixed;
   background-attachment: fixed;
 }
 
@@ -413,6 +413,34 @@ html, body {
   color: #FFB300;
 }
 
+table thead {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+table thead tr th {
+  color: white;
+  padding: 12px 8px;
+  text-align: left;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+  font-weight: bold;
+}
+
+table tbody tr td {
+  color: white;
+  padding: 10px 8px;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+table tbody tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+table tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transition: background-color 0.3s ease;
+}
+
 .alert {
   padding: 0.8rem 1.5rem;
   border-radius: 5px;
@@ -471,5 +499,15 @@ html, body {
 }
 
 .alert-warning::after {
+  background-color: white;
+}
+
+.alert-danger {
+  background-color: #ff5039;
+  border: none;
+  color: white;
+}
+
+.alert-danger::after {
   background-color: white;
 }
