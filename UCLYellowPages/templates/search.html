@@ -18,23 +18,14 @@
         {% for profile in profiles %}
             <div class="profile-card">
                 <div class="profile-header">
-                    <h3><a href="{% url 'profile_detail' username=profile.user.username %}">{{ profile.user.username }}</a></h3>
-                    {% if profile.user.first_name or profile.user.last_name %}
-                        <p class="profile-name">({{ profile.user.first_name }} {{ profile.user.last_name }})</p>
+                    <h3>
+                    {% if profile.name %}
+                        <a href="{% url 'profile_detail' username=profile.user.username %}">{{ profile.name }}</a>
+                        <p href="{% url 'profile_detail' username=profile.user.username %}">{{ profile.user.username }}</p>
+                    {% else %}
+                        <a href="{% url 'profile_detail' username=profile.user.username %}">{{ profile.user.username }}</a>
                     {% endif %}
-                </div>
-                <div class="profile-info">
-                    <ul>
-                        {% if profile.visible_fields.email %}
-                            <li><strong>Email:</strong> {{ profile.email }}</li>
-                        {% endif %}
-                        {% if profile.visible_fields.whatsapp and profile.whatsapp %}
-                            <li><strong>WhatsApp:</strong> {{ profile.whatsapp }}</li>
-                        {% endif %}
-                        {% if profile.visible_fields.instagram and profile.instagram %}
-                            <li><strong>Instagram:</strong> {{ profile.instagram }}</li>
-                        {% endif %}
-                    </ul>
+                    </h3>
                 </div>
                 <div class="profile-actions">
                     <a href="{% url 'profile_detail' username=profile.user.username %}" class="ter-button">View Full Profile</a>

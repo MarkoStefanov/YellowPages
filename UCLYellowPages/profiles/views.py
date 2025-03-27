@@ -119,8 +119,8 @@ class SearchView(LoginRequiredMixin, ListView):
 
             queryset = UserData.objects.filter(
                 Q(user__username__icontains=query) |
-                Q(user__first_name__icontains=query) |
-                Q(user__last_name__icontains=query) |
+                Q(name__icontains=query) |
+                Q(discord__icontains=query) |
                 Q(email__icontains=query) |
                 Q(instagram__icontains=query) |
                 Q(whatsapp__icontains=query),

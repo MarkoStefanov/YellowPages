@@ -22,10 +22,17 @@
                 <li>{{ profile.name }}</li>
             {% endif %}
 
+            {% if profile.course %}
+                <strong>Course:</strong>
+                <li>
+                    {{ profile.course }}
+                </li>
+            {% endif %}
+
             {% if profile.email %}
                 <strong>Email:</strong>
                 <li>
-                    <a href="mailto:{{ profile.email }}">{{ profile.email }}</a>
+                    <a id="email" href="mailto:{{ profile.email }}">{{ profile.email }}</a>
                     <button class="copy-button" onclick="copyToClipboard('email')">📋</button>
                 </li>
             {% endif %}
@@ -33,7 +40,7 @@
             {% if profile.whatsapp %}
                 <strong>Phone (WhatsApp):</strong>
                 <li>
-                    <a href="tel:{{ profile.whatsapp }}">{{ profile.whatsapp }}</a>
+                    <a id="whatsapp" href="tel:{{ profile.whatsapp }}">{{ profile.whatsapp }}</a>
                     <button class="copy-button" onclick="copyToClipboard('whatsapp')">📋</button>
                 </li>
                 
@@ -42,7 +49,7 @@
             {% if profile.instagram %}
                 <strong>Instagram:</strong> 
                 <li>
-                    <a href="https://instagram.com/{{ profile.instagram }}" target="_blank">@{{ profile.instagram }}</a>
+                    <a id="instagram" href="https://instagram.com/{{ profile.instagram }}" target="_blank">@{{ profile.instagram }}</a>
                     <button class="copy-button" onclick="copyToClipboard('instagram')">📋</button>
                 </li>
             {% endif %}
@@ -50,7 +57,7 @@
             {% if profile.discord %}
                 <strong>Discord:</strong> 
                 <li>
-                    {{ profile.discord }}
+                    <span id="discord">{{ profile.discord }}</span>
                     <button class="copy-button" onclick="copyToClipboard('discord')">📋</button>
                 </li>
             {% endif %}
