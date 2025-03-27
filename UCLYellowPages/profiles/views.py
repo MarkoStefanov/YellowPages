@@ -30,6 +30,7 @@ from django.core.mail import send_mail
 from django.views.decorators.http import require_POST
 from django.views.decorators.csrf import csrf_protect
 from django.conf import settings
+from django.http import Http404
 
 
 def register(request):
