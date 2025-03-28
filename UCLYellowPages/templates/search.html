@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}Search - UCL Yellow Pages{% endblock %}
+
+{% block content %}
+<div class="general-container">
+    <div class="general-card">
+        <h2 class="general-title">Search Students</h2>
+        <form method="GET" class="form-group">
+            <input type="text" name="q" placeholder="Search by name, email, etc." value="{{ request.GET.q }}">
+            <button type="submit" class="sec-button">Search</button>
+        </form>
+    </div>
+</div>
+
+{% if profiles %}
+    <div class="grid-container">
+        {% for profile in profiles %}
+            <div class="profile-card">
+                <div class="profile-header">
+                    <h3>
+                    {% if profile.name %}
+                        <a href="{% url 'profile_detail' username=profile.user.username %}">{{ profile.name }}</a>
+                        <p href="{% url 'profile_detail' username=profile.user.username %}">{{ profile.user.username }}</p>
+                    {% else %}
+                        <a href="{% url 'profile_detail' username=profile.user.username %}">{{ profile.user.username }}</a>
+                    {% endif %}
+                    </h3>
+                </div>
+                <div class="profile-actions">
+                    <a href="{% url 'profile_detail' username=profile.user.username %}" class="ter-button">View Full Profile</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    {% if is_paginated %}
+        <div class="pagination-container">
+            {% if page_obj.has_previous %}
+                <a class="pagination-btn" href="?q={{ request.GET.q }}&page=1">&laquo; First</a>
+                <a class="pagination-btn" href="?q={{ request.GET.q }}&page={{ page_obj.previous_page_number }}">Previous</a>
+            {% endif %}
+            
+            <span class="pagination-info">{{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+            
+            {% if page_obj.has_next %}
+                <a class="pagination-btn" href="?q={{ request.GET.q }}&page={{ page_obj.next_page_number }}">Next</a>
+                <a class="pagination-btn" href="?q={{ request.GET.q }}&page={{ page_obj.paginator.num_pages }}">Last &raquo;</a>
+            {% endif %}
+        </div>
+    {% endif %}
+
+{% elif request.GET.q %}
+    <div class="alert alert-info">No results found for your search.</div>
+{% endif %}
+{% endblock %}

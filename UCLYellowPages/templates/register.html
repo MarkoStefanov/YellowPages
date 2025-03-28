@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+
+{% block title %}Register - UCL Yellow Pages{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <div class="general-form">
+        <h2>Register with your UCL account!</h2>
+        <form method="post">
+            {% csrf_token %}
+            
+            {% for field in form %}
+                {% if field.name != 'verification_code' %}
+                    <div class="mb-3">
+                        {{ field.label_tag }}
+                        {{ field }}
+                        {% if field.errors %}
+                            <div class="alert alert-danger">
+                                {% for error in field.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endfor %}
+            
+            <br>
+            <div class="code-group">
+                <input type="text" name="verification_code" id="id_verification_code"
+                       placeholder="Enter verification code">
+                <button type="button" id="sendVerificationBtn" class="pri-button">
+                    Send Code
+                </button>
+            </div>
+
+            <button type="submit" class="button">Register</button>
+            <div class="general-link">
+                <p>Already have an account? <a href="{% url 'login' %}">Login here</a></p>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const sendVerificationBtn = document.getElementById('sendVerificationBtn');
+    const usernameField = document.querySelector('input[name="username"]');
+    const verificationCodeField = document.getElementById('id_verification_code');
+    const form = document.getElementById('registrationForm');
+
+    sendVerificationBtn.addEventListener('click', function() {
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@ucl\.ac\.uk$/;
+        if (!emailRegex.test(usernameField.value)) {
+            alert('Please enter a valid UCL email address');
+            return;
+        }
+
+        sendVerificationBtn.disabled = true;
+        sendVerificationBtn.textContent = 'Sending...';
+
+        // Send an AJAX request to send verification code
+        fetch('{% url "send_verification_code" %}', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+            },
+            body: JSON.stringify({
+                email: usernameField.value
+            })
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.status === 'success') {
+                alert('Verification code sent to your email');
+                verificationCodeField.focus();
+            } else {
+                alert(data.message || 'Failed to send verification code');
+            }
+            sendVerificationBtn.disabled = false;
+            sendVerificationBtn.textContent = 'Send Code';
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred while sending verification code');
+            sendVerificationBtn.disabled = false;
+            sendVerificationBtn.textContent = 'Send Code';
+        });
+    });
+});
+</script>
+{% endblock %}
