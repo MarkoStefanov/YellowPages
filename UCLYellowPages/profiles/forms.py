@@ -1,11 +1,13 @@
+import re
+
 from django import forms
-from .models import Course, UserData
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-import re
-import secrets
-from django.core.mail import send_mail
-from django.conf import settings
+
+from .models import Course, UserData
+
+UCL_EMAIL_REGEX = r'^[a-zA-Z0-9._%+-]+@ucl\.ac\.uk$'
+
 
 class CustomUserCreationForm(UserCreationForm):
     course = forms.ModelChoiceField(
@@ -29,36 +31,12 @@ class CustomUserCreationForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
         self.request = kwargs.pop('request', None)
         super().__init__(*args, **kwargs)
-        self.verification_sent = False
-        self.stored_verification_code = None
-
-        self.fields['verification_code'].required = False
 
     def clean_username(self):
         username = self.cleaned_data.get('username')
-        if not re.match(r'^[a-zA-Z0-9._%+-]+@ucl\.ac\.uk$', username):
+        if not re.match(UCL_EMAIL_REGEX, username):
             raise forms.ValidationError("Username must be a valid UCL email address")
         return username
-
-    def send_verification_email(self):
-        verification_code = ''.join(secrets.choice('0123456789') for _ in range(6))
-        self.stored_verification_code = verification_code
-
-        subject = 'UCL Yellow Pages - Email Verification'
-        message = f'Your verification code is: {verification_code}' \
-                  f'\n' \
-                  f'\n' \
-                  f'The UCL Yellow Pages team will NEVER ask for any details or send links.'
-        from_email = settings.DEFAULT_FROM_EMAIL
-        recipient_list = [self.cleaned_data.get('username')]
-
-        try:
-            send_mail(subject, message, from_email, recipient_list)
-            self.verification_sent = True
-            return True
-        except Exception as e:
-            # Log the error or handle it appropriately
-            return False
 
     def clean_verification_code(self):
         verification_code = self.cleaned_data.get('verification_code')
@@ -67,12 +45,11 @@ class CustomUserCreationForm(UserCreationForm):
         if not self.request:
             raise forms.ValidationError("Verification request could not be processed.")
 
-        # Get stored verification code from session
+        # The code is put in the session by views.send_verification_code
         stored_code = self.request.session.get('verification_code')
         stored_email = self.request.session.get('verification_email')
         username = self.cleaned_data.get('username')
 
-        # Validate verification code
         if not stored_code or not stored_email:
             raise forms.ValidationError("No verification code was sent.")
 
@@ -90,15 +67,6 @@ class CustomUserCreationForm(UserCreationForm):
 
 
 class UserDataForm(forms.ModelForm):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-
-        # Ensure dropdown works correctly
-        self.fields['profile_visibility'].widget = forms.Select(
-            choices=self.fields['profile_visibility'].choices,
-            attrs={'class': 'form-select'}
-        )
-
     class Meta:
         model = UserData
         fields = ['name', 'whatsapp', 'instagram', 'email', 'discord', 'profile_visibility', 'track_profile_views']

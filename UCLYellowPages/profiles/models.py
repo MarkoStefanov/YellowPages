@@ -70,21 +70,22 @@ class UserData(models.Model):
     def __str__(self):
         return self.user.username
 
-    def is_profile_visible_to(self, viewer, viewerData):
-        if self.profile_visibility == 'ALL':
+    def is_profile_visible_to(self, viewer, viewer_data):
+        if viewer == self.user or self.profile_visibility == 'ALL':
             return True
 
-        if viewer == self.user:
-            return True
+        # Every remaining level is scoped to a course, so both sides need one
+        if self.course is None or viewer_data.course is None:
+            return False
 
-        if self.profile_visibility == 'FACULTY' and viewerData.course.department.faculty == self.course.department.faculty:
-            return True
+        if self.profile_visibility == 'FACULTY':
+            return viewer_data.course.department.faculty_id == self.course.department.faculty_id
 
-        if self.profile_visibility == 'DEPARTMENT' and viewerData.course.department == self.course.department:
-            return True
+        if self.profile_visibility == 'DEPARTMENT':
+            return viewer_data.course.department_id == self.course.department_id
 
-        if self.profile_visibility == 'COURSE' and viewerData.course == self.course:
-            return True
+        if self.profile_visibility == 'COURSE':
+            return viewer_data.course_id == self.course_id
 
         return False
 

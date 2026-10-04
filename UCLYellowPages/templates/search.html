@@ -21,7 +21,7 @@
                     <h3>
                     {% if profile.name %}
                         <a href="{% url 'profile_detail' username=profile.user.username %}">{{ profile.name }}</a>
-                        <p href="{% url 'profile_detail' username=profile.user.username %}">{{ profile.user.username }}</p>
+                        <p>{{ profile.user.username }}</p>
                     {% else %}
                         <a href="{% url 'profile_detail' username=profile.user.username %}">{{ profile.user.username }}</a>
                     {% endif %}

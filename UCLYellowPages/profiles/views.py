@@ -1,32 +1,28 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import TemplateView, UpdateView, ListView
-from django.contrib.auth.views import LoginView
-from django.contrib.auth import logout
-from django.shortcuts import redirect
-from django.urls import reverse_lazy
-from django.db.models import Q
-from django.contrib.auth.models import User
-from .models import UserData, ProfileView
-from django.shortcuts import get_object_or_404, render
-from django.contrib.auth import login as auth_login
-from django import forms
-import re
-from .forms import CustomUserCreationForm, UserDataForm
-from django.contrib import messages
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic.edit import UpdateView
-from django.views.generic import UpdateView
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.urls import reverse_lazy
-from django.contrib import messages
-from django.http import JsonResponse
 import json
+import logging
+import re
 import secrets
-from django.core.mail import send_mail
-from django.views.decorators.http import require_POST
-from django.views.decorators.csrf import csrf_protect
+
+from django import forms
 from django.conf import settings
-from django.http import Http404
+from django.contrib import messages
+from django.contrib.auth import login as auth_login, logout
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.models import User
+from django.contrib.auth.views import LoginView
+from django.core.mail import send_mail
+from django.db.models import Q
+from django.http import Http404, JsonResponse
+from django.shortcuts import get_object_or_404, redirect, render
+from django.urls import reverse_lazy
+from django.views.decorators.http import require_POST
+from django.views.generic import ListView, TemplateView, UpdateView
+
+from .forms import UCL_EMAIL_REGEX, CustomUserCreationForm, UserDataForm
+from .models import ProfileView, UserData
+
+logger = logging.getLogger(__name__)
 
 
 def register(request):
@@ -79,7 +75,6 @@ class ProfileEditView(LoginRequiredMixin, UpdateView):
 
 class HistoryView(LoginRequiredMixin, TemplateView):
     template_name = 'history.html'
-    context_object_name = 'profiles'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -107,32 +102,32 @@ class SearchView(LoginRequiredMixin, ListView):
 
     def get_queryset(self):
         query = self.request.GET.get('q', '')
-        if query:
-            try:
-                viewer_data = UserData.objects.get(user=self.request.user)
-            except UserData.DoesNotExist:
-                return UserData.objects.none()
+        if not query:
+            return UserData.objects.none()
 
-            queryset = UserData.objects.filter(
-                Q(user__username__icontains=query) |
-                Q(name__icontains=query) |
-                Q(discord__icontains=query) |
-                Q(email__icontains=query) |
-                Q(instagram__icontains=query) |
-                Q(whatsapp__icontains=query),
-                user__is_active=True
-            ).exclude(user=self.request.user)
+        try:
+            viewer_data = UserData.objects.get(user=self.request.user)
+        except UserData.DoesNotExist:
+            return UserData.objects.none()
 
-            # Filter based on profile visibility
-            filtered_queryset = [
-                profile for profile in queryset
-                if profile.is_profile_visible_to(self.request.user, viewer_data)
-            ]
+        queryset = UserData.objects.filter(
+            Q(user__username__icontains=query) |
+            Q(name__icontains=query) |
+            Q(discord__icontains=query) |
+            Q(email__icontains=query) |
+            Q(instagram__icontains=query) |
+            Q(whatsapp__icontains=query),
+            user__is_active=True
+        ).exclude(user=self.request.user).select_related('user', 'course__department__faculty')
 
-            return filtered_queryset
-        return UserData.objects.none()
+        # Filter based on profile visibility
+        return [
+            profile for profile in queryset
+            if profile.is_profile_visible_to(self.request.user, viewer_data)
+        ]
 
 
+@login_required
 def profile_view(request, username):
     user = get_object_or_404(User, username=username, is_active=True)
 
@@ -142,14 +137,13 @@ def profile_view(request, username):
     except UserData.DoesNotExist:
         raise Http404("Profile does not exist")
 
-    # Check profile visibility
-    if not profile.is_profile_visible_to(request.user, viewer_data) and request.user != user:
+    if not profile.is_profile_visible_to(request.user, viewer_data):
         raise Http404("Profile is not visible")
 
     # Track profile view
     if profile.track_profile_views and request.user != user:
         ProfileView.objects.create(
-            profile=profile,  # Ensure this is UserData instance
+            profile=profile,
             viewer=request.user,
             ip_address=request.META.get('REMOTE_ADDR')
         )
@@ -163,54 +157,42 @@ def profile_view(request, username):
     return render(request, 'profile_detail.html', context)
 
 
-@csrf_protect
 @require_POST
 def send_verification_code(request):
     try:
         data = json.loads(request.body)
-        email = data.get('email', '')
-
-        # Validate email
-        if not re.match(r'^[a-zA-Z0-9._%+-]+@ucl\.ac\.uk$', email):
-            return JsonResponse({
-                'status': 'error',
-                'message': 'Invalid UCL email address'
-            }, status=400)
-
-        # Generate verification code
-        verification_code = ''.join(secrets.choice('0123456789') for _ in range(6))
-
-        # Store verification code in session
-        request.session['verification_code'] = verification_code
-        request.session['verification_email'] = email
-
-        # Send email
-        try:
-            send_mail(
-                'UCL Yellow Pages - Verification Code',
-                f'Your verification code is: {verification_code}',
-                settings.DEFAULT_FROM_EMAIL,
-                [email]
-            )
-        except Exception as email_error:
-            # Log the email sending error
-            print(f"Email sending failed: {email_error}")
-            return JsonResponse({
-                'status': 'error',
-                'message': 'Failed to send verification email'
-            }, status=500)
-
-        return JsonResponse({'status': 'success'})
-
     except json.JSONDecodeError:
         return JsonResponse({
             'status': 'error',
             'message': 'Invalid JSON data'
         }, status=400)
-    except Exception as e:
-        # Log the error for debugging
-        print(f"Verification code send error: {e}")
+
+    email = data.get('email', '')
+    if not re.match(UCL_EMAIL_REGEX, email):
         return JsonResponse({
             'status': 'error',
-            'message': 'An unexpected error occurred'
+            'message': 'Invalid UCL email address'
+        }, status=400)
+
+    verification_code = ''.join(secrets.choice('0123456789') for _ in range(6))
+
+    # Store verification code in session; CustomUserCreationForm checks it on submit
+    request.session['verification_code'] = verification_code
+    request.session['verification_email'] = email
+
+    try:
+        send_mail(
+            'UCL Yellow Pages - Verification Code',
+            f'Your verification code is: {verification_code}\n\n'
+            f'The UCL Yellow Pages team will NEVER ask for any details or send links.',
+            settings.DEFAULT_FROM_EMAIL,
+            [email]
+        )
+    except Exception:
+        logger.exception("Failed to send verification email to %s", email)
+        return JsonResponse({
+            'status': 'error',
+            'message': 'Failed to send verification email'
         }, status=500)
+
+    return JsonResponse({'status': 'success'})

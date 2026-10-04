@@ -14,7 +14,6 @@ class CourseAdmin(admin.ModelAdmin):
     filter_horizontal = ['students']
 
 
-
 admin.site.register(Faculty, FacultyAdmin)
 admin.site.register(Department, DepartmentAdmin)
 admin.site.register(Course, CourseAdmin)
