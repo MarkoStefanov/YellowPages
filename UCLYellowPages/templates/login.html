@@ -4,9 +4,9 @@
 
 {% block content %}
 <div class="auth">
-    <div class="panel">
-        <h1>Log in</h1>
-        <p>Use the UCL email you signed up with.</p>
+    <div class="card card-body">
+        <h1 class="auth-title">Log in</h1>
+        <p class="muted">Use the UCL email you signed up with.</p>
 
         <form method="post" class="form">
             {% csrf_token %}
@@ -15,10 +15,9 @@
             {% endfor %}
             {% include '_field.html' with field=form.username label='UCL email' %}
             {% include '_field.html' with field=form.password label='Password' %}
-            <div><button type="submit" class="btn">Log in</button></div>
+            <button type="submit" class="btn">Log in</button>
         </form>
-
-        <p class="auth-switch">No account yet? <a href="{% url 'register' %}">Sign up</a></p>
     </div>
+    <p class="auth-switch">Don't have an account? <a href="{% url 'register' %}">Sign up</a></p>
 </div>
 {% endblock %}

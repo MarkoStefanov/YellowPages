@@ -3,63 +3,66 @@
 
 {% block title %}{{ profile|display_name }} - UCL Yellow Pages{% endblock %}
 
-{% block content %}
-<div class="narrow">
-    <a class="back" href="{% url 'search' %}">&larr; Search</a>
-
-    <article class="panel">
-        <header class="listing-head">
-            <h1>{{ profile|display_name }}</h1>
-            {% if profile.course %}
-                <p>{{ profile.course }}, {{ profile.course.department }}</p>
-            {% endif %}
-            <p class="muted">{{ user_profile.username }}</p>
-        </header>
-
-        {% if profile.email or profile.whatsapp or profile.instagram or profile.discord %}
-            <dl class="details">
-                {% if profile.whatsapp %}
-                    <div>
-                        <dt>WhatsApp</dt>
-                        <dd><a href="https://wa.me/{{ profile.whatsapp|cut:'+' }}" target="_blank" rel="noopener">{{ profile.whatsapp }}</a></dd>
-                        <button type="button" class="link-btn" data-copy="{{ profile.whatsapp }}">Copy</button>
-                    </div>
-                {% endif %}
-                {% if profile.instagram %}
-                    <div>
-                        <dt>Instagram</dt>
-                        <dd><a href="https://instagram.com/{{ profile.instagram|cut:'@' }}" target="_blank" rel="noopener">@{{ profile.instagram|cut:'@' }}</a></dd>
-                        <button type="button" class="link-btn" data-copy="@{{ profile.instagram|cut:'@' }}">Copy</button>
-                    </div>
-                {% endif %}
-                {% if profile.discord %}
-                    <div>
-                        <dt>Discord</dt>
-                        <dd>{{ profile.discord }}</dd>
-                        <button type="button" class="link-btn" data-copy="{{ profile.discord }}">Copy</button>
-                    </div>
-                {% endif %}
-                {% if profile.email %}
-                    <div>
-                        <dt>Email</dt>
-                        <dd><a href="mailto:{{ profile.email }}">{{ profile.email }}</a></dd>
-                        <button type="button" class="link-btn" data-copy="{{ profile.email }}">Copy</button>
-                    </div>
-                {% endif %}
-            </dl>
-        {% else %}
-            <p class="empty muted">
-                {% if is_own_profile %}You haven't added any contact details yet.{% else %}No contact details shared yet.{% endif %}
-            </p>
-        {% endif %}
-
-        {% if is_own_profile %}
-            <div class="listing-foot">
-                <a class="btn btn-outline" href="{% url 'profile-edit' %}">Edit my details</a>
-            </div>
-        {% endif %}
-    </article>
+{% block band %}
+<div class="container band-heading">
+    <a class="back" href="{% url 'search' %}">&larr; Back to search</a>
 </div>
+{% endblock %}
+
+{% block content %}
+<article class="card narrow">
+    <header class="card-body profile-header">
+        <h2>{{ profile|display_name }}</h2>
+        {% if profile.course %}
+            <p>{{ profile.course }} &middot; {{ profile.course.department }}</p>
+        {% endif %}
+        {% if profile.name %}<p class="muted">{{ user_profile.username }}</p>{% endif %}
+    </header>
+
+    {% if profile.email or profile.whatsapp or profile.instagram or profile.discord %}
+        <dl class="details divided">
+            {% if profile.whatsapp %}
+                <div>
+                    <dt>WhatsApp</dt>
+                    <dd><a href="https://wa.me/{{ profile.whatsapp|cut:'+' }}" target="_blank" rel="noopener">{{ profile.whatsapp }}</a></dd>
+                    <button type="button" class="text-btn" data-copy="{{ profile.whatsapp }}">Copy</button>
+                </div>
+            {% endif %}
+            {% if profile.instagram %}
+                <div>
+                    <dt>Instagram</dt>
+                    <dd><a href="https://instagram.com/{{ profile.instagram|cut:'@' }}" target="_blank" rel="noopener">@{{ profile.instagram|cut:'@' }}</a></dd>
+                    <button type="button" class="text-btn" data-copy="@{{ profile.instagram|cut:'@' }}">Copy</button>
+                </div>
+            {% endif %}
+            {% if profile.discord %}
+                <div>
+                    <dt>Discord</dt>
+                    <dd>{{ profile.discord }}</dd>
+                    <button type="button" class="text-btn" data-copy="{{ profile.discord }}">Copy</button>
+                </div>
+            {% endif %}
+            {% if profile.email %}
+                <div>
+                    <dt>Email</dt>
+                    <dd><a href="mailto:{{ profile.email }}">{{ profile.email }}</a></dd>
+                    <button type="button" class="text-btn" data-copy="{{ profile.email }}">Copy</button>
+                </div>
+            {% endif %}
+        </dl>
+    {% else %}
+        <p class="empty divided">
+            {% if is_own_profile %}You haven't added any contact details yet.{% else %}No contact details shared yet.{% endif %}
+        </p>
+    {% endif %}
+
+    {% if is_own_profile %}
+        <div class="form-footer">
+            <span class="muted">This is how others see your profile.</span>
+            <a class="btn btn-secondary" href="{% url 'profile-edit' %}">Edit</a>
+        </div>
+    {% endif %}
+</article>
 
 <script>
 document.querySelectorAll('[data-copy]').forEach(function (button) {

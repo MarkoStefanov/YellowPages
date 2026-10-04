@@ -4,9 +4,9 @@
 
 {% block content %}
 <div class="auth">
-    <div class="panel">
-        <h1>Sign up</h1>
-        <p>You'll need access to your @ucl.ac.uk inbox.</p>
+    <div class="card card-body">
+        <h1 class="auth-title">Create an account</h1>
+        <p class="muted">You'll need access to your @ucl.ac.uk inbox.</p>
 
         <form method="post" class="form">
             {% csrf_token %}
@@ -20,10 +20,10 @@
                 <label for="{{ form.verification_code.id_for_label }}">Verification code</label>
                 <div class="field-row">
                     {{ form.verification_code }}
-                    <button type="button" id="send-code" class="btn btn-outline"
-                            data-url="{% url 'send_verification_code' %}">Email me a code</button>
+                    <button type="button" id="send-code" class="btn btn-secondary"
+                            data-url="{% url 'send_verification_code' %}">Send code</button>
                 </div>
-                <p class="hint" id="code-status" aria-live="polite">Codes last 5 minutes.</p>
+                <p class="hint" id="code-status" aria-live="polite">The code is valid for 5 minutes.</p>
                 {% for error in form.verification_code.errors %}<p class="field-error">{{ error }}</p>{% endfor %}
             </div>
 
@@ -31,14 +31,13 @@
 
             <div class="field-pair">
                 {% include '_field.html' with field=form.password1 label='Password' %}
-                {% include '_field.html' with field=form.password2 label='Password again' %}
+                {% include '_field.html' with field=form.password2 label='Confirm password' %}
             </div>
 
-            <div><button type="submit" class="btn">Create account</button></div>
+            <button type="submit" class="btn">Create account</button>
         </form>
-
-        <p class="auth-switch">Already signed up? <a href="{% url 'login' %}">Log in</a></p>
     </div>
+    <p class="auth-switch">Already have an account? <a href="{% url 'login' %}">Log in</a></p>
 </div>
 
 <script>
@@ -92,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(function (response) { return response.json(); })
         .then(function (data) {
             if (data.status === 'success') {
-                setStatus('Sent to ' + address + '. It may take a minute, and can end up in junk.', 'success');
+                setStatus('Code sent to ' + address + '. Check your junk folder if it doesn\'t arrive.', 'success');
                 code.focus();
                 waitToResend(60);
             } else {

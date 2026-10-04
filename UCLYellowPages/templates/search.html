@@ -3,60 +3,56 @@
 
 {% block title %}Search - UCL Yellow Pages{% endblock %}
 
-{% block content %}
-<div class="page-title">
+{% block band %}
+<div class="container band-heading">
     <h1>Search</h1>
+    <form class="search" method="get" role="search">
+        <input type="search" name="q" value="{{ request.GET.q }}" placeholder="Name, course, department or handle" aria-label="Search">
+        <button type="submit" class="btn">Search</button>
+    </form>
 </div>
+{% endblock %}
 
-<form class="search" method="get" role="search">
-    <input type="search" name="q" value="{{ request.GET.q }}" placeholder="Name, course, department or handle" aria-label="Search the directory">
-    <button type="submit" class="btn">Search</button>
-</form>
+{% block content %}
+<section class="card">
+    <div class="card-header">
+        <h2 class="card-title">
+            {% if request.GET.q %}Results for &ldquo;{{ request.GET.q }}&rdquo;{% else %}All students you can see{% endif %}
+        </h2>
+        {% if profiles %}<span class="muted">{{ paginator.count }}</span>{% endif %}
+    </div>
 
-<section class="panel">
     {% if profiles %}
-        <p class="directory-meta">
-            {% if request.GET.q %}
-                {{ paginator.count }} result{{ paginator.count|pluralize }} for &ldquo;{{ request.GET.q }}&rdquo;
-            {% else %}
-                Everyone you can see ({{ paginator.count }})
-            {% endif %}
-        </p>
-
-        <div class="directory">
-            {% regroup profiles by letter as letters %}
-            {% for group in letters %}
-                <div class="letter-group">
-                    <h2 class="letter">{{ group.grouper }}</h2>
-                    {% for profile in group.list %}
-                        <a class="entry" href="{% url 'profile_detail' username=profile.user.username %}">
-                            <span class="entry-line">
-                                <span class="entry-name">{{ profile|display_name }}</span>
-                                <span class="entry-leader" aria-hidden="true"></span>
-                                <span class="entry-course">{{ profile.course|default:'' }}</span>
-                            </span>
-                            <span class="entry-contacts">{{ profile|contact_methods|default:'No contact details yet' }}</span>
-                        </a>
-                    {% endfor %}
-                </div>
+        <ul class="people">
+            {% for profile in profiles %}
+                <li>
+                    <a class="person" href="{% url 'profile_detail' username=profile.user.username %}">
+                        <span>
+                            <span class="person-name">{{ profile|display_name }}</span>
+                            {% if profile.name %}<span class="person-email">{{ profile.user.username }}</span>{% endif %}
+                        </span>
+                        <span class="person-course">{{ profile.course|default:'' }}</span>
+                        <span class="person-contacts">{{ profile|contact_methods }}</span>
+                    </a>
+                </li>
             {% endfor %}
-        </div>
+        </ul>
 
         {% if is_paginated %}
             <nav class="pager" aria-label="Pages">
-                <span>{% if page_obj.has_previous %}<a href="?q={{ request.GET.q|urlencode }}&page={{ page_obj.previous_page_number }}">&larr; Previous</a>{% endif %}</span>
-                <span class="muted">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
-                <span>{% if page_obj.has_next %}<a href="?q={{ request.GET.q|urlencode }}&page={{ page_obj.next_page_number }}">Next &rarr;</a>{% endif %}</span>
+                <span>{% if page_obj.has_previous %}<a href="?q={{ request.GET.q|urlencode }}&page={{ page_obj.previous_page_number }}">Previous</a>{% endif %}</span>
+                <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+                <span>{% if page_obj.has_next %}<a href="?q={{ request.GET.q|urlencode }}&page={{ page_obj.next_page_number }}">Next</a>{% endif %}</span>
             </nav>
         {% endif %}
     {% else %}
         <div class="empty">
             {% if request.GET.q %}
-                <h2>Nothing for &ldquo;{{ request.GET.q }}&rdquo;</h2>
-                <p class="muted">Check the spelling, or try a course or department. Some students only show up for people on their own course.</p>
+                <strong>No matches</strong>
+                Try a different spelling, or search for a course or department. Some students are only visible to their own course.
             {% else %}
-                <h2>Nobody here yet</h2>
-                <p class="muted">Students on your course, department or faculty will appear once they sign up.</p>
+                <strong>No one to show yet</strong>
+                Students on your course, department or faculty will appear here once they sign up.
             {% endif %}
         </div>
     {% endif %}

@@ -8,21 +8,21 @@
     <link rel="icon" href="{% static 'favicon.svg' %}" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">
-    <link href="{% static 'styles.css' %}?v=4" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="{% static 'styles.css' %}?v=6" rel="stylesheet">
 </head>
 <body>
-    <header class="site-header">
-        <div class="wrap">
-            <a class="wordmark" href="{% url 'home' %}">UCL <span>Yellow Pages</span></a>
-            <nav class="site-nav">
+    <div class="band">
+        <header class="container band-nav">
+            <a class="wordmark" href="{% url 'home' %}">UCL Yellow Pages</a>
+            <nav class="nav">
                 {% if user.is_authenticated %}
                     {% url 'search' as search_url %}
                     {% url 'history' as history_url %}
                     {% url 'profile-edit' as edit_url %}
                     <a href="{{ search_url }}"{% if request.path == search_url %} aria-current="page"{% endif %}>Search</a>
-                    <a href="{{ history_url }}"{% if request.path == history_url %} aria-current="page"{% endif %}>Who viewed me</a>
-                    <a href="{{ edit_url }}"{% if request.path == edit_url %} aria-current="page"{% endif %}>My details</a>
+                    <a href="{{ history_url }}"{% if request.path == history_url %} aria-current="page"{% endif %}>Views</a>
+                    <a href="{{ edit_url }}"{% if request.path == edit_url %} aria-current="page"{% endif %}>Profile</a>
                     <form method="post" action="{% url 'logout' %}">
                         {% csrf_token %}
                         <button type="submit">Log out</button>
@@ -34,20 +34,21 @@
                     <a href="{{ register_url }}"{% if request.path == register_url %} aria-current="page"{% endif %}>Sign up</a>
                 {% endif %}
             </nav>
-        </div>
-    </header>
+        </header>
 
-    <main class="wrap main">
+        {% block band %}{% endblock %}
+    </div>
+
+    <main class="container main">
         {% for message in messages %}
             <p class="notice notice-{{ message.tags }}" role="status">{{ message }}</p>
         {% endfor %}
 
-        {% block content %}
-        {% endblock %}
+        {% block content %}{% endblock %}
     </main>
 
-    <footer class="wrap site-footer">
-        UCL Yellow Pages. Details are added by students and only shown to the people they choose.
+    <footer class="container site-footer">
+        UCL Yellow Pages &middot; Contact details shared by UCL students
     </footer>
 </body>
 </html>

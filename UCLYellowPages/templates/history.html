@@ -1,49 +1,52 @@
 {% extends 'base.html' %}
 {% load profile_extras %}
 
-{% block title %}Who viewed me - UCL Yellow Pages{% endblock %}
+{% block title %}Views - UCL Yellow Pages{% endblock %}
+
+{% block band %}
+<div class="container band-heading">
+    <h1>Profile views</h1>
+    <p>People who have opened your profile.</p>
+</div>
+{% endblock %}
 
 {% block content %}
-<div class="narrow">
-    <div class="page-title">
-        <h1>Who viewed me</h1>
-    </div>
-
-    <section class="panel">
-        {% if error %}
-            <p class="notice notice-error">{{ error }}</p>
-        {% else %}
+<section class="card narrow">
+    {% if error %}
+        <div class="card-body"><p class="notice notice-error">{{ error }}</p></div>
+    {% else %}
+        <div class="card-header">
+            <p class="stat-line">
+                <strong>{{ total_views }}</strong> view{{ total_views|pluralize }}
+                from <strong>{{ unique_viewers }}</strong> {{ unique_viewers|pluralize:"person,people" }}
+            </p>
             {% if not tracking_enabled %}
-                <p class="notice">You've turned off view tracking, so new visits aren't recorded. <a href="{% url 'profile-edit' %}">Change this</a></p>
+                <a class="muted" href="{% url 'profile-edit' %}">Tracking is off</a>
             {% endif %}
+        </div>
 
-            {% if profile_views %}
-                <p class="summary">
-                    <strong>{{ total_views }}</strong> view{{ total_views|pluralize }}
-                    from <strong>{{ unique_viewers }}</strong> {{ unique_viewers|pluralize:"person,people" }}
-                </p>
-                <table>
-                    <thead>
+        {% if profile_views %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th class="col-course">Course</th>
+                        <th>When</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for view in profile_views %}
                         <tr>
-                            <th>Who</th>
-                            <th class="col-course">Course</th>
-                            <th>When</th>
+                            <td>{{ view.viewer|display_name }}</td>
+                            <td class="col-course muted">{{ view.viewer.userdata.course|default:'' }}</td>
+                            <td class="when" title="{{ view.viewed_at|date:'j M Y, H:i' }}">{{ view.viewed_at|timesince }} ago</td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        {% for view in profile_views %}
-                            <tr>
-                                <td>{{ view.viewer|display_name }}</td>
-                                <td class="col-course muted">{{ view.viewer.userdata.course|default:'' }}</td>
-                                <td class="when" title="{{ view.viewed_at|date:'j M Y, H:i' }}">{{ view.viewed_at|timesince }} ago</td>
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            {% else %}
-                <p class="empty muted">Nobody has viewed your details yet.</p>
-            {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p class="empty">No one has viewed your profile yet.</p>
         {% endif %}
-    </section>
-</div>
+    {% endif %}
+</section>
 {% endblock %}
