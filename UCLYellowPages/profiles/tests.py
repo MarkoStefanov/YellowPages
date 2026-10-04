@@ -1,9 +1,13 @@
+import re
+from datetime import timedelta
+
 from django.contrib.auth.models import User
 from django.core import mail
 from django.test import TestCase
 from django.urls import reverse
+from django.utils import timezone
 
-from .models import Course, Department, Faculty, ProfileView, UserData
+from .models import Course, Department, EmailVerification, Faculty, ProfileView, UserData
 
 
 class ProfilesTestCase(TestCase):
@@ -87,37 +91,95 @@ class AuthViewTests(ProfilesTestCase):
         self.assertEqual(response.status_code, 400)
         self.assertEqual(len(mail.outbox), 0)
 
-    def test_register_with_verification_code(self):
-        email = 'new@ucl.ac.uk'
-        response = self.client.post(reverse('send_verification_code'), {'email': email},
-                                    content_type='application/json')
-        self.assertEqual(response.status_code, 200)
-        self.assertEqual(mail.outbox[0].to, [email])
-        code = self.client.session['verification_code']
-        self.assertIn(code, mail.outbox[0].body)
+    def send_code(self, email, client=None):
+        """Request a code for email and return (response, code read from the sent email)."""
+        response = (client or self.client).post(reverse('send_verification_code'), {'email': email},
+                                                content_type='application/json')
+        match = re.search(r'code is: (\d{6})', mail.outbox[-1].body) if mail.outbox else None
+        return response, match and match.group(1)
 
-        response = self.client.post(reverse('register'), {
+    def register(self, email, code, client=None):
+        return (client or self.client).post(reverse('register'), {
             'username': email,
             'password1': self.password,
             'password2': self.password,
             'course': self.cs_bsc.pk,
             'verification_code': code,
         })
+
+    def test_register_with_verification_code(self):
+        email = 'new@ucl.ac.uk'
+        response, code = self.send_code(email)
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(mail.outbox[0].to, [email])
+        self.assertIn('expires in 5 minutes', mail.outbox[0].body)
+
+        response = self.register(email, code)
         self.assertRedirects(response, reverse('home'))
         self.assertEqual(UserData.objects.get(user__username=email).course, self.cs_bsc)
+        # Codes are single use
+        self.assertFalse(EmailVerification.objects.filter(email=email).exists())
+
+    def test_code_is_stored_hashed(self):
+        _, code = self.send_code('new@ucl.ac.uk')
+        self.assertNotIn(code, EmailVerification.objects.get().code_hash)
 
     def test_register_with_wrong_code_fails(self):
-        self.client.post(reverse('send_verification_code'), {'email': 'new@ucl.ac.uk'},
-                         content_type='application/json')
-        response = self.client.post(reverse('register'), {
-            'username': 'new@ucl.ac.uk',
-            'password1': self.password,
-            'password2': self.password,
-            'course': self.cs_bsc.pk,
-            'verification_code': '------',
-        })
-        self.assertEqual(response.status_code, 200)
+        self.send_code('new@ucl.ac.uk')
+        response = self.register('new@ucl.ac.uk', '------')
+        self.assertContains(response, 'Incorrect verification code.')
         self.assertFalse(User.objects.filter(username='new@ucl.ac.uk').exists())
+
+    def test_expired_code_is_rejected(self):
+        _, code = self.send_code('new@ucl.ac.uk')
+        EmailVerification.objects.update(expires_at=timezone.now() - timedelta(seconds=1))
+        response = self.register('new@ucl.ac.uk', code)
+        self.assertContains(response, 'It may have expired')
+        self.assertFalse(User.objects.filter(username='new@ucl.ac.uk').exists())
+
+    def test_code_expires_after_five_minutes(self):
+        before = timezone.now()
+        self.send_code('new@ucl.ac.uk')
+        expires_at = EmailVerification.objects.get().expires_at
+        self.assertAlmostEqual((expires_at - before).total_seconds(), 300, delta=5)
+
+    def test_too_many_wrong_attempts_locks_the_code(self):
+        _, code = self.send_code('new@ucl.ac.uk')
+        for _ in range(EmailVerification.MAX_ATTEMPTS):
+            self.register('new@ucl.ac.uk', '000000' if code != '000000' else '111111')
+        response = self.register('new@ucl.ac.uk', code)
+        self.assertContains(response, 'Too many incorrect attempts')
+
+    def test_resend_has_cooldown(self):
+        self.send_code('new@ucl.ac.uk')
+        response, _ = self.send_code('new@ucl.ac.uk')
+        self.assertEqual(response.status_code, 429)
+        self.assertEqual(len(mail.outbox), 1)
+
+        # Once the cooldown passes, a new code replaces the old one
+        EmailVerification.objects.update(created_at=timezone.now() - EmailVerification.RESEND_COOLDOWN)
+        response, new_code = self.send_code('new@ucl.ac.uk')
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(EmailVerification.objects.count(), 1)
+        self.assertRedirects(self.register('new@ucl.ac.uk', new_code), reverse('home'))
+
+    def test_several_people_can_verify_at_once(self):
+        a, b = self.client_class(), self.client_class()
+        _, code_a = self.send_code('a@ucl.ac.uk', a)
+        _, code_b = self.send_code('b@ucl.ac.uk', b)
+        self.assertEqual(EmailVerification.objects.count(), 2)
+
+        # Each code only works for its own email, whichever browser submits it
+        if code_a != code_b:
+            self.assertContains(self.register('a@ucl.ac.uk', code_b, a), 'Incorrect verification code.')
+        self.assertRedirects(self.register('b@ucl.ac.uk', code_b, a), reverse('home'))
+        self.assertRedirects(self.register('a@ucl.ac.uk', code_a, b), reverse('home'))
+
+    def test_cannot_request_code_for_existing_account(self):
+        self.make_user('taken@ucl.ac.uk', self.cs_bsc)
+        response, _ = self.send_code('taken@ucl.ac.uk')
+        self.assertEqual(response.status_code, 409)
+        self.assertEqual(len(mail.outbox), 0)
 
 
 class ProfileViewTests(ProfilesTestCase):
@@ -131,6 +193,19 @@ class ProfileViewTests(ProfilesTestCase):
 
         response = self.client.get(reverse('search'), {'q': 'Owner'})
         self.assertEqual([p.pk for p in response.context['profiles']], [self.owner.pk])
+
+    def test_empty_search_lists_everyone_visible(self):
+        self.make_user('hidden@ucl.ac.uk', self.physics_bsc, name='Hidden')
+        other = self.make_user('other@ucl.ac.uk', self.physics_bsc, name='Other', profile_visibility='ALL')
+
+        response = self.client.get(reverse('search'))
+        self.assertEqual({p.pk for p in response.context['profiles']}, {self.owner.pk, other.pk})
+
+    def test_search_matches_course_department_and_faculty(self):
+        for query in ('Computer Science BSc', 'computer science', 'engineering'):
+            with self.subTest(query=query):
+                response = self.client.get(reverse('search'), {'q': query})
+                self.assertEqual([p.pk for p in response.context['profiles']], [self.owner.pk])
 
     def test_viewing_profile_is_recorded_in_history(self):
         url = reverse('profile_detail', args=['owner@ucl.ac.uk'])

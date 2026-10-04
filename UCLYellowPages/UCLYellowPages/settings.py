@@ -16,6 +16,14 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Load KEY=value lines from .env (not committed) without overriding real environment variables.
+_env_file = BASE_DIR / '.env'
+if _env_file.exists():
+    for _line in _env_file.read_text(encoding='utf-8').splitlines():
+        _key, _sep, _value = _line.partition('=')
+        if _sep and not _key.strip().startswith('#'):
+            os.environ.setdefault(_key.strip(), _value.strip().strip('"\''))
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
@@ -79,7 +87,7 @@ WSGI_APPLICATION = 'UCLYellowPages.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': os.environ.get('DJANGO_DB_PATH', BASE_DIR / 'db.sqlite3'),
     }
 }
 
@@ -133,12 +141,14 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', 'UCL.Yellow.Pages@gmail.com')
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', '')
+# Gmail shows app passwords with spaces; SMTP wants them without
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', '').replace(' ', '')
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 EMAIL_BACKEND = (
     'django.core.mail.backends.smtp.EmailBackend' if EMAIL_HOST_PASSWORD
     else 'django.core.mail.backends.console.EmailBackend'
 )
+EMAIL_TIMEOUT = 15
 
 LOGGING = {
     'version': 1,

@@ -1,9 +1,7 @@
 import json
 import logging
 import re
-import secrets
 
-from django import forms
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import login as auth_login, logout
@@ -20,25 +18,20 @@ from django.views.decorators.http import require_POST
 from django.views.generic import ListView, TemplateView, UpdateView
 
 from .forms import UCL_EMAIL_REGEX, CustomUserCreationForm, UserDataForm
-from .models import ProfileView, UserData
+from .models import EmailVerification, ProfileView, UserData, VerificationError
 
 logger = logging.getLogger(__name__)
 
 
 def register(request):
     if request.method == 'POST':
-        form = CustomUserCreationForm(request.POST, request=request)
-        try:
-            if form.is_valid():
-                user = form.save()
-                course = form.cleaned_data['course']
+        form = CustomUserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            UserData.objects.create(user=user, course=form.cleaned_data['course'])
 
-                UserData.objects.create(user=user, course=course)
-
-                auth_login(request, user)
-                return redirect('home')
-        except forms.ValidationError as e:
-            messages.error(request, str(e))
+            auth_login(request, user)
+            return redirect('home')
     else:
         form = CustomUserCreationForm()
 
@@ -101,24 +94,30 @@ class SearchView(LoginRequiredMixin, ListView):
     paginate_by = 10
 
     def get_queryset(self):
-        query = self.request.GET.get('q', '')
-        if not query:
-            return UserData.objects.none()
+        query = self.request.GET.get('q', '').strip()
 
         try:
             viewer_data = UserData.objects.get(user=self.request.user)
         except UserData.DoesNotExist:
             return UserData.objects.none()
 
-        queryset = UserData.objects.filter(
-            Q(user__username__icontains=query) |
-            Q(name__icontains=query) |
-            Q(discord__icontains=query) |
-            Q(email__icontains=query) |
-            Q(instagram__icontains=query) |
-            Q(whatsapp__icontains=query),
-            user__is_active=True
-        ).exclude(user=self.request.user).select_related('user', 'course__department__faculty')
+        queryset = (UserData.objects.filter(user__is_active=True)
+                    .exclude(user=self.request.user)
+                    .select_related('user', 'course__department__faculty')
+                    .order_by('name', 'user__username'))
+        # With no query, list everyone the viewer is allowed to see
+        if query:
+            queryset = queryset.filter(
+                Q(user__username__icontains=query) |
+                Q(name__icontains=query) |
+                Q(discord__icontains=query) |
+                Q(email__icontains=query) |
+                Q(instagram__icontains=query) |
+                Q(whatsapp__icontains=query) |
+                Q(course__name__icontains=query) |
+                Q(course__department__name__icontains=query) |
+                Q(course__department__faculty__name__icontains=query)
+            )
 
         # Filter based on profile visibility
         return [
@@ -167,29 +166,38 @@ def send_verification_code(request):
             'message': 'Invalid JSON data'
         }, status=400)
 
-    email = data.get('email', '')
+    email = str(data.get('email', '')).strip()
     if not re.match(UCL_EMAIL_REGEX, email):
         return JsonResponse({
             'status': 'error',
             'message': 'Invalid UCL email address'
         }, status=400)
 
-    verification_code = ''.join(secrets.choice('0123456789') for _ in range(6))
+    if User.objects.filter(username__iexact=email).exists():
+        return JsonResponse({
+            'status': 'error',
+            'message': 'An account with this email already exists. Try logging in.'
+        }, status=409)
 
-    # Store verification code in session; CustomUserCreationForm checks it on submit
-    request.session['verification_code'] = verification_code
-    request.session['verification_email'] = email
+    try:
+        verification_code = EmailVerification.issue(email)
+    except VerificationError as e:
+        return JsonResponse({'status': 'error', 'message': str(e)}, status=429)
 
+    minutes = int(EmailVerification.LIFETIME.total_seconds() // 60)
     try:
         send_mail(
             'UCL Yellow Pages - Verification Code',
             f'Your verification code is: {verification_code}\n\n'
+            f'It expires in {minutes} minutes.\n\n'
             f'The UCL Yellow Pages team will NEVER ask for any details or send links.',
             settings.DEFAULT_FROM_EMAIL,
             [email]
         )
     except Exception:
         logger.exception("Failed to send verification email to %s", email)
+        # Let the user retry straight away rather than waiting out the cooldown
+        EmailVerification.objects.filter(email=email).delete()
         return JsonResponse({
             'status': 'error',
             'message': 'Failed to send verification email'

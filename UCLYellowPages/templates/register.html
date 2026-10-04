@@ -28,11 +28,19 @@
             <br>
             <div class="code-group">
                 <input type="text" name="verification_code" id="id_verification_code"
-                       placeholder="Enter verification code">
+                       placeholder="Enter verification code" inputmode="numeric"
+                       autocomplete="one-time-code" maxlength="6">
                 <button type="button" id="sendVerificationBtn" class="pri-button">
                     Send Code
                 </button>
             </div>
+            {% if form.verification_code.errors %}
+                <div class="alert alert-danger">
+                    {% for error in form.verification_code.errors %}
+                        {{ error }}
+                    {% endfor %}
+                </div>
+            {% endif %}
 
             <button type="submit" class="button">Register</button>
             <div class="general-link">
@@ -70,15 +78,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 email: usernameField.value
             })
         })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
+        .then(response => response.json())
         .then(data => {
             if (data.status === 'success') {
-                alert('Verification code sent to your email');
+                alert('Verification code sent to your email. It expires in 5 minutes.');
                 verificationCodeField.focus();
             } else {
                 alert(data.message || 'Failed to send verification code');
