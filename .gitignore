@@ -1,14 +1,17 @@
-*.pyc
-*.pyo
-*.pyd
+# Python
 __pycache__/
-db.sqlite3
-.env
+*.py[cod]
+.venv/
+venv/
+
+# Django local state
 *.sqlite3
 *.log
-.vscode/
+staticfiles/
+.env
+
+# Editors / OS
 .idea/
-*.DS_Store
-*.venv
-*.env
-node_modules/
+*.iml
+.vscode/
+.DS_Store
