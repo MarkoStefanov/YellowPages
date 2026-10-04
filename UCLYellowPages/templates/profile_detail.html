@@ -1,82 +1,101 @@
 {% extends 'base.html' %}
+{% load profile_extras %}
 
-{% block title %}{{ user_profile.username }}'s Profile - UCL Yellow Pages{% endblock %}
+{% block title %}{{ profile|display_name }} - UCL Yellow Pages{% endblock %}
 
 {% block content %}
-<div class="general-container">
-    <div class="general-card">
-        <h2 class="general-title">
-            {% if profile.name %}
-                {{ profile.name }}'s Profile
-            {% else %}
-                {{ user_profile.username }}'s Profile
-                {% if user_profile.first_name or user_profile.last_name %}
-                    <small class="subtitle">({{ user_profile.first_name }} {{ user_profile.last_name }})</small>
+<div class="narrow">
+    <a class="back-link" href="{% url 'search' %}">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+        Back to search
+    </a>
+
+    <section class="card card-pad">
+        <div class="profile-head">
+            <span class="avatar avatar-lg" style="--hue: {{ profile|avatar_hue }}">{{ profile|initials }}</span>
+            <div>
+                <h1>{{ profile|display_name }}</h1>
+                <p class="muted">{{ user_profile.username }}</p>
+                {% if profile.course %}
+                    <div class="chips course-line">
+                        <span class="chip">{{ profile.course }}</span>
+                        <span class="chip">{{ profile.course.department }}</span>
+                    </div>
                 {% endif %}
+            </div>
+            {% if is_own_profile %}
+                <a class="btn btn-secondary btn-sm profile-edit" href="{% url 'profile-edit' %}">Edit profile</a>
             {% endif %}
-        </h2>
+        </div>
 
-        <ul class="profile-details">
-            {% if profile.name %}
-                <strong>Name:</strong>
-                <li>{{ profile.name }}</li>
-            {% endif %}
-
-            {% if profile.course %}
-                <strong>Course:</strong>
-                <li>
-                    {{ profile.course }}
-                </li>
-            {% endif %}
-
-            {% if profile.email %}
-                <strong>Email:</strong>
-                <li>
-                    <a id="email" href="mailto:{{ profile.email }}">{{ profile.email }}</a>
-                    <button class="copy-button" onclick="copyToClipboard('email')">📋</button>
-                </li>
-            {% endif %}
-
-            {% if profile.whatsapp %}
-                <strong>Phone (WhatsApp):</strong>
-                <li>
-                    <a id="whatsapp" href="tel:{{ profile.whatsapp }}">{{ profile.whatsapp }}</a>
-                    <button class="copy-button" onclick="copyToClipboard('whatsapp')">📋</button>
-                </li>
-                
-            {% endif %}
-
-            {% if profile.instagram %}
-                <strong>Instagram:</strong> 
-                <li>
-                    <a id="instagram" href="https://instagram.com/{{ profile.instagram }}" target="_blank">@{{ profile.instagram }}</a>
-                    <button class="copy-button" onclick="copyToClipboard('instagram')">📋</button>
-                </li>
-            {% endif %}
-
-            {% if profile.discord %}
-                <strong>Discord:</strong> 
-                <li>
-                    <span id="discord">{{ profile.discord }}</span>
-                    <button class="copy-button" onclick="copyToClipboard('discord')">📋</button>
-                </li>
-            {% endif %}
-        </ul>
-
-        {% if is_own_profile %}
-            <a href="{% url 'profile-edit' %}" class="button">Edit Profile</a>
+        {% if profile.email or profile.whatsapp or profile.instagram or profile.discord %}
+            <ul>
+                {% if profile.whatsapp %}
+                    <li class="contact">
+                        <span class="contact-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.3 7.5L3 21l2-5.6A8.5 8.5 0 1 1 21 11.5z"/></svg></span>
+                        <div class="contact-body">
+                            <span class="contact-label">WhatsApp</span>
+                            <a class="contact-value" href="https://wa.me/{{ profile.whatsapp|cut:'+' }}" target="_blank" rel="noopener">{{ profile.whatsapp }}</a>
+                        </div>
+                        <button type="button" class="icon-btn" data-copy="{{ profile.whatsapp }}" aria-label="Copy WhatsApp number">{% include '_copy_icon.html' %}</button>
+                    </li>
+                {% endif %}
+                {% if profile.instagram %}
+                    <li class="contact">
+                        <span class="contact-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/></svg></span>
+                        <div class="contact-body">
+                            <span class="contact-label">Instagram</span>
+                            <a class="contact-value" href="https://instagram.com/{{ profile.instagram|cut:'@' }}" target="_blank" rel="noopener">@{{ profile.instagram|cut:'@' }}</a>
+                        </div>
+                        <button type="button" class="icon-btn" data-copy="@{{ profile.instagram|cut:'@' }}" aria-label="Copy Instagram handle">{% include '_copy_icon.html' %}</button>
+                    </li>
+                {% endif %}
+                {% if profile.discord %}
+                    <li class="contact">
+                        <span class="contact-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 12h.01M16 12h.01"/><path d="M7.5 7.5c3-1 6-1 9 0M7.5 16.5c3 1 6 1 9 0"/><path d="M15.5 17.5 17 20c2.5-.8 4.5-2.3 5-3 0-6-1.5-9.5-3-11.5-1.5-1-3-1.5-4.5-1.5l-.5 1.5M8.5 17.5 7 20c-2.5-.8-4.5-2.3-5-3 0-6 1.5-9.5 3-11.5C6.5 4.5 8 4 9.5 4l.5 1.5"/></svg></span>
+                        <div class="contact-body">
+                            <span class="contact-label">Discord</span>
+                            <span class="contact-value">{{ profile.discord }}</span>
+                        </div>
+                        <button type="button" class="icon-btn" data-copy="{{ profile.discord }}" aria-label="Copy Discord username">{% include '_copy_icon.html' %}</button>
+                    </li>
+                {% endif %}
+                {% if profile.email %}
+                    <li class="contact">
+                        <span class="contact-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
+                        <div class="contact-body">
+                            <span class="contact-label">Email</span>
+                            <a class="contact-value" href="mailto:{{ profile.email }}">{{ profile.email }}</a>
+                        </div>
+                        <button type="button" class="icon-btn" data-copy="{{ profile.email }}" aria-label="Copy email address">{% include '_copy_icon.html' %}</button>
+                    </li>
+                {% endif %}
+            </ul>
+        {% else %}
+            <div class="empty">
+                <h2>No contact details yet</h2>
+                <p>{% if is_own_profile %}Add your WhatsApp, Instagram, Discord or email so people can reach you.{% else %}This student hasn't shared any contact details.{% endif %}</p>
+            </div>
         {% endif %}
-    </div>
+    </section>
 </div>
 
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
 <script>
-    function copyToClipboard(elementId) {
-        const text = document.getElementById(elementId).innerText;
-        navigator.clipboard.writeText(text).then(() => {
-            alert("Copied: " + text);
-        }).catch(err => {
-            console.error("Error copying text: ", err);
+document.querySelectorAll('[data-copy]').forEach(function (button) {
+    button.addEventListener('click', function () {
+        const toast = document.getElementById('toast');
+        navigator.clipboard.writeText(button.dataset.copy).then(function () {
+            toast.textContent = 'Copied ' + button.dataset.copy;
+        }, function () {
+            toast.textContent = 'Could not copy to the clipboard';
+        }).finally(function () {
+            toast.classList.add('show');
+            clearTimeout(toast.hideTimer);
+            toast.hideTimer = setTimeout(function () { toast.classList.remove('show'); }, 2000);
         });
-    }
+    });
+});
 </script>
 {% endblock %}

@@ -1,10 +1,49 @@
 {% extends 'base.html' %}
 
-{% block title %}
-Welcome to UCL Yellow Pages
-{% endblock %}
-
 {% block content %}
-<h1>Welcome to UCL Yellow Pages</h1>
-<p>This is the home page for UCL Yellow Pages. Use the navigation links above to access different features of the app.</p>
+<section class="hero">
+    <span class="eyebrow">For UCL students</span>
+    <h1>Find your coursemates, <span class="highlight">fast</span>.</h1>
+    <p class="lead">
+        Share your WhatsApp, Instagram, Discord and email with people on your course,
+        department or faculty, and decide who gets to see them.
+    </p>
+
+    {% if user.is_authenticated %}
+        <form class="search-bar" method="get" action="{% url 'search' %}" role="search">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+            <input type="search" name="q" placeholder="Search by name, course or handle" aria-label="Search students">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+    {% else %}
+        <div class="hero-actions">
+            <a class="btn btn-primary btn-lg" href="{% url 'register' %}">Create an account</a>
+            <a class="btn btn-secondary btn-lg" href="{% url 'login' %}">Log in</a>
+        </div>
+    {% endif %}
+</section>
+
+<section class="features">
+    <div class="card feature">
+        <div class="feature-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+        </div>
+        <h2>UCL students only</h2>
+        <p>Every account is verified with a code sent to an @ucl.ac.uk address.</p>
+    </div>
+    <div class="card feature">
+        <div class="feature-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+        </div>
+        <h2>You choose who sees you</h2>
+        <p>Show your profile to everyone, your faculty, your department, your course or no one.</p>
+    </div>
+    <div class="card feature">
+        <div class="feature-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>
+        </div>
+        <h2>See who looked you up</h2>
+        <p>Your history page lists who viewed your profile, and you can switch tracking off.</p>
+    </div>
+</section>
 {% endblock %}

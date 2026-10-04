@@ -47,8 +47,14 @@ class CustomLoginView(LoginView):
     template_name = 'login.html'
     redirect_authenticated_user = True
 
+    def get_form(self, form_class=None):
+        form = super().get_form(form_class)
+        form.fields['username'].widget.attrs.update({'placeholder': 'name@ucl.ac.uk', 'autocomplete': 'email'})
+        return form
+
     def get_success_url(self):
-        return reverse_lazy('home')
+        # Go back to the page that asked for a login, if any
+        return self.get_redirect_url() or reverse_lazy('home')
 
 
 class ProfileEditView(LoginRequiredMixin, UpdateView):
@@ -62,7 +68,7 @@ class ProfileEditView(LoginRequiredMixin, UpdateView):
 
     def form_valid(self, form):
         response = super().form_valid(form)
-        messages.success(self.request, 'Profile updated successfully!')
+        messages.success(self.request, 'Your profile has been saved.')
         return response
 
 
@@ -74,10 +80,13 @@ class HistoryView(LoginRequiredMixin, TemplateView):
 
         try:
             user_profile = UserData.objects.get(user=self.request.user)
-            profile_views = ProfileView.objects.filter(profile=user_profile).order_by('-viewed_at')
+            profile_views = (ProfileView.objects.filter(profile=user_profile)
+                             .select_related('viewer__userdata')
+                             .order_by('-viewed_at'))
 
             context['profile_views'] = profile_views
             context['total_views'] = profile_views.count()
+            context['unique_viewers'] = profile_views.values('viewer').distinct().count()
             context['tracking_enabled'] = user_profile.track_profile_views
 
         except UserData.DoesNotExist:

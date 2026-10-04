@@ -1,56 +1,67 @@
 {% extends 'base.html' %}
+{% load profile_extras %}
 
 {% block title %}Search - UCL Yellow Pages{% endblock %}
 
 {% block content %}
-<div class="general-container">
-    <div class="general-card">
-        <h2 class="general-title">Search Students</h2>
-        <form method="GET" class="form-group">
-            <input type="text" name="q" placeholder="Search by name, email, etc." value="{{ request.GET.q }}">
-            <button type="submit" class="sec-button">Search</button>
-        </form>
-    </div>
+<div class="page-header">
+    <h1>Find students</h1>
+    <p class="muted">Search by name, handle, course, department or faculty.</p>
 </div>
 
+<form class="search-bar" method="get" role="search">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    <input type="search" name="q" value="{{ request.GET.q }}" placeholder="Try &ldquo;Computer Science&rdquo; or a name" aria-label="Search students">
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+
 {% if profiles %}
-    <div class="grid-container">
+    <p class="result-count muted">
+        {{ paginator.count }} student{{ paginator.count|pluralize }}
+        {% if request.GET.q %}matching &ldquo;{{ request.GET.q }}&rdquo;{% else %}you can see{% endif %}
+    </p>
+
+    <div class="person-grid">
         {% for profile in profiles %}
-            <div class="profile-card">
-                <div class="profile-header">
-                    <h3>
-                    {% if profile.name %}
-                        <a href="{% url 'profile_detail' username=profile.user.username %}">{{ profile.name }}</a>
-                        <p>{{ profile.user.username }}</p>
-                    {% else %}
-                        <a href="{% url 'profile_detail' username=profile.user.username %}">{{ profile.user.username }}</a>
+            <a class="card person-card" href="{% url 'profile_detail' username=profile.user.username %}">
+                <span class="avatar" style="--hue: {{ profile|avatar_hue }}">{{ profile|initials }}</span>
+                <div class="person-meta">
+                    <h2 class="person-name">{{ profile|display_name }}</h2>
+                    <p class="person-sub">{% if profile.course %}{{ profile.course }}{% else %}{{ profile.user.username }}{% endif %}</p>
+                    {% if profile.whatsapp or profile.instagram or profile.discord or profile.email %}
+                        <div class="chips">
+                            {% if profile.whatsapp %}<span class="chip">WhatsApp</span>{% endif %}
+                            {% if profile.instagram %}<span class="chip">Instagram</span>{% endif %}
+                            {% if profile.discord %}<span class="chip">Discord</span>{% endif %}
+                            {% if profile.email %}<span class="chip">Email</span>{% endif %}
+                        </div>
                     {% endif %}
-                    </h3>
                 </div>
-                <div class="profile-actions">
-                    <a href="{% url 'profile_detail' username=profile.user.username %}" class="ter-button">View Full Profile</a>
-                </div>
-            </div>
+                <svg class="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+            </a>
         {% endfor %}
     </div>
 
     {% if is_paginated %}
-        <div class="pagination-container">
+        <nav class="pagination" aria-label="Pages">
             {% if page_obj.has_previous %}
-                <a class="pagination-btn" href="?q={{ request.GET.q }}&page=1">&laquo; First</a>
-                <a class="pagination-btn" href="?q={{ request.GET.q }}&page={{ page_obj.previous_page_number }}">Previous</a>
+                <a class="btn btn-secondary btn-sm" href="?q={{ request.GET.q|urlencode }}&page={{ page_obj.previous_page_number }}">Previous</a>
             {% endif %}
-            
-            <span class="pagination-info">{{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
-            
+            <span class="page-info">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
             {% if page_obj.has_next %}
-                <a class="pagination-btn" href="?q={{ request.GET.q }}&page={{ page_obj.next_page_number }}">Next</a>
-                <a class="pagination-btn" href="?q={{ request.GET.q }}&page={{ page_obj.paginator.num_pages }}">Last &raquo;</a>
+                <a class="btn btn-secondary btn-sm" href="?q={{ request.GET.q|urlencode }}&page={{ page_obj.next_page_number }}">Next</a>
             {% endif %}
-        </div>
+        </nav>
     {% endif %}
-
-{% elif request.GET.q %}
-    <div class="alert alert-info">No results found for your search.</div>
+{% else %}
+    <div class="empty">
+        {% if request.GET.q %}
+            <h2>No students match &ldquo;{{ request.GET.q }}&rdquo;</h2>
+            <p>Try a different name or course. Some students only show their profile to their own course.</p>
+        {% else %}
+            <h2>No one to show yet</h2>
+            <p>When students on your course, department or faculty sign up, they'll appear here.</p>
+        {% endif %}
+    </div>
 {% endif %}
 {% endblock %}

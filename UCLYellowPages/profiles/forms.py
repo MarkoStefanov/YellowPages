@@ -11,22 +11,28 @@ UCL_EMAIL_REGEX = r'^[a-zA-Z0-9._%+-]+@ucl\.ac\.uk$'
 
 class CustomUserCreationForm(UserCreationForm):
     course = forms.ModelChoiceField(
-        queryset=Course.objects.all(),
+        queryset=Course.objects.order_by('name'),
         required=True,
-        label="Your Course"
+        label="Your Course",
+        empty_label="Choose your course"
     )
     verification_code = forms.CharField(
         max_length=6,
         required=False,
         widget=forms.TextInput(attrs={
-            'class': 'form-control',
-            'placeholder': 'Enter 6-digit verification code'
+            'placeholder': '6-digit code',
+            'inputmode': 'numeric',
+            'autocomplete': 'one-time-code',
         })
     )
 
     class Meta:
         model = User
         fields = UserCreationForm.Meta.fields + ('course', 'verification_code')
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['username'].widget.attrs.update({'placeholder': 'name@ucl.ac.uk', 'autocomplete': 'email'})
 
     def clean_username(self):
         username = self.cleaned_data.get('username')
@@ -60,11 +66,9 @@ class UserDataForm(forms.ModelForm):
         model = UserData
         fields = ['name', 'whatsapp', 'instagram', 'email', 'discord', 'profile_visibility', 'track_profile_views']
         widgets = {
-            'profile_visibility': forms.Select(attrs={'class': 'form-select'}),
-            'track_profile_views': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
-            'name': forms.TextInput(attrs={'class': 'form-control'}),
-            'whatsapp': forms.TextInput(attrs={'class': 'form-control'}),
-            'instagram': forms.TextInput(attrs={'class': 'form-control'}),
-            'discord': forms.TextInput(attrs={'class': 'form-control'}),
-            'email': forms.EmailInput(attrs={'class': 'form-control'})
+            'name': forms.TextInput(attrs={'placeholder': 'e.g. Aisha Khan', 'autocomplete': 'name'}),
+            'whatsapp': forms.TextInput(attrs={'placeholder': '+447700900123', 'inputmode': 'tel'}),
+            'instagram': forms.TextInput(attrs={'placeholder': 'username'}),
+            'discord': forms.TextInput(attrs={'placeholder': 'username'}),
+            'email': forms.EmailInput(attrs={'placeholder': 'you@example.com'}),
         }

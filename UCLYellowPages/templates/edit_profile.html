@@ -1,74 +1,52 @@
 {% extends 'base.html' %}
 
-{% block title %}Edit Profile - UCL Yellow Pages{% endblock %}
+{% block title %}Edit profile - UCL Yellow Pages{% endblock %}
 
 {% block content %}
-<div class="form-container">
-    <div class="general-form">
-        <h2>Edit Your Profile</h2>
-        <form method="post">
-            {% csrf_token %}
-
-            <label for="{{ form.name.id_for_label }}">Name</label>
-            {{ form.name }}
-            {% if form.name.errors %}
-                <div class="alert alert-warning">
-                    {{ form.name.errors }}
-                </div>
-            {% endif %}
-
-            <label for="{{ form.whatsapp.id_for_label }}">WhatsApp</label>
-            {{ form.whatsapp }}
-            {% if form.whatsapp.errors %}
-                <div class="alert alert-warning">
-                    {{ form.whatsapp.errors }}
-                </div>
-            {% endif %}
-
-            <label for="{{ form.instagram.id_for_label }}">Instagram</label>
-            {{ form.instagram }}
-            {% if form.instagram.errors %}
-                <div class="alert alert-warning">
-                    {{ form.instagram.errors }}
-                </div>
-            {% endif %}
-
-            <label for="{{ form.email.id_for_label }}">Email</label>
-            {{ form.email }}
-            {% if form.email.errors %}
-                <div class="alert alert-warning">
-                    {{ form.email.errors }}
-                </div>
-            {% endif %}
-
-            <label for="{{ form.discord.id_for_label }}">Discord</label>
-            {{ form.discord }}
-            {% if form.discord.errors %}
-                <div class="alert alert-warning">
-                    {{ form.discord.errors }}
-                </div>
-            {% endif %}
-
-            <label for="{{ form.profile_visibility.id_for_label }}">Profile Visibility</label>
-            {{ form.profile_visibility }}
-            {% if form.profile_visibility.errors %}
-                <div class="alert alert-warning">
-                    {{ form.profile_visibility.errors }}
-                </div>
-            {% endif %}
-            
-            <div class="form-group">
-                {{ form.track_profile_views }}
-                <label for="{{ form.track_profile_views.id_for_label }}">Track Profile Views</label>
-                {% if form.track_profile_views.errors %}
-                    <div class="alert alert-warning">
-                        {{ form.track_profile_views.errors }}
-                    </div>
-                {% endif %}
-            </div>
-
-            <button type="submit" class="button">Save Changes</button>
-        </form>
+<div class="narrow">
+    <div class="page-header">
+        <h1>Your profile</h1>
+        <p class="muted">Choose what to share and who can see it.</p>
     </div>
+
+    <form method="post" class="card card-pad">
+        {% csrf_token %}
+        {% for error in form.non_field_errors %}
+            <div class="alert alert-error">{{ error }}</div>
+        {% endfor %}
+
+        <div class="form-section stack">
+            <h2 class="section-title">About you</h2>
+            {% include '_field.html' with field=form.name label='Display name' hint='How your name appears in search results.' %}
+        </div>
+
+        <div class="form-section">
+            <h2 class="section-title">Contact details</h2>
+            <div class="field-grid">
+                {% include '_field.html' with field=form.whatsapp label='WhatsApp' hint='Include your country code.' %}
+                {% include '_field.html' with field=form.instagram label='Instagram' %}
+                {% include '_field.html' with field=form.discord label='Discord' %}
+                {% include '_field.html' with field=form.email label='Email' hint='Any email you are happy to share.' %}
+            </div>
+        </div>
+
+        <div class="form-section stack">
+            <h2 class="section-title">Privacy</h2>
+            {% include '_field.html' with field=form.profile_visibility label='Who can see your profile' %}
+            <label class="switch-row" for="{{ form.track_profile_views.id_for_label }}">
+                <span>
+                    <strong>Track profile views</strong>
+                    <span class="hint">List who viewed your profile on your History page.</span>
+                </span>
+                {{ form.track_profile_views }}
+            </label>
+            {% for error in form.track_profile_views.errors %}<p class="field-error">{{ error }}</p>{% endfor %}
+        </div>
+
+        <div class="form-actions">
+            <a class="btn btn-ghost" href="{% url 'profile_detail' username=user.username %}">View my profile</a>
+            <button type="submit" class="btn btn-primary">Save changes</button>
+        </div>
+    </form>
 </div>
 {% endblock %}
