@@ -21,8 +21,27 @@
   color-scheme: light;
 }
 
+/* Dark theme: used when chosen with the header toggle (data-theme="dark"),
+   or when the system is dark and the user hasn't picked light. */
+:root[data-theme="dark"] {
+  --page: #131312;
+  --card: #1c1c1a;
+  --card-hover: #222220;
+  --border: #2d2c29;
+  --border-strong: #3d3b37;
+  --text: #ecebe6;
+  --muted: #a3a093;
+  --primary: #ffd21a;
+  --primary-hover: #ffdc4d;
+  --primary-text: #1a1a1a;
+  --focus: rgba(255, 210, 26, 0.3);
+  --error: #ff8a7a;
+  --ok: #7fcf98;
+  color-scheme: dark;
+}
+
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --page: #131312;
     --card: #1c1c1a;
     --card-hover: #222220;
@@ -148,6 +167,21 @@ a:hover {
   margin: 0;
 }
 
+.nav .theme-toggle {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  margin-left: 6px;
+  padding: 0;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+}
+
+.theme-toggle svg {
+  display: block;
+}
+
 .band-heading {
   padding-top: 28px;
 }
@@ -200,6 +234,8 @@ a:hover {
 
 .narrow {
   max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .site-footer {
@@ -208,6 +244,7 @@ a:hover {
   border-top: 1px solid var(--border);
   color: var(--muted);
   font-size: 0.85rem;
+  text-align: center;
 }
 
 .card {
@@ -741,6 +778,11 @@ td {
 
 tbody tr + tr td {
   border-top: 1px solid var(--border);
+}
+
+td:first-child {
+  font-weight: 500;
+  white-space: nowrap;
 }
 
 td.when {

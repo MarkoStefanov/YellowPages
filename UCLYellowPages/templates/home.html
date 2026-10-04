@@ -10,11 +10,13 @@
             <button type="submit" class="btn">Search</button>
         </form>
     {% else %}
-        <h1>UCL Yellow Pages</h1>
-        <p>Find the WhatsApp, Instagram, Discord or email of people on your course, shared by them, with their say on who sees it.</p>
-        <div class="actions">
-            <a class="btn" href="{% url 'register' %}">Sign up with your UCL email</a>
-            <a class="btn btn-secondary" href="{% url 'login' %}">Log in</a>
+        <div class="narrow">
+            <h1>UCL Yellow Pages</h1>
+            <p>Find the WhatsApp, Instagram, Discord or email of people on your course, shared by them, with their say on who sees it.</p>
+            <div class="actions">
+                <a class="btn" href="{% url 'register' %}">Sign up with your UCL email</a>
+                <a class="btn btn-secondary" href="{% url 'login' %}">Log in</a>
+            </div>
         </div>
     {% endif %}
 </div>
