@@ -4,64 +4,61 @@
 {% block title %}Search - UCL Yellow Pages{% endblock %}
 
 {% block content %}
-<div class="page-header">
-    <h1>Find students</h1>
-    <p class="muted">Search by name, handle, course, department or faculty.</p>
+<div class="page-title">
+    <h1>Search</h1>
 </div>
 
-<form class="search-bar" method="get" role="search">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-    <input type="search" name="q" value="{{ request.GET.q }}" placeholder="Try &ldquo;Computer Science&rdquo; or a name" aria-label="Search students">
-    <button type="submit" class="btn btn-primary">Search</button>
+<form class="search" method="get" role="search">
+    <input type="search" name="q" value="{{ request.GET.q }}" placeholder="Name, course, department or handle" aria-label="Search the directory">
+    <button type="submit" class="btn">Search</button>
 </form>
 
-{% if profiles %}
-    <p class="result-count muted">
-        {{ paginator.count }} student{{ paginator.count|pluralize }}
-        {% if request.GET.q %}matching &ldquo;{{ request.GET.q }}&rdquo;{% else %}you can see{% endif %}
-    </p>
+<section class="panel">
+    {% if profiles %}
+        <p class="directory-meta">
+            {% if request.GET.q %}
+                {{ paginator.count }} result{{ paginator.count|pluralize }} for &ldquo;{{ request.GET.q }}&rdquo;
+            {% else %}
+                Everyone you can see ({{ paginator.count }})
+            {% endif %}
+        </p>
 
-    <div class="person-grid">
-        {% for profile in profiles %}
-            <a class="card person-card" href="{% url 'profile_detail' username=profile.user.username %}">
-                <span class="avatar" style="--hue: {{ profile|avatar_hue }}">{{ profile|initials }}</span>
-                <div class="person-meta">
-                    <h2 class="person-name">{{ profile|display_name }}</h2>
-                    <p class="person-sub">{% if profile.course %}{{ profile.course }}{% else %}{{ profile.user.username }}{% endif %}</p>
-                    {% if profile.whatsapp or profile.instagram or profile.discord or profile.email %}
-                        <div class="chips">
-                            {% if profile.whatsapp %}<span class="chip">WhatsApp</span>{% endif %}
-                            {% if profile.instagram %}<span class="chip">Instagram</span>{% endif %}
-                            {% if profile.discord %}<span class="chip">Discord</span>{% endif %}
-                            {% if profile.email %}<span class="chip">Email</span>{% endif %}
-                        </div>
-                    {% endif %}
+        <div class="directory">
+            {% regroup profiles by letter as letters %}
+            {% for group in letters %}
+                <div class="letter-group">
+                    <h2 class="letter">{{ group.grouper }}</h2>
+                    {% for profile in group.list %}
+                        <a class="entry" href="{% url 'profile_detail' username=profile.user.username %}">
+                            <span class="entry-line">
+                                <span class="entry-name">{{ profile|display_name }}</span>
+                                <span class="entry-leader" aria-hidden="true"></span>
+                                <span class="entry-course">{{ profile.course|default:'' }}</span>
+                            </span>
+                            <span class="entry-contacts">{{ profile|contact_methods|default:'No contact details yet' }}</span>
+                        </a>
+                    {% endfor %}
                 </div>
-                <svg class="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
-            </a>
-        {% endfor %}
-    </div>
+            {% endfor %}
+        </div>
 
-    {% if is_paginated %}
-        <nav class="pagination" aria-label="Pages">
-            {% if page_obj.has_previous %}
-                <a class="btn btn-secondary btn-sm" href="?q={{ request.GET.q|urlencode }}&page={{ page_obj.previous_page_number }}">Previous</a>
-            {% endif %}
-            <span class="page-info">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
-            {% if page_obj.has_next %}
-                <a class="btn btn-secondary btn-sm" href="?q={{ request.GET.q|urlencode }}&page={{ page_obj.next_page_number }}">Next</a>
-            {% endif %}
-        </nav>
-    {% endif %}
-{% else %}
-    <div class="empty">
-        {% if request.GET.q %}
-            <h2>No students match &ldquo;{{ request.GET.q }}&rdquo;</h2>
-            <p>Try a different name or course. Some students only show their profile to their own course.</p>
-        {% else %}
-            <h2>No one to show yet</h2>
-            <p>When students on your course, department or faculty sign up, they'll appear here.</p>
+        {% if is_paginated %}
+            <nav class="pager" aria-label="Pages">
+                <span>{% if page_obj.has_previous %}<a href="?q={{ request.GET.q|urlencode }}&page={{ page_obj.previous_page_number }}">&larr; Previous</a>{% endif %}</span>
+                <span class="muted">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+                <span>{% if page_obj.has_next %}<a href="?q={{ request.GET.q|urlencode }}&page={{ page_obj.next_page_number }}">Next &rarr;</a>{% endif %}</span>
+            </nav>
         {% endif %}
-    </div>
-{% endif %}
+    {% else %}
+        <div class="empty">
+            {% if request.GET.q %}
+                <h2>Nothing for &ldquo;{{ request.GET.q }}&rdquo;</h2>
+                <p class="muted">Check the spelling, or try a course or department. Some students only show up for people on their own course.</p>
+            {% else %}
+                <h2>Nobody here yet</h2>
+                <p class="muted">Students on your course, department or faculty will appear once they sign up.</p>
+            {% endif %}
+        </div>
+    {% endif %}
+</section>
 {% endblock %}

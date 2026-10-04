@@ -4,21 +4,21 @@
 
 {% block content %}
 <div class="auth">
-    <div class="card card-pad auth-card">
-        <h1 class="auth-title">Welcome back</h1>
-        <p class="muted">Log in with your UCL email.</p>
+    <div class="panel">
+        <h1>Log in</h1>
+        <p>Use the UCL email you signed up with.</p>
 
-        <form method="post" class="stack">
+        <form method="post" class="form">
             {% csrf_token %}
             {% for error in form.non_field_errors %}
-                <div class="alert alert-error">{{ error }}</div>
+                <p class="notice notice-error">{{ error }}</p>
             {% endfor %}
             {% include '_field.html' with field=form.username label='UCL email' %}
             {% include '_field.html' with field=form.password label='Password' %}
-            <button type="submit" class="btn btn-primary btn-block">Log in</button>
+            <div><button type="submit" class="btn">Log in</button></div>
         </form>
 
-        <p class="auth-footer">New here? <a href="{% url 'register' %}">Create an account</a></p>
+        <p class="auth-switch">No account yet? <a href="{% url 'register' %}">Sign up</a></p>
     </div>
 </div>
 {% endblock %}

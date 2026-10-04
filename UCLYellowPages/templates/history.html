@@ -1,57 +1,49 @@
 {% extends 'base.html' %}
 {% load profile_extras %}
 
-{% block title %}History - UCL Yellow Pages{% endblock %}
+{% block title %}Who viewed me - UCL Yellow Pages{% endblock %}
 
 {% block content %}
 <div class="narrow">
-    <div class="page-header">
-        <h1>Profile views</h1>
-        <p class="muted">Students who have looked at your profile.</p>
+    <div class="page-title">
+        <h1>Who viewed me</h1>
     </div>
 
-    {% if error %}
-        <div class="alert alert-error">{{ error }}</div>
-    {% endif %}
+    <section class="panel">
+        {% if error %}
+            <p class="notice notice-error">{{ error }}</p>
+        {% else %}
+            {% if not tracking_enabled %}
+                <p class="notice">You've turned off view tracking, so new visits aren't recorded. <a href="{% url 'profile-edit' %}">Change this</a></p>
+            {% endif %}
 
-    {% if not error and not tracking_enabled %}
-        <div class="alert">
-            View tracking is off, so new visits aren't being recorded.
-            <a href="{% url 'profile-edit' %}">Turn it on</a>
-        </div>
-    {% endif %}
-
-    {% if not error %}
-        <div class="stats">
-            <div class="card stat">
-                <div class="stat-value">{{ total_views }}</div>
-                <div class="stat-label">Total views</div>
-            </div>
-            <div class="card stat">
-                <div class="stat-value">{{ unique_viewers }}</div>
-                <div class="stat-label">Different people</div>
-            </div>
-        </div>
-    {% endif %}
-
-    {% if profile_views %}
-        <ul class="card">
-            {% for view in profile_views %}
-                <li class="list-row">
-                    <span class="avatar avatar-sm" style="--hue: {{ view.viewer|avatar_hue }}">{{ view.viewer|initials }}</span>
-                    <div class="person-meta">
-                        <div class="person-name">{{ view.viewer|display_name }}</div>
-                        <div class="person-sub">{{ view.viewed_at|timesince }} ago</div>
-                    </div>
-                    <time datetime="{{ view.viewed_at|date:'c' }}">{{ view.viewed_at|date:'j M, H:i' }}</time>
-                </li>
-            {% endfor %}
-        </ul>
-    {% elif not error %}
-        <div class="card empty">
-            <h2>No views yet</h2>
-            <p>When someone opens your profile, they'll show up here.</p>
-        </div>
-    {% endif %}
+            {% if profile_views %}
+                <p class="summary">
+                    <strong>{{ total_views }}</strong> view{{ total_views|pluralize }}
+                    from <strong>{{ unique_viewers }}</strong> {{ unique_viewers|pluralize:"person,people" }}
+                </p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Who</th>
+                            <th class="col-course">Course</th>
+                            <th>When</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for view in profile_views %}
+                            <tr>
+                                <td>{{ view.viewer|display_name }}</td>
+                                <td class="col-course muted">{{ view.viewer.userdata.course|default:'' }}</td>
+                                <td class="when" title="{{ view.viewed_at|date:'j M Y, H:i' }}">{{ view.viewed_at|timesince }} ago</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p class="empty muted">Nobody has viewed your details yet.</p>
+            {% endif %}
+        {% endif %}
+    </section>
 </div>
 {% endblock %}
