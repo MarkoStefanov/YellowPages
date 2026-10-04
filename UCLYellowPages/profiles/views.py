@@ -18,9 +18,19 @@ from django.views.decorators.http import require_POST
 from django.views.generic import ListView, TemplateView, UpdateView
 
 from .forms import UCL_EMAIL_REGEX, CustomUserCreationForm, UserDataForm
-from .models import EmailVerification, ProfileView, UserData, VerificationError
+from .models import EmailVerification, Faculty, ProfileView, UserData, VerificationError
 
 logger = logging.getLogger(__name__)
+
+
+class HomeView(TemplateView):
+    template_name = 'home.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        if self.request.user.is_authenticated:
+            context['faculties'] = Faculty.objects.order_by('name').prefetch_related('department_set')
+        return context
 
 
 def register(request):
@@ -47,8 +57,14 @@ class CustomLoginView(LoginView):
     template_name = 'login.html'
     redirect_authenticated_user = True
 
+    def get_form(self, form_class=None):
+        form = super().get_form(form_class)
+        form.fields['username'].widget.attrs.update({'placeholder': 'name@ucl.ac.uk', 'autocomplete': 'email'})
+        return form
+
     def get_success_url(self):
-        return reverse_lazy('home')
+        # Go back to the page that asked for a login, if any
+        return self.get_redirect_url() or reverse_lazy('home')
 
 
 class ProfileEditView(LoginRequiredMixin, UpdateView):
@@ -62,7 +78,7 @@ class ProfileEditView(LoginRequiredMixin, UpdateView):
 
     def form_valid(self, form):
         response = super().form_valid(form)
-        messages.success(self.request, 'Profile updated successfully!')
+        messages.success(self.request, 'Your profile has been saved.')
         return response
 
 
@@ -74,10 +90,13 @@ class HistoryView(LoginRequiredMixin, TemplateView):
 
         try:
             user_profile = UserData.objects.get(user=self.request.user)
-            profile_views = ProfileView.objects.filter(profile=user_profile).order_by('-viewed_at')
+            profile_views = (ProfileView.objects.filter(profile=user_profile)
+                             .select_related('viewer__userdata__course')
+                             .order_by('-viewed_at'))
 
             context['profile_views'] = profile_views
             context['total_views'] = profile_views.count()
+            context['unique_viewers'] = profile_views.values('viewer').distinct().count()
             context['tracking_enabled'] = user_profile.track_profile_views
 
         except UserData.DoesNotExist:
@@ -91,7 +110,7 @@ class SearchView(LoginRequiredMixin, ListView):
     model = UserData
     template_name = 'search.html'
     context_object_name = 'profiles'
-    paginate_by = 10
+    paginate_by = 30
 
     def get_queryset(self):
         query = self.request.GET.get('q', '').strip()
@@ -103,8 +122,7 @@ class SearchView(LoginRequiredMixin, ListView):
 
         queryset = (UserData.objects.filter(user__is_active=True)
                     .exclude(user=self.request.user)
-                    .select_related('user', 'course__department__faculty')
-                    .order_by('name', 'user__username'))
+                    .select_related('user', 'course__department__faculty'))
         # With no query, list everyone the viewer is allowed to see
         if query:
             queryset = queryset.filter(
@@ -119,11 +137,16 @@ class SearchView(LoginRequiredMixin, ListView):
                 Q(course__department__faculty__name__icontains=query)
             )
 
-        # Filter based on profile visibility
-        return [
+        # Filter based on profile visibility, then sort like a phone book
+        profiles = [
             profile for profile in queryset
             if profile.is_profile_visible_to(self.request.user, viewer_data)
         ]
+        for profile in profiles:
+            profile.sort_name = (profile.name or profile.user.username).strip().lower()
+            first = profile.sort_name[:1].upper()
+            profile.letter = first if first.isalpha() else '#'
+        return sorted(profiles, key=lambda profile: profile.sort_name)
 
 
 @login_required

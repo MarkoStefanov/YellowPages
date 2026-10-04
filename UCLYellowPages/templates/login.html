@@ -1,19 +1,23 @@
 {% extends 'base.html' %}
 
-{% block title %}Login - UCL Yellow Pages{% endblock %}
+{% block title %}Log in - UCL Yellow Pages{% endblock %}
 
 {% block content %}
-<div class="form-container">
-    <div class="general-form">
-        <h2>Login to your UCL account!</h2>
-        <form method="post">
+<div class="auth">
+    <div class="card card-body">
+        <h1 class="auth-title">Log in</h1>
+        <p class="muted">Use the UCL email you signed up with.</p>
+
+        <form method="post" class="form">
             {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="button">Login</button>
-            <div class="general-link">
-                <p>Don't have an account? <a href="{% url 'register' %}">Register here</a></p>
-            </div>
+            {% for error in form.non_field_errors %}
+                <p class="notice notice-error">{{ error }}</p>
+            {% endfor %}
+            {% include '_field.html' with field=form.username label='UCL email' %}
+            {% include '_field.html' with field=form.password label='Password' %}
+            <button type="submit" class="btn">Log in</button>
         </form>
     </div>
+    <p class="auth-switch">Don't have an account? <a href="{% url 'register' %}">Sign up</a></p>
 </div>
 {% endblock %}

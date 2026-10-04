@@ -1,10 +1,60 @@
 {% extends 'base.html' %}
 
-{% block title %}
-Welcome to UCL Yellow Pages
+{% block band %}
+<div class="container band-heading">
+    {% if user.is_authenticated %}
+        <h1>Find a UCL student</h1>
+        <p>Search by name, course, department or social handle.</p>
+        <form class="search" method="get" action="{% url 'search' %}" role="search">
+            <input type="search" name="q" placeholder="e.g. Computer Science" aria-label="Search">
+            <button type="submit" class="btn">Search</button>
+        </form>
+    {% else %}
+        <div class="narrow">
+            <h1>UCL Yellow Pages</h1>
+            <p>Find the WhatsApp, Instagram, Discord or email of people on your course, shared by them, with their say on who sees it.</p>
+            <div class="actions">
+                <a class="btn" href="{% url 'register' %}">Sign up with your UCL email</a>
+                <a class="btn btn-secondary" href="{% url 'login' %}">Log in</a>
+            </div>
+        </div>
+    {% endif %}
+</div>
 {% endblock %}
 
 {% block content %}
-<h1>Welcome to UCL Yellow Pages</h1>
-<p>This is the home page for UCL Yellow Pages. Use the navigation links above to access different features of the app.</p>
+{% if user.is_authenticated %}
+    <section class="card">
+        <div class="card-header">
+            <h2 class="card-title">Browse by department</h2>
+        </div>
+        <div class="card-body departments">
+            {% for faculty in faculties %}
+                <div>
+                    <h3>{{ faculty.name }}</h3>
+                    <ul>
+                        {% for department in faculty.department_set.all %}
+                            <li><a href="{% url 'search' %}?q={{ department.name|urlencode }}">{{ department.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% empty %}
+                <p class="muted">No departments have been added yet.</p>
+            {% endfor %}
+        </div>
+    </section>
+{% else %}
+    <section class="card narrow">
+        <div class="card-header">
+            <h2 class="card-title">How it works</h2>
+        </div>
+        <div class="card-body">
+            <ol class="steps">
+                <li><strong>Sign up with your @ucl.ac.uk email.</strong> We email you a code to confirm it's yours.</li>
+                <li><strong>Add the contact details you want to share.</strong> Leave out anything you'd rather keep private.</li>
+                <li><strong>Pick who can see them:</strong> all of UCL, your faculty, your department, your course, or nobody.</li>
+            </ol>
+        </div>
+    </section>
+{% endif %}
 {% endblock %}

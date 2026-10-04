@@ -1,51 +1,54 @@
 {% extends 'base.html' %}
-{% block content %}
-<div class="general-container">
-    <div class="general-card history-card">
-        <h2 class="general-title">Profile View History</h2>
-        {% if error %}
-            <div class="alert alert-danger">
-                {{ error }}
-            </div>
-        {% endif %}
+{% load profile_extras %}
 
-        {% if not tracking_enabled %}
-            <div class="alert alert-warning">
-                Profile view tracking is currently disabled.
-            </div>
-        {% endif %}
+{% block title %}Views - UCL Yellow Pages{% endblock %}
+
+{% block band %}
+<div class="container band-heading">
+    <div class="narrow">
+        <h1>Profile views</h1>
+        <p>People who have opened your profile.</p>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<section class="card narrow">
+    {% if error %}
+        <div class="card-body"><p class="notice notice-error">{{ error }}</p></div>
+    {% else %}
+        <div class="card-header">
+            <p class="stat-line">
+                <strong>{{ total_views }}</strong> view{{ total_views|pluralize }}
+                from <strong>{{ unique_viewers }}</strong> {{ unique_viewers|pluralize:"person,people" }}
+            </p>
+            {% if not tracking_enabled %}
+                <a class="muted" href="{% url 'profile-edit' %}">Tracking is off</a>
+            {% endif %}
+        </div>
 
         {% if profile_views %}
-            <div class="alert alert-info">
-                Total Profile Views: {{ total_views }}
-            </div>
-            <table class="table">
+            <table>
                 <thead>
                     <tr>
-                        <th>Viewer</th>
-                        <th>Viewed At</th>
+                        <th>Name</th>
+                        <th class="col-course">Course</th>
+                        <th>When</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for view in profile_views %}
                         <tr>
-                            <td>
-                                {% if view.viewer %}
-                                    {{ view.viewer.username }}
-                                {% else %}
-                                    Anonymous
-                                {% endif %}
-                            </td>
-                            <td>{{ view.viewed_at }}</td>
+                            <td>{{ view.viewer|display_name }}</td>
+                            <td class="col-course muted">{{ view.viewer.userdata.course|default:'' }}</td>
+                            <td class="when" title="{{ view.viewed_at|date:'j M Y, H:i' }}">{{ view.viewed_at|timesince }} ago</td>
                         </tr>
                     {% endfor %}
                 </tbody>
             </table>
         {% else %}
-            <div class="alert alert-info">
-                No profile views yet.
-            </div>
+            <p class="empty">No one has viewed your profile yet.</p>
         {% endif %}
-    </div>
-</div>
+    {% endif %}
+</section>
 {% endblock %}

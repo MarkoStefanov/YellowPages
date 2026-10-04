@@ -1,82 +1,79 @@
 {% extends 'base.html' %}
+{% load profile_extras %}
 
-{% block title %}{{ user_profile.username }}'s Profile - UCL Yellow Pages{% endblock %}
+{% block title %}{{ profile|display_name }} - UCL Yellow Pages{% endblock %}
 
-{% block content %}
-<div class="general-container">
-    <div class="general-card">
-        <h2 class="general-title">
-            {% if profile.name %}
-                {{ profile.name }}'s Profile
-            {% else %}
-                {{ user_profile.username }}'s Profile
-                {% if user_profile.first_name or user_profile.last_name %}
-                    <small class="subtitle">({{ user_profile.first_name }} {{ user_profile.last_name }})</small>
-                {% endif %}
-            {% endif %}
-        </h2>
-
-        <ul class="profile-details">
-            {% if profile.name %}
-                <strong>Name:</strong>
-                <li>{{ profile.name }}</li>
-            {% endif %}
-
-            {% if profile.course %}
-                <strong>Course:</strong>
-                <li>
-                    {{ profile.course }}
-                </li>
-            {% endif %}
-
-            {% if profile.email %}
-                <strong>Email:</strong>
-                <li>
-                    <a id="email" href="mailto:{{ profile.email }}">{{ profile.email }}</a>
-                    <button class="copy-button" onclick="copyToClipboard('email')">📋</button>
-                </li>
-            {% endif %}
-
-            {% if profile.whatsapp %}
-                <strong>Phone (WhatsApp):</strong>
-                <li>
-                    <a id="whatsapp" href="tel:{{ profile.whatsapp }}">{{ profile.whatsapp }}</a>
-                    <button class="copy-button" onclick="copyToClipboard('whatsapp')">📋</button>
-                </li>
-                
-            {% endif %}
-
-            {% if profile.instagram %}
-                <strong>Instagram:</strong> 
-                <li>
-                    <a id="instagram" href="https://instagram.com/{{ profile.instagram }}" target="_blank">@{{ profile.instagram }}</a>
-                    <button class="copy-button" onclick="copyToClipboard('instagram')">📋</button>
-                </li>
-            {% endif %}
-
-            {% if profile.discord %}
-                <strong>Discord:</strong> 
-                <li>
-                    <span id="discord">{{ profile.discord }}</span>
-                    <button class="copy-button" onclick="copyToClipboard('discord')">📋</button>
-                </li>
-            {% endif %}
-        </ul>
-
-        {% if is_own_profile %}
-            <a href="{% url 'profile-edit' %}" class="button">Edit Profile</a>
-        {% endif %}
+{% block band %}
+<div class="container band-heading">
+    <div class="narrow">
+        <a class="back" href="{% url 'search' %}">&larr; Back to search</a>
     </div>
 </div>
+{% endblock %}
+
+{% block content %}
+<article class="card narrow">
+    <header class="card-body profile-header">
+        <h2>{{ profile|display_name }}</h2>
+        {% if profile.course %}
+            <p>{{ profile.course }} &middot; {{ profile.course.department }}</p>
+        {% endif %}
+        {% if profile.name %}<p class="muted">{{ user_profile.username }}</p>{% endif %}
+    </header>
+
+    {% if profile.email or profile.whatsapp or profile.instagram or profile.discord %}
+        <dl class="details divided">
+            {% if profile.whatsapp %}
+                <div>
+                    <dt>WhatsApp</dt>
+                    <dd><a href="https://wa.me/{{ profile.whatsapp|cut:'+' }}" target="_blank" rel="noopener">{{ profile.whatsapp }}</a></dd>
+                    <button type="button" class="text-btn" data-copy="{{ profile.whatsapp }}">Copy</button>
+                </div>
+            {% endif %}
+            {% if profile.instagram %}
+                <div>
+                    <dt>Instagram</dt>
+                    <dd><a href="https://instagram.com/{{ profile.instagram|cut:'@' }}" target="_blank" rel="noopener">@{{ profile.instagram|cut:'@' }}</a></dd>
+                    <button type="button" class="text-btn" data-copy="@{{ profile.instagram|cut:'@' }}">Copy</button>
+                </div>
+            {% endif %}
+            {% if profile.discord %}
+                <div>
+                    <dt>Discord</dt>
+                    <dd>{{ profile.discord }}</dd>
+                    <button type="button" class="text-btn" data-copy="{{ profile.discord }}">Copy</button>
+                </div>
+            {% endif %}
+            {% if profile.email %}
+                <div>
+                    <dt>Email</dt>
+                    <dd><a href="mailto:{{ profile.email }}">{{ profile.email }}</a></dd>
+                    <button type="button" class="text-btn" data-copy="{{ profile.email }}">Copy</button>
+                </div>
+            {% endif %}
+        </dl>
+    {% else %}
+        <p class="empty divided">
+            {% if is_own_profile %}You haven't added any contact details yet.{% else %}No contact details shared yet.{% endif %}
+        </p>
+    {% endif %}
+
+    {% if is_own_profile %}
+        <div class="form-footer">
+            <span class="muted">This is how others see your profile.</span>
+            <a class="btn btn-secondary" href="{% url 'profile-edit' %}">Edit</a>
+        </div>
+    {% endif %}
+</article>
 
 <script>
-    function copyToClipboard(elementId) {
-        const text = document.getElementById(elementId).innerText;
-        navigator.clipboard.writeText(text).then(() => {
-            alert("Copied: " + text);
-        }).catch(err => {
-            console.error("Error copying text: ", err);
+document.querySelectorAll('[data-copy]').forEach(function (button) {
+    button.addEventListener('click', function () {
+        navigator.clipboard.writeText(button.dataset.copy).then(function () {
+            button.textContent = 'Copied';
+            setTimeout(function () { button.textContent = 'Copy'; }, 1500);
         });
-    }
+    });
+});
 </script>
 {% endblock %}
